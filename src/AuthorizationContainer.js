@@ -15,9 +15,6 @@ class AuthorizationContainer extends React.Component {
       message: '',
     };
 
-    console.log("AuthorizationContainer props"); 
-    printObjContent(this.props);
-
     this.listenerInputForm = this.listenerInputForm.bind(this);
     store.subscribe(this.listenerInputForm);
   }
@@ -25,7 +22,7 @@ class AuthorizationContainer extends React.Component {
   listenerInputForm() {
     let userName = this.props.userName;
     let password = this.props.password;
-    console.log(userName);
+
     axios.get('/login?userName=' + userName + '&password=' + password).then(response => {
       this.setState({message: response.data});
     });
@@ -42,22 +39,7 @@ class AuthorizationContainer extends React.Component {
   }
 }
 
-function printObjContent(obj, offset = "") {
-  for (let key in obj) {
-    if (typeof obj[key] === 'object') {
-      console.log(offset + "#" + obj[key] + "#");
-      printObjContent(obj[key], (offset + "--->"));
-    } else {
-      console.log(offset + key + " = [" + obj[key] + "]");  
-    }
-  }
-}
-
 function mapStateToProps (store) {
-
-    console.log("AuthorizationContainer store"); 
-    printObjContent(store);
-
   return {
     userName: store.userName,
     password: store.password,

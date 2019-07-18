@@ -15,9 +15,6 @@ class Authorization extends React.Component {
 
     this.buttonHandler = this.buttonHandler.bind(this);
     this.actionCreatorInputFrom = this.actionCreatorInputFrom.bind(this);
-
-    console.log("Authorization"); 
-    printObjContent(this.props);
   }
 
   UserNameHandler(event) {
@@ -58,17 +55,6 @@ class Authorization extends React.Component {
         </form>
       </div>
     )
-  }
-}
-
-function printObjContent(obj, offset = "") {
-  for (let key in obj) {
-    if (typeof obj[key] === 'object') {
-      console.log(offset + "#" + obj[key] + "#");
-      printObjContent(obj[key], (offset + "--->"));
-    } else {
-      console.log(offset + key + " = [" + obj[key] + "]");  
-    }
   }
 }
 
