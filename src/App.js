@@ -1,7 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Provider } from 'react-redux';
 
-import Authorization from './Authorization.js'
+import AuthorizationContainer from './AuthorizationContainer.js';
+import store from './store.js';
 
 function About() {
   return <h2>About</h2>;
@@ -9,8 +11,8 @@ function About() {
 
 function App() {
   return (
-    <Router>
-      <div>
+    <Provider store={store}>
+      <BrowserRouter>
         <nav>
           <ul>
             <li>
@@ -21,11 +23,11 @@ function App() {
             </li>
           </ul>
         </nav>
-
-        <Route path="/" exact component={Authorization} />
+        
+        <Route path="/" exact component={AuthorizationContainer} />
         <Route path="/about/" component={About} />
-      </div>
-    </Router>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

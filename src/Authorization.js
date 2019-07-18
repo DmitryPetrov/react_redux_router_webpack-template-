@@ -1,5 +1,7 @@
 import React from 'react';
 
+import store from './store.js';
+
 class Authorization extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,9 @@ class Authorization extends React.Component {
 
     this.buttonHandler = this.buttonHandler.bind(this);
     this.actionCreatorInputFrom = this.actionCreatorInputFrom.bind(this);
+
+    console.log("Authorization"); 
+    printObjContent(this.props);
   }
 
   UserNameHandler(event) {
@@ -26,13 +31,14 @@ class Authorization extends React.Component {
   buttonHandler(event) {
     event.preventDefault();
     let action = this.actionCreatorInputFrom();
-    this.props.store.dispatch(action);
+    store.dispatch(action);
   }
 
   actionCreatorInputFrom() {
     return {
       type: "NEW_NAME",
-      name: this.state.value
+      userName: this.state.userName,
+      password: this.state.password
     }
   }
 
@@ -52,6 +58,17 @@ class Authorization extends React.Component {
         </form>
       </div>
     )
+  }
+}
+
+function printObjContent(obj, offset = "") {
+  for (let key in obj) {
+    if (typeof obj[key] === 'object') {
+      console.log(offset + "#" + obj[key] + "#");
+      printObjContent(obj[key], (offset + "--->"));
+    } else {
+      console.log(offset + key + " = [" + obj[key] + "]");  
+    }
   }
 }
 

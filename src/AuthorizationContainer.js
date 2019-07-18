@@ -1,11 +1,10 @@
 import React from 'react';
-import { createStore } from 'redux'
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 import Authorization from './Authorization.js'
 import MessageFromServer from './MessageFromServer.js'
-
-let store = createStore(reducerInputForm);
+import store from './store.js';
 
 class AuthorizationContainer extends React.Component {
   constructor(props) {
@@ -16,12 +15,16 @@ class AuthorizationContainer extends React.Component {
       message: '',
     };
 
+    console.log("AuthorizationContainer props"); 
+    printObjContent(this.props);
+
     this.listenerInputForm = this.listenerInputForm.bind(this);
     store.subscribe(this.listenerInputForm);
   }
 
   listenerInputForm() {
-    let userName = store.getState().userName;
+    let userName = this.props.userName;
+    let password = this.props.password;
     console.log(userName);
     axios.get('/login?userName=' + userName + '&password=' + password).then(response => {
       this.setState({message: response.data});
@@ -31,7 +34,7 @@ class AuthorizationContainer extends React.Component {
   render() {
     return (
       <div>
-        <Authorization store={store} />
+        <Authorization />
         <br />
         <MessageFromServer message={this.state.message} />
       </div>
@@ -39,16 +42,27 @@ class AuthorizationContainer extends React.Component {
   }
 }
 
-function reducerInputForm(state, action) {
-  if (typeof state === 'undefined') {
-    return {userName: 'no userName'}
+function printObjContent(obj, offset = "") {
+  for (let key in obj) {
+    if (typeof obj[key] === 'object') {
+      console.log(offset + "#" + obj[key] + "#");
+      printObjContent(obj[key], (offset + "--->"));
+    } else {
+      console.log(offset + key + " = [" + obj[key] + "]");  
+    }
   }
-
-  if (action.type === "NEW_NAME") {
-    return Object.assign({}, state, {userName: action.userName})
-  }
-
-  console.log(action);
 }
 
-export default AuthorizationContainer;
+function mapStateToProps (store) {
+
+    console.log("AuthorizationContainer store"); 
+    printObjContent(store);
+
+  return {
+    userName: store.userName,
+    password: store.password,
+  }
+}
+
+export default connect(mapStateToProps)(AuthorizationContainer);
+
