@@ -1,48 +1,87 @@
 import axios from 'axios';
 import { combineReducers } from 'redux';
 
-function messageHasErrored(state = false, action) {
-  switch (action.type) {
-    case 'MESSAGE_HAS_ERRORED':
-      console.log("reducer messageHasErrored");
-      return {
-        hasErrored: action.hasErrored,
-        errorMessage: action.errorMessage
-      }
+import * as types from './action/actionType';
 
-    default:
-      return state;
+// function requestFailedReducer(state = false, action) {
+//   if (action.type === types.REQUEST_FAILED) {
+//     console.log("requestFailedReducer");
+//     return {
+//       isFail: action.isFail,
+//       isLoading: action.isLoading,
+//       isSuccessed: action.isSuccessed,
+//       message: action.message,
+//     };
+//   }
+//   return state;
+// }
+
+
+// function requestIsLoadingReducer(state = false, action) {
+//   if (action.type === types.REQUEST_IS_LOADING) {
+//     console.log("requestIsLoadingReducer");
+//     return {
+//       isFail: action.isFail,
+//       isLoading: action.isLoading,
+//       isSuccessed: action.isSuccessed,
+//       message: action.message,
+//     };
+//   }
+//   return state;
+// }
+
+
+// function requestSuccessedReducer(state = [], action) {
+//   if (action.type === types.REQUEST_SUCCESSED) {
+//     console.log("requestSuccessedReducer");
+//     return {
+//       isFail: action.isFail,
+//       isLoading: action.isLoading,
+//       isSuccessed: action.isSuccessed,
+//       message: action.message,
+//     };
+//   }
+//   return state;
+// }
+
+
+// export default combineReducers({
+//   requestFailedReducer,
+//   requestIsLoadingReducer,
+//   requestSuccessedReducer,
+// });
+
+
+export default function reducer(state = false, action) {
+  if (action.type === types.REQUEST_FAILED) {
+    console.log("requestFailedReducer");
+    return {
+      isFail: action.isFail,
+      isLoading: action.isLoading,
+      isSuccessed: action.isSuccessed,
+      message: action.message,
+    };
   }
+
+  if (action.type === types.REQUEST_IS_LOADING) {
+    console.log("requestIsLoadingReducer");
+    return {
+      isFail: action.isFail,
+      isLoading: action.isLoading,
+      isSuccessed: action.isSuccessed,
+      message: action.message,
+    };
+  }
+
+  if (action.type === types.REQUEST_SUCCESSED) {
+    console.log("requestSuccessedReducer");
+    return {
+      isFail: action.isFail,
+      isLoading: action.isLoading,
+      isSuccessed: action.isSuccessed,
+      message: action.message,
+    };
+  }
+  return state;
 }
 
-function messageIsLoading(state = false, action) {
-  switch (action.type) {
-    case 'MESSAGE_IS_LOADING':
-      console.log("reducer messageIsLoading");
-      return action.isLoading;
-
-    default:
-    return state;
-  }
-}
-
-function message(state = [], action) {
-  switch (action.type) {
-    case 'MESSAGE_FETCH_DATA_SUCCESS':
-      console.log("reducer message");
-      console.log(">>>>action");
-      console.log(action);
-      return action.message;
-
-    default:
-    return state;
-  }
-}
-
-export default combineReducers({
-  message,
-  error: messageHasErrored,
-  messageIsLoading
-});
-
-//export default combineReducers;

@@ -1,63 +1,59 @@
 import axios from 'axios';
 
-export function messageHasErrored(bool, errorMessage) {
-    console.log("action messageHasErrored");
+import * as types from './action/actionType';
+
+export function requestFailedAction(errorMessage) {
+    console.log("requestFailedAction");
     return {
-        type: 'MESSAGE_HAS_ERRORED',
-        hasErrored: bool,
-        errorMessage: errorMessage,
+        type: types.REQUEST_FAILED,
+        isFail: true,
+        isLoading: false,
+        isSuccessed: false,
+        message: errorMessage,
     };
 }
 
-export function messageIsLoading(bool) {
-    console.log("action messageIsLoading");
+export function requestIsLoadingAction() {
+    console.log("requestIsLoadingAction");
     return {
-        type: 'MESSAGE_IS_LOADING',
-        isLoading: bool
+        type: types.REQUEST_IS_LOADING,
+        isFail: false,
+        isLoading: true,
+        isSuccessed: false,
+        message: 'request is loading',
     };
 }
 
-export function messageFetchDataSuccess(message) {
-    console.log("action messageFetchDataSuccess");
+export function requestSuccessedAction(response) {
+    console.log("requestSuccessedAction");
     return {
-        type: 'MESSAGE_FETCH_DATA_SUCCESS',
-        message
+        type: types.REQUEST_SUCCESSED,
+        isFail: false,
+        isLoading: false,
+        isSuccessed: true,
+        message: response,
     };
 }
 
-export function errorAfterFiveSeconds() {
-    // We return a function instead of an action object
+export function requestToServer(action) {
+    console.log("requestToServer");
+
     return (dispatch) => {
-        setTimeout(() => {
-            // This function is able to dispatch other action creators
-            dispatch(messageHasErrored(true));
-        }, 5000);
-    };
-}
-
-export function messageFetchData(action) {
-    console.log("action messageFetchData");
-
-    return (dispatch) => {
-        dispatch(messageIsLoading(true));
+        dispatch(requestIsLoadingAction());
 
         axios
-            .get('/login?userName=' + action.userName + '&password=' + action.password)
-            .then(response => {
-                console.log("action response.data");
-                console.log(response.data);
+        .get('/login?userName=' + action.userName + '&password=' + action.password)
+        .then(response => {
+            console.log("action response.data");
+            console.log(response.data);
 
-                dispatch(messageIsLoading(false));
-
-                dispatch(messageFetchDataSuccess(response.data.message));
-
-                return response;
-            })
-            .catch(function (error) {
-                console.log("action error");
-                console.log(error);
-                dispatch(messageIsLoading(false));
-                dispatch(messageHasErrored(true, error.message));
-            });
+            dispatch(requestSuccessedAction(response.data));
+            //return response;
+        })
+        .catch(function (error) {
+            console.log("action error");
+            console.log(error);
+            dispatch(requestFailedAction(error.message));
+        });
     };
 }

@@ -4,10 +4,10 @@ import thunk from 'redux-thunk';
 import rootReducer  from './reducer.js';
 
 const initialState = {
-	hasErrored: '(initialState)',
-	messageIsLoading: '(initialState)',
-	errorMessage: '(initialState)',
-  message: '(initialState)'
+	isFail: '(initialState)',
+	isLoading: '(initialState)',
+	isSuccessed: '(initialState)',
+	message: '(initialState)'
 };
 
 const store = createStore(rootReducer, initialState , applyMiddleware(thunk));
