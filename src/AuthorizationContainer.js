@@ -1,50 +1,47 @@
 import React from 'react';
-import axios from 'axios';
+
 import { connect } from 'react-redux';
 
 import Authorization from './Authorization.js'
 import MessageFromServer from './MessageFromServer.js'
-import store from './store.js';
+import { messageFetchData } from './action.js';
 
 class AuthorizationContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: '',
-      password: '',
-      message: '',
-    };
 
-    this.listenerInputForm = this.listenerInputForm.bind(this);
-    store.subscribe(this.listenerInputForm);
-  }
-
-  listenerInputForm() {
-    let userName = this.props.userName;
-    let password = this.props.password;
-
-    axios.get('/login?userName=' + userName + '&password=' + password).then(response => {
-      this.setState({message: response.data});
-    });
-  }
 
   render() {
     return (
       <div>
-        <Authorization />
+        <Authorization fetchData={this.props.fetchData}/>
         <br />
-        <MessageFromServer message={this.state.message} />
+        <MessageFromServer response={this.props.response} />
       </div>
     )
   }
 }
 
 function mapStateToProps (store) {
+  console.log("mapStateToProps")
+  console.log(store)
+
   return {
-    userName: store.userName,
-    password: store.password,
+    message: store.message,
+    hasErrored: store.error.hasErrored,
+    isLoading: store.messageIsLoading,
+    response: {
+      message: store.message,
+      hasErrored: store.error.hasErrored,
+      errorMessage: store.error.errorMessage,
+      isLoading: store.messageIsLoading
+    }
   }
 }
 
-export default connect(mapStateToProps)(AuthorizationContainer);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchData: (action) => dispatch(messageFetchData(action))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthorizationContainer);
 

@@ -10,12 +10,13 @@
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "redux": "^4.0.4"
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production",
+    "dev": "webpack --mode development  ./src/index.js --output ./dist/dev.js",
+    "build": "webpack --mode production ./src/index.js --output ./dist/prod.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

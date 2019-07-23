@@ -1,12 +1,12 @@
-function printObjContent(obj, offset = "") {
-  for (let key in obj) {
-    if (typeof obj[key] === 'object') {
-      console.log(offset + "#" + obj[key] + "#");
-      printObjContent(obj[key], (offset + "--->"));
-    } else {
-      console.log(offset + key + " = [" + obj[key] + "]");  
-    }
-  }
+function printObjectContent(obj, offset = "") {
+	for (let key in obj) {
+		if (typeof obj[key] === 'object') {
+			console.log(offset + "#" + obj[key] + "#");
+			printObjectContent(obj[key], (offset + "--->"));
+		} else {
+			console.log(offset + key + " = [" + obj[key] + "]");  
+		}
+	}
 }
 
-export default printObjContent;
+export default printObjectContent;

@@ -28,7 +28,7 @@ class Authorization extends React.Component {
   buttonHandler(event) {
     event.preventDefault();
     let action = this.actionCreatorInputFrom();
-    store.dispatch(action);
+    this.props.fetchData(action);
   }
 
   actionCreatorInputFrom() {

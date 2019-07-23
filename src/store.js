@@ -1,7 +1,15 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
-import reducerInputForm from './reducer.js';
+import rootReducer  from './reducer.js';
 
-const store = createStore(reducerInputForm);
+const initialState = {
+	hasErrored: '(initialState)',
+	messageIsLoading: '(initialState)',
+	errorMessage: '(initialState)',
+  message: '(initialState)'
+};
+
+const store = createStore(rootReducer, initialState , applyMiddleware(thunk));
 
 export default store;
