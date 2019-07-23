@@ -2,22 +2,25 @@ import React from 'react';
 
 class MessageFromServer extends React.Component {
   render() {
-  	console.log("MessageFromServer props")
-		console.log(this.props)
-
   	if (this.props.response.hasErrored === true) {
-        return <p>Sorry! There was an error loading the items: {this.props.response.errorMessage}</p>;
+      return (
+        <div>
+          <h1>Sorry! There was an error loading the items</h1> 
+          <p>{this.props.response.errorMessage}</p>
+        </div>
+        );
     }
 
     if (this.props.response.isLoading === true) {
-        return <p>Loading…</p>;
+      return <h1>Loading…</h1>;
     }
 
     return (
       <div className="MessageFromServer">
-        <h1>Message from server : {this.props.response.message}</h1>
+        <h1>Message from server: {this.props.response.message.status}</h1>
+        <p>{this.props.response.message.message}</p>
       </div>
-    );
+      );
   }
 }
 
