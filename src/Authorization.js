@@ -1,7 +1,8 @@
 import React from 'react';
 
 import store from './store.js';
-import { setUserNameAction, setPasswordAction} from './action.js';
+import { setUserName } from './actions/userData/setUserName';
+import { setPassword } from './actions/userData/setPassword';
 
 class Authorization extends React.Component {
   constructor(props) {
@@ -17,11 +18,11 @@ class Authorization extends React.Component {
   }
 
   UserNameHandler(event) {
-    store.dispatch(setUserNameAction(event.target.value));
+    store.dispatch(setUserName(event.target.value));
   }
 
   PasswordHandler(event) {
-    store.dispatch(setPasswordAction(event.target.value));
+    store.dispatch(setPassword(event.target.value));
   }
 
   buttonHandler(event) {

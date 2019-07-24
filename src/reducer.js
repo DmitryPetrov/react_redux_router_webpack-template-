@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { combineReducers } from 'redux';
 
-import * as types from './action/actionType';
+import * as types from './actions/actionTypes';
 
 function requestReducer(state = false, action) {
   console.log("requestReducer");
