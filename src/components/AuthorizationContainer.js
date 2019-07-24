@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import Authorization from './Authorization.js'
 import MessageFromServer from './MessageFromServer.js'
 import { requestToServer } from './../actions/request/requestToServer';
-import Navigate from './Navigate';
-
 
 function AuthorizationContainer(props) {
   return (

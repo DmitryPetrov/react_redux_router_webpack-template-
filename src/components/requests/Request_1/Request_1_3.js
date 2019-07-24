@@ -1,7 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import Navigate from './../../Navigate';
 
 function Request_1_3(props) {
   return (
