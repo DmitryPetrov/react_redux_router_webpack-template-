@@ -1,8 +1,7 @@
 import React from 'react';
 
 import store from './../store';
-import { setUserName } from './../actions/userData/setUserName';
-import { setPassword } from './../actions/userData/setPassword';
+import { setUserName, setPassword } from './../actions/userDataActionCreators';
 
 class Authorization extends React.Component {
   constructor(props) {
@@ -29,7 +28,7 @@ class Authorization extends React.Component {
   render() {
     return (
       <div className="Authorization">
-        <form action="index.html" method="post" onSubmit={this.buttonHandler}>
+        <form method="post" onSubmit={this.buttonHandler}>
           <label>User Name: </label>
           <input type="text" onChange={this.UserNameHandler}/>
 

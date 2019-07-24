@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import { requestReducer } from "./requestReducer";
+import { authorizationReducer } from "./authorizationReducer";
 import { userDataReducer } from "./userDataReducer";
 
 const rootReducer = combineReducers({
-	request: requestReducer,
+	authorizationRequest: authorizationReducer,
 	userData: userDataReducer,
 })
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Authorization from './Authorization.js'
 import MessageFromServer from './MessageFromServer.js'
-import { requestToServer } from './../actions/request/requestToServer';
+import { authorizationRequest } from './../actions/authorizationActionCreators';
 
 function AuthorizationContainer(props) {
   return (
@@ -22,17 +22,17 @@ function mapStateToProps(store) {
       password: store.userData.password,
     },
     response: {
-      isFail: store.request.isFail,
-      isLoading: store.request.isLoading,
-      isSuccessed: store.request.isSuccessed,
-      message: store.request.message,
+      isFail: store.authorizationRequest.isFail,
+      isLoading: store.authorizationRequest.isLoading,
+      isSuccessed: store.authorizationRequest.isSuccessed,
+      message: store.authorizationRequest.message,
     }
   }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        fetchData: (action) => dispatch(requestToServer(action))
+        fetchData: (action) => dispatch(authorizationRequest(action))
     };
 };
 

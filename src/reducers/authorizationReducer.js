@@ -1,8 +1,8 @@
 import * as types from './../actions/actionTypes';
 
-export function requestReducer(state = false, action) {
-  if (action.type === types.REQUEST_FAILED) {
-    console.log("requestFailedReducer");
+export function authorizationReducer(state = false, action) {
+  if (action.type === types.AUTHORIZATION_IS_LOADING) {
+    console.log("authorizationRequestIsLoadingReducer");
     return Object.assign({}, state, {
       isFail: action.isFail,
       isLoading: action.isLoading,
@@ -11,8 +11,8 @@ export function requestReducer(state = false, action) {
     });
   }
 
-  if (action.type === types.REQUEST_IS_LOADING) {
-    console.log("requestIsLoadingReducer");
+  if (action.type === types.AUTHORIZATION_SUCCESSED) {
+    console.log("authorizationRequestSuccessedReducer");
     return Object.assign({}, state, {
       isFail: action.isFail,
       isLoading: action.isLoading,
@@ -21,8 +21,8 @@ export function requestReducer(state = false, action) {
     });
   }
 
-  if (action.type === types.REQUEST_SUCCESSED) {
-    console.log("requestSuccessedReducer");
+  if (action.type === types.AUTHORIZATION_FAILED) {
+    console.log("authorizationRequestFailedReducer");
     return Object.assign({}, state, {
       isFail: action.isFail,
       isLoading: action.isLoading,
