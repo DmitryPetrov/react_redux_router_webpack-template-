@@ -8,7 +8,7 @@ const initialState = {
     userName: '(initialState)',
     password: '(initialState)',
   },
-  response: {
+  request: {
     isFail: '(initialState)',
     isLoading: '(initialState)',
     isSuccessed: '(initialState)',
