@@ -7,7 +7,6 @@ import Navigate from './../../Navigate';
 function Request_1_1(props) {
   return (
     <div>
-			<Navigate />
       <h1>Request_1_1</h1>
     </div>
   )
