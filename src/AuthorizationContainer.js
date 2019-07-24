@@ -16,9 +16,6 @@ function AuthorizationContainer(props) {
 }
 
 function mapStateToProps(store) {
-  console.log("mapStateToProps AuthorizationContainer");
-  console.log(store);
-
   return {
     userData: {
       userName: store.userData.userName,

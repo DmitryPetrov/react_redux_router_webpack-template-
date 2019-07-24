@@ -1,8 +1,6 @@
 import * as types from './../actions/actionTypes';
 
 export function userDataReducer(state = false, action) {
-  console.log("userDataReducer");
-  console.log(action);
   if (action.type === types.SET_USERNAME) {
     console.log("setUserNameReducer");
     return Object.assign({}, state, {userName: action.userName});
