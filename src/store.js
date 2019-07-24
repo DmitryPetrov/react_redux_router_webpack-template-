@@ -8,11 +8,18 @@ const initialState = {
     userName: '(initialState)',
     password: '(initialState)',
   },
-  request: {
+  authorizationRequest: {
     isFail: '(initialState)',
     isLoading: '(initialState)',
     isSuccessed: '(initialState)',
     message: '(initialState)',
+  },
+  sendRequest1Data: {
+    orgId: '(initialState)',
+    orgInn: '(initialState)',
+    orgName: '(initialState)',
+    account: '(initialState)',
+    bankBIC: '(initialState)',
   }
 };
 
