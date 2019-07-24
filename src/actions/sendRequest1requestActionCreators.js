@@ -2,9 +2,9 @@ import axios from 'axios';
 
 import * as types from './actionTypes';
 
-function authorizationIsLoading() {
+function sendRequest1IsLoading() {
 	return {
-		type: types.AUTHORIZATION_IS_LOADING,
+		type: types.SEND_REQUEST_1_IS_LOADING,
 		isFail: false,
 		isLoading: true,
 		isSuccessed: false,
@@ -12,9 +12,9 @@ function authorizationIsLoading() {
 	};
 }
 
-function authorizationSuccessed(response) {
+function sendRequest1Successed(response) {
 	return {
-		type: types.AUTHORIZATION_SUCCESSED,
+		type: types.SEND_REQUEST_1_SUCCESSED,
 		isFail: false,
 		isLoading: false,
 		isSuccessed: true,
@@ -22,9 +22,9 @@ function authorizationSuccessed(response) {
 	};
 }
 
-function authorizationFailed(errorMessage) {
+function sendRequest1Failed(errorMessage) {
 	return {
-		type: types.AUTHORIZATION_FAILED,
+		type: types.SEND_REQUEST_1_FAILED,
 		isFail: true,
 		isLoading: false,
 		isSuccessed: false,
@@ -32,16 +32,16 @@ function authorizationFailed(errorMessage) {
 	};
 }
 
-export function authorizationRequest(requestBody) {
+export function sendRequest1Request(requestBody) {
     return (dispatch) => {
-        dispatch(authorizationIsLoading());
+        dispatch(sendRequest1IsLoading());
         axios
-            .post('/login', requestBody)
+            .post('/sendRequests/requests1', requestBody)
             .then(response => {
-                dispatch(authorizationSuccessed(response.data));
+                dispatch(sendRequest1Successed(response.data));
             })
             .catch(function (error) {
-                dispatch(authorizationFailed(error.message));
+                dispatch(sendRequest1Failed(error.message));
             });
     };
 }

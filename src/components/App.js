@@ -5,9 +5,9 @@ import { Provider } from 'react-redux';
 import AuthorizationContainer from './AuthorizationContainer.js';
 import store from './../store.js';
 import RequestList from './requests/RequestList'
-import Request_1_1 from './requests/Request_1/Request_1_1';
-import Request_1_2 from './requests/Request_1/Request_1_2';
-import Request_1_3 from './requests/Request_1/Request_1_3';
+import SendRequest1 from './requests/SendRequest/SendRequest1';
+import SendRequest2 from './requests/SendRequest/SendRequest2';
+import SendRequest3 from './requests/SendRequest/SendRequest3';
 import Request_2 from './requests/Request_2/Request_2';
 import Navigate from './Navigate';
 
@@ -19,10 +19,10 @@ function App() {
         
         <Switch>
           <Route path="/" exact component={AuthorizationContainer} />
-          <Route path="/request" exact component={RequestList} />
-            <Route path='/request/1/1' component={Request_1_1}/>
-            <Route path='/request/1/2' component={Request_1_2}/>
-            <Route path='/request/1/3' component={Request_1_3}/>
+          <Route path="/requestList" exact component={RequestList} />
+            <Route path='/sendRequest/1' component={SendRequest1}/>
+            <Route path='/sendRequest/2' component={SendRequest2}/>
+            <Route path='/sendRequest/3' component={SendRequest3}/>
             <Route path='/request/2' component={Request_2}/>
         </Switch>
       </BrowserRouter>
