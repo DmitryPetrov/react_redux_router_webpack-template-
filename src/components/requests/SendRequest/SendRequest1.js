@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import RequestNavigate from './../RequestNavigate'
+
 import store from './../../../store';
 import {setOrgId, setOrgInn, setOrgName, setAccount, setBankBIC} from './../../../actions/sendRequest1DataActionCreators'
 import { sendRequest1Request } from './../../../actions/sendRequest1requestActionCreators';
@@ -48,6 +50,7 @@ class SendRequest1 extends React.Component {
   render() {
     return (
       <div className="SendRequest1">
+        <RequestNavigate />
         <form method="post" onSubmit={this.buttonHandler}>
           <label>orgId: </label>
           <input type="text" onChange={this.orgIdHandler}/>
