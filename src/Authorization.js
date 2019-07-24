@@ -1,42 +1,35 @@
 import React from 'react';
 
 import store from './store.js';
+import { setUserNameAction, setPasswordAction} from './action.js';
 
 class Authorization extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    	userName: '',
-    	password: '',
-    };
+
+    console.log("Authorization props");
+    console.log(this.props);
+
 
     this.UserNameHandler = this.UserNameHandler.bind(this);
     this.PasswordHandler = this.PasswordHandler.bind(this);
-
     this.buttonHandler = this.buttonHandler.bind(this);
-    this.actionCreatorInputFrom = this.actionCreatorInputFrom.bind(this);
   }
 
   UserNameHandler(event) {
-    this.setState({userName: event.target.value});
+    store.dispatch(setUserNameAction(event.target.value));
   }
 
   PasswordHandler(event) {
-    this.setState({password: event.target.value});
+    store.dispatch(setPasswordAction(event.target.value));
   }
 
   buttonHandler(event) {
-    event.preventDefault();
-    let action = this.actionCreatorInputFrom();
-    this.props.fetchData(action);
-  }
+    console.log("buttonHandler props");
+    console.log(this.props);
 
-  actionCreatorInputFrom() {
-    return {
-      type: "NEW_NAME",
-      userName: this.state.userName,
-      password: this.state.password
-    }
+    event.preventDefault();
+    this.props.fetchData(this.props.userData);
   }
 
   render() {

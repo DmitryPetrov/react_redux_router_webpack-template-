@@ -4,10 +4,16 @@ import thunk from 'redux-thunk';
 import rootReducer  from './reducer.js';
 
 const initialState = {
-	isFail: '(initialState)',
-	isLoading: '(initialState)',
-	isSuccessed: '(initialState)',
-	message: '(initialState)'
+  userData: {
+    userName: '(initialState)',
+    password: '(initialState)',
+  },
+  response: {
+    isFail: '(initialState)',
+    isLoading: '(initialState)',
+    isSuccessed: '(initialState)',
+    message: '(initialState)',
+  }
 };
 
 const store = createStore(rootReducer, initialState , applyMiddleware(thunk));

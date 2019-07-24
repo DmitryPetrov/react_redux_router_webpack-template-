@@ -8,7 +8,7 @@ import { requestToServer } from './action.js';
 function AuthorizationContainer(props) {
   return (
     <div>
-      <Authorization fetchData={props.fetchData}/>
+      <Authorization fetchData={props.fetchData} userData={props.userData}/>
       <br />
       <MessageFromServer response={props.response} />
     </div>
@@ -16,15 +16,19 @@ function AuthorizationContainer(props) {
 }
 
 function mapStateToProps(store) {
-  console.log("mapStateToProps");
+  console.log("mapStateToProps AuthorizationContainer");
   console.log(store);
 
   return {
+    userData: {
+      userName: store.userData.userName,
+      password: store.userData.password,
+    },
     response: {
-      isFail: store.isFail,
-      isLoading: store.isLoading,
-      isSuccessed: store.isSuccessed,
-      message: store.message,
+      isFail: store.request.isFail,
+      isLoading: store.request.isLoading,
+      isSuccessed: store.request.isSuccessed,
+      message: store.request.message,
     }
   }
 }

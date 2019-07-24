@@ -2,6 +2,24 @@ import axios from 'axios';
 
 import * as types from './action/actionType';
 
+export function setUserNameAction(userName) {
+    console.log("setUserNameAction");
+    console.log(userName);
+    return {
+        type: types.SET_USERNAME,
+        userName: userName,
+    };
+}
+
+export function setPasswordAction(password) {
+    console.log("setPasswordAction");
+    console.log(password);
+    return {
+        type: types.SET_PASSWORD,
+        password: password,
+    };
+}
+
 export function requestFailedAction(errorMessage) {
     console.log("requestFailedAction");
     return {
@@ -35,24 +53,24 @@ export function requestSuccessedAction(response) {
     };
 }
 
-export function requestToServer(action) {
+export function requestToServer(userData) {
     console.log("requestToServer");
 
     return (dispatch) => {
         dispatch(requestIsLoadingAction());
 
         axios
-        .get('/login?userName=' + action.userName + '&password=' + action.password)
+        .get('/login?userName=' + userData.userName + '&password=' + userData.password)
         .then(response => {
-            console.log("action response.data");
+            console.log("response.data");
             console.log(response.data);
 
             dispatch(requestSuccessedAction(response.data));
-            //return response;
         })
         .catch(function (error) {
-            console.log("action error");
+            console.log("error");
             console.log(error);
+
             dispatch(requestFailedAction(error.message));
         });
     };
