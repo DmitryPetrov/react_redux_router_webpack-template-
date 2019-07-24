@@ -1,8 +1,8 @@
 import React from 'react';
 
-import store from './store.js';
-import { setUserName } from './actions/userData/setUserName';
-import { setPassword } from './actions/userData/setPassword';
+import store from './../store';
+import { setUserName } from './../actions/userData/setUserName';
+import { setPassword } from './../actions/userData/setPassword';
 
 class Authorization extends React.Component {
   constructor(props) {
