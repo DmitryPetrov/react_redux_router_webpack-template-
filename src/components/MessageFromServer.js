@@ -26,7 +26,7 @@ function MessageFromServer(props) {
         <p>{props.response.message.message}</p>
         <br />
         <h3>SOAP messages:</h3>
-        <p>{xmlPrint(props.response.message.soapMessages)}</p>
+        <pre>{xmlPrint(props.response.message.soapMessages)}</pre>
       </div>
       );
   }
