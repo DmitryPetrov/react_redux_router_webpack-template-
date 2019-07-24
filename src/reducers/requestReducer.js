@@ -1,9 +1,6 @@
-import axios from 'axios';
-import { combineReducers } from 'redux';
+import * as types from './../actions/actionTypes';
 
-import * as types from './actions/actionTypes';
-
-function requestReducer(state = false, action) {
+export function requestReducer(state = false, action) {
   console.log("requestReducer");
   console.log(action);
   if (action.type === types.REQUEST_FAILED) {
@@ -37,24 +34,3 @@ function requestReducer(state = false, action) {
   }
   return state;
 }
-
-function userDataReducer(state = false, action) {
-  console.log("userDataReducer");
-  console.log(action);
-  if (action.type === types.SET_USERNAME) {
-    console.log("setUserNameReducer");
-    return Object.assign({}, state, {userName: action.userName});
-  }
-  if (action.type === types.SET_PASSWORD) {
-    console.log("setPasswordReducer");
-    return Object.assign({}, state, {password: action.password});
-  }
-  return state;
-}
-
-const rootReducer = combineReducers({
-  request: requestReducer,
-  userData: userDataReducer,
-})
-
-export default rootReducer;
