@@ -8,10 +8,6 @@ class Authorization extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log("Authorization props");
-    console.log(this.props);
-
-
     this.UserNameHandler = this.UserNameHandler.bind(this);
     this.PasswordHandler = this.PasswordHandler.bind(this);
     this.buttonHandler = this.buttonHandler.bind(this);
@@ -26,9 +22,6 @@ class Authorization extends React.Component {
   }
 
   buttonHandler(event) {
-    console.log("buttonHandler props");
-    console.log(this.props);
-
     event.preventDefault();
     this.props.fetchData(this.props.userData);
   }
