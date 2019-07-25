@@ -6,7 +6,7 @@ function RequestNavigate() {
     <nav>
       <ul>
         <li>
-          <lable>sendRequest</lable>
+          sendRequest
         </li>
         <li>
           <Link to="/sendRequest/1">....SendRequest1</Link>
