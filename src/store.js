@@ -20,7 +20,13 @@ const initialState = {
     orgName: '(initialState)',
     account: '(initialState)',
     bankBIC: '(initialState)',
-  }
+  },
+  sendRequest1Request: {
+    isFail: '(initialState)',
+    isLoading: '(initialState)',
+    isSuccessed: '(initialState)',
+    message: '(initialState)',
+  },  
 };
 
 const store = createStore(rootReducer, initialState , applyMiddleware(thunk));

@@ -8,7 +8,7 @@ function sendRequest1IsLoading() {
 		isFail: false,
 		isLoading: true,
 		isSuccessed: false,
-		message: 'request is loading',
+		message: 'sendRequest1 is loading',
 	};
 }
 

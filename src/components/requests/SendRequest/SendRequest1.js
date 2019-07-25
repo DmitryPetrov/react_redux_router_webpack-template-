@@ -5,7 +5,8 @@ import RequestNavigate from './../RequestNavigate'
 
 import store from './../../../store';
 import {setOrgId, setOrgInn, setOrgName, setAccount, setBankBIC} from './../../../actions/sendRequest1DataActionCreators'
-import { sendRequest1Request } from './../../../actions/sendRequest1requestActionCreators';
+import { sendRequest1Request } from './../../../actions/sendRequest1RequestActionCreators';
+import MessageFromServer from './../../MessageFromServer.js'
 
 
 class SendRequest1 extends React.Component {
@@ -74,6 +75,7 @@ class SendRequest1 extends React.Component {
           <br/>
           <input type="submit" value="Отправить" />
         </form>
+        <MessageFromServer response={this.props.sendRequest1Response} />
       </div>
     )
   }
@@ -81,8 +83,13 @@ class SendRequest1 extends React.Component {
 
 
 function mapStateToProps(store) {
+  console.log("SendRequest1 mapStateToProps store.sendRequest1Request");
+  console.log(store.sendRequest1Request);
+
+
   return {
   	sendRequest1Data : store.sendRequest1Data,
+    sendRequest1Response: store.sendRequest1Request,
   }
 }
 
