@@ -42,7 +42,6 @@ function xmlPrint(xml) {
   var format = require('xml-formatter');
  
   var formattedXml = format(xml);
-  console.log(formattedXml);
   return formattedXml;
 }
 
