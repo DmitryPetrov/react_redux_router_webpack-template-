@@ -14,7 +14,7 @@ const initialState = {
     isSuccessed: '(initialState)',
     message: '(initialState)',
   },
-  sendRequest1Data: {
+  statmentRequestData: {
     orgId: '(initialState)',
     orgInn: '(initialState)',
     orgName: '(initialState)',
@@ -27,7 +27,7 @@ const initialState = {
     toDate: '(initialState)',
     bankName: '(initialState)',
   },
-  sendRequest1Request: {
+  statmentRequestRequest: {
     isFail: '(initialState)',
     isLoading: '(initialState)',
     isSuccessed: '(initialState)',

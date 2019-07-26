@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import AuthorizationContainer from './AuthorizationContainer.js';
 import store from './../store.js';
 import RequestList from './requests/RequestList'
-import SendRequest1 from './requests/SendRequest/SendRequest1';
+import StatmentRequest from './requests/SendRequest/StatmentRequest';
 import SendRequest2 from './requests/SendRequest/SendRequest2';
 import SendRequest3 from './requests/SendRequest/SendRequest3';
 import Request_2 from './requests/Request_2/Request_2';
@@ -20,7 +20,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={AuthorizationContainer} />
           <Route path="/requestList" exact component={RequestList} />
-            <Route path='/sendRequest/1' component={SendRequest1}/>
+            <Route path='/sendRequest/1' component={StatmentRequest}/>
             <Route path='/sendRequest/2' component={SendRequest2}/>
             <Route path='/sendRequest/3' component={SendRequest3}/>
             <Route path='/request/2' component={Request_2}/>

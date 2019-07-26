@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import RequestNavigate from './../RequestNavigate'
 
 import store from './../../../store';
-import {setOrgId, setOrgInn, setOrgName, setAccount, setBankBIC, setDocDate, setDocId, setDocNumber, setFromDate, setToDate, setBankName} from './../../../actions/sendRequest1DataActionCreators'
-import { sendRequest1Request } from './../../../actions/sendRequest1RequestActionCreators';
+import {setOrgId, setOrgInn, setOrgName, setAccount, setBankBIC, setDocDate, setDocId, setDocNumber, setFromDate, setToDate, setBankName} from './../../../actions/statmentRequestDataActionCreators'
+import { statmentRequestRequest } from './../../../actions/statmentRequestRequestActionCreators';
 import MessageFromServer from './../../MessageFromServer.js'
 
 
-class SendRequest1 extends React.Component {
+class StatmentRequest extends React.Component {
   constructor(props) {
     super(props);
 
@@ -65,13 +65,13 @@ class SendRequest1 extends React.Component {
 
   buttonHandler(event) {
     event.preventDefault();
-    console.log(this.props.sendRequest1Data);
-    this.props.fetchData(this.props.sendRequest1Data);
+    console.log(this.props.statmentRequestData);
+    this.props.fetchData(this.props.statmentRequestData);
   }
 
   render() {
     return (
-      <div className="SendRequest1">
+      <div className="StatmentRequest">
         <RequestNavigate />
         <form method="post" onSubmit={this.buttonHandler}>
           <label>orgId: </label>
@@ -120,7 +120,7 @@ class SendRequest1 extends React.Component {
           <br/>
           <input type="submit" value="Отправить" />
         </form>
-        <MessageFromServer response={this.props.sendRequest1Response} />
+        <MessageFromServer response={this.props.statmentRequestResponse} />
       </div>
     )
   }
@@ -128,21 +128,21 @@ class SendRequest1 extends React.Component {
 
 
 function mapStateToProps(store) {
-  console.log("SendRequest1 mapStateToProps store.sendRequest1Request");
-  console.log(store.sendRequest1Request);
+  console.log("StatmentRequest mapStateToProps store.statmentRequestRequest");
+  console.log(store.statmentRequestRequest);
 
 
   return {
-  	sendRequest1Data : store.sendRequest1Data,
-    sendRequest1Response: store.sendRequest1Request,
+  	statmentRequestData : store.statmentRequestData,
+    statmentRequestResponse: store.statmentRequestRequest,
   }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        fetchData: (action) => dispatch(sendRequest1Request(action))
+        fetchData: (action) => dispatch(statmentRequestRequest(action))
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SendRequest1);
+export default connect(mapStateToProps, mapDispatchToProps)(StatmentRequest);
 

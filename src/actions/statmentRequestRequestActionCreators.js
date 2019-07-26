@@ -2,19 +2,19 @@ import axios from 'axios';
 
 import * as types from './actionTypes';
 
-function sendRequest1IsLoading() {
+function statmentRequestIsLoading() {
 	return {
-		type: types.SEND_REQUEST_1_IS_LOADING,
+		type: types.STATMENT_REQUEST_IS_LOADING,
 		isFail: false,
 		isLoading: true,
 		isSuccessed: false,
-		message: 'sendRequest1 is loading',
+		message: 'statmentRequest is loading',
 	};
 }
 
-function sendRequest1Successed(response) {
+function statmentRequestSuccessed(response) {
 	return {
-		type: types.SEND_REQUEST_1_SUCCESSED,
+		type: types.STATMENT_REQUEST_SUCCESSED,
 		isFail: false,
 		isLoading: false,
 		isSuccessed: true,
@@ -22,9 +22,9 @@ function sendRequest1Successed(response) {
 	};
 }
 
-function sendRequest1Failed(errorMessage) {
+function statmentRequestFailed(errorMessage) {
 	return {
-		type: types.SEND_REQUEST_1_FAILED,
+		type: types.STATMENT_REQUEST_FAILED,
 		isFail: true,
 		isLoading: false,
 		isSuccessed: false,
@@ -32,16 +32,16 @@ function sendRequest1Failed(errorMessage) {
 	};
 }
 
-export function sendRequest1Request(requestBody) {
+export function statmentRequestRequest(requestBody) {
     return (dispatch) => {
-        dispatch(sendRequest1IsLoading());
+        dispatch(statmentRequestIsLoading());
         axios
             .post('/sendRequests/statementRequest', requestBody)
             .then(response => {
-                dispatch(sendRequest1Successed(response.data));
+                dispatch(statmentRequestSuccessed(response.data));
             })
             .catch(function (error) {
-                dispatch(sendRequest1Failed(error.message));
+                dispatch(statmentRequestFailed(error.message));
             });
     };
 }

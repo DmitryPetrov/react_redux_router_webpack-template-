@@ -9,7 +9,7 @@ function RequestNavigate() {
           sendRequest
         </li>
         <li>
-          <Link to="/sendRequest/1">....SendRequest1</Link>
+          <Link to="/sendRequest/1">....StatmentRequest</Link>
         </li>
         <li>
           <Link to="/sendRequest/2">....SendRequest2</Link>

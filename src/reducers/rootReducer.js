@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
 
 import { authorizationReducer } from "./authorizationReducer";
-import { sendRequest1DataReducer } from "./sendRequest1DataReducer";
+import { statmentRequestDataReducer } from "./statmentRequestDataReducer";
 import { userDataReducer } from "./userDataReducer";
-import { sendRequest1RequestReducer } from "./sendRequest1RequestReducer";
+import { statmentRequestRequestReducer } from "./statmentRequestRequestReducer";
 
 
 const rootReducer = combineReducers({
 	userData: userDataReducer,
 	authorizationRequest: authorizationReducer,
-	sendRequest1Data: sendRequest1DataReducer,
-	sendRequest1Request: sendRequest1RequestReducer,
+	statmentRequestData: statmentRequestDataReducer,
+	statmentRequestRequest: statmentRequestRequestReducer,
 })
 
 export default rootReducer;

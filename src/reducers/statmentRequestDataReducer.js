@@ -1,6 +1,6 @@
 import * as types from './../actions/actionTypes';
 
-export function sendRequest1DataReducer(state = false, action) {
+export function statmentRequestDataReducer(state = false, action) {
   if (action.type === types.SET_ORG_ID) {
     return Object.assign({}, state, {orgId: action.orgId});
   }
