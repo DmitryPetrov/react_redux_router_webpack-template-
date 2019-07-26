@@ -36,7 +36,7 @@ export function sendRequest1Request(requestBody) {
     return (dispatch) => {
         dispatch(sendRequest1IsLoading());
         axios
-            .post('/sendRequests/requests1', requestBody)
+            .post('/sendRequests/statementRequest', requestBody)
             .then(response => {
                 dispatch(sendRequest1Successed(response.data));
             })

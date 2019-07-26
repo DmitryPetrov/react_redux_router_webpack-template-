@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import RequestNavigate from './../RequestNavigate'
 
 import store from './../../../store';
-import {setOrgId, setOrgInn, setOrgName, setAccount, setBankBIC} from './../../../actions/sendRequest1DataActionCreators'
+import {setOrgId, setOrgInn, setOrgName, setAccount, setBankBIC, setDocDate, setDocId, setDocNumber, setFromDate, setToDate, setBankName} from './../../../actions/sendRequest1DataActionCreators'
 import { sendRequest1Request } from './../../../actions/sendRequest1RequestActionCreators';
 import MessageFromServer from './../../MessageFromServer.js'
 
@@ -18,6 +18,13 @@ class SendRequest1 extends React.Component {
     this.orgNameHandler = this.orgNameHandler.bind(this);
     this.accountHandler = this.accountHandler.bind(this);
     this.bankBICHandler = this.bankBICHandler.bind(this);
+    
+    this.docDateHandler = this.docDateHandler.bind(this);
+    this.docIdHandler = this.docIdHandler.bind(this);
+    this.docNumberHandler = this.docNumberHandler.bind(this);
+    this.fromDateHandler = this.fromDateHandler.bind(this);
+    this.toDateHandler = this.toDateHandler.bind(this);
+    this.bankNameHandler = this.bankNameHandler.bind(this);
 
     this.buttonHandler = this.buttonHandler.bind(this);
   }
@@ -25,21 +32,35 @@ class SendRequest1 extends React.Component {
   orgIdHandler(event) {
     store.dispatch(setOrgId(event.target.value));
   }
-
   orgInnHandler(event) {
     store.dispatch(setOrgInn(event.target.value));
   }
-
   orgNameHandler(event) {
     store.dispatch(setOrgName(event.target.value));
   }
-
   accountHandler(event) {
     store.dispatch(setAccount(event.target.value));
   }
-
   bankBICHandler(event) {
     store.dispatch(setBankBIC(event.target.value));
+  }
+  docDateHandler(event) {
+    store.dispatch(setDocDate(event.target.value));
+  }
+  docIdHandler(event) {
+    store.dispatch(setDocId(event.target.value));
+  }
+  docNumberHandler(event) {
+    store.dispatch(setDocNumber(event.target.value));
+  }
+  fromDateHandler(event) {
+    store.dispatch(setFromDate(event.target.value));
+  }
+  toDateHandler(event) {
+    store.dispatch(setToDate(event.target.value));
+  }
+  bankNameHandler(event) {
+    store.dispatch(setBankName(event.target.value));
   }
 
   buttonHandler(event) {
@@ -71,6 +92,30 @@ class SendRequest1 extends React.Component {
           <br/>
           <label>bankBIC: </label>
           <input type="text" onChange={this.bankBICHandler}/>
+
+          <br/>
+          <label>docDate: </label>
+          <input type="text" onChange={this.docDateHandler}/>
+
+          <br/>
+          <label>docId: </label>
+          <input type="text" onChange={this.docIdHandler}/>
+
+          <br/>
+          <label>docNumber: </label>
+          <input type="text" onChange={this.docNumberHandler}/>
+
+          <br/>
+          <label>fromDate: </label>
+          <input type="text" onChange={this.fromDateHandler}/>
+
+          <br/>
+          <label>toDate: </label>
+          <input type="text" onChange={this.toDateHandler}/>
+
+          <br/>
+          <label>bankName: </label>
+          <input type="text" onChange={this.bankNameHandler}/>
 
           <br/>
           <input type="submit" value="Отправить" />

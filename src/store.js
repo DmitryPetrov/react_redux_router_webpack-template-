@@ -20,6 +20,12 @@ const initialState = {
     orgName: '(initialState)',
     account: '(initialState)',
     bankBIC: '(initialState)',
+    docDate: '(initialState)',
+    docId: '(initialState)',
+    docNumber: '(initialState)',
+    fromDate: '(initialState)',
+    toDate: '(initialState)',
+    bankName: '(initialState)',
   },
   sendRequest1Request: {
     isFail: '(initialState)',
