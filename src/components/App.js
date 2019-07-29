@@ -23,7 +23,6 @@ function App() {
             <Route path='/sendRequest/1' component={StatmentRequest}/>
             <Route path='/sendRequest/2' component={SendRequest2}/>
             <Route path='/sendRequest/3' component={SendRequest3}/>
-            <Route path='/request/2' component={Request_2}/>
         </Switch>
       </BrowserRouter>
     </Provider>

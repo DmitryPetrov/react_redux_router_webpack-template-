@@ -17,9 +17,6 @@ function RequestNavigate() {
         <li>
           <Link to="/sendRequest/3">....SendRequest3</Link>
         </li>
-        <li>
-          <Link to="/request/2">Request2</Link>
-        </li>
         </ul>
     </nav>
   );
