@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import RequestNavigate from './../RequestNavigate'
-
 import store from './../../../store';
 import {setDocDate, setDocId, setDocNumber} from './../../../actions/statmentRequestDataActionCreators'
 import {setFromDate, setOrgId, setOrgInn, setOrgName, setToDate} from './../../../actions/statmentRequestDataActionCreators'
@@ -81,7 +79,6 @@ class StatmentRequest extends React.Component {
   render() {
     return (
       <div className="StatmentRequest">
-        <RequestNavigate />
         <form method="post" onSubmit={this.buttonHandler}>
           <br/>
           <label>docDate: </label>

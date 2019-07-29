@@ -6,18 +6,15 @@ function RequestNavigate() {
     <nav>
       <ul>
         <li>
-          sendRequest
+          <Link to="/request/statmentRequest">....StatmentRequest</Link>
         </li>
         <li>
-          <Link to="/sendRequest/1">....StatmentRequest</Link>
+          <Link to="/request/2">....SendRequest2</Link>
         </li>
         <li>
-          <Link to="/sendRequest/2">....SendRequest2</Link>
+          <Link to="/request/3">....SendRequest3</Link>
         </li>
-        <li>
-          <Link to="/sendRequest/3">....SendRequest3</Link>
-        </li>
-        </ul>
+      </ul>
     </nav>
   );
 }

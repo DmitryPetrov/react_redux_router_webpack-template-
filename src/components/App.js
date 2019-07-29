@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 
 import AuthorizationContainer from './AuthorizationContainer.js';
 import store from './../store.js';
-import StatmentRequest from './requests/SendRequest/StatmentRequest';
-import SendRequest2 from './requests/SendRequest/SendRequest2';
-import SendRequest3 from './requests/SendRequest/SendRequest3';
+import StatmentRequest from './requests/request/StatmentRequest';
+import SendRequest2 from './requests/request/SendRequest2';
+import SendRequest3 from './requests/request/SendRequest3';
 import Navigate from './Navigate';
 
 function App() {
@@ -17,9 +17,9 @@ function App() {
         
         <Switch>
           <Route path="/" exact component={AuthorizationContainer} />
-            <Route path='/sendRequest/1' component={StatmentRequest}/>
-            <Route path='/sendRequest/2' component={SendRequest2}/>
-            <Route path='/sendRequest/3' component={SendRequest3}/>
+          <Route path='/request/statmentRequest' component={StatmentRequest}/>
+          <Route path='/request/2' component={SendRequest2}/>
+          <Route path='/request/3' component={SendRequest3}/>
         </Switch>
       </BrowserRouter>
     </Provider>
