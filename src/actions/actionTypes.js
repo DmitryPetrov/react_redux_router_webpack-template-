@@ -24,15 +24,18 @@ export const SET_PASSWORD = 'SET_PASSWORD';
 
 
 //
+export const SET_DOC_DATE = 'SET_DOC_DATE';
+export const SET_DOC_ID = 'SET_DOC_ID';
+export const SET_DOC_NUMBER = 'SET_DOC_NUMBER';
+export const SET_FROM_DATE = 'SET_FROM_DATE';
+
 export const SET_ORG_ID = 'SET_ORG_ID';
 export const SET_ORG_INN = 'SET_ORG_INN';
 export const SET_ORG_NAME = 'SET_ORG_NAME';
-export const SET_ACCOUNT = 'SET_ACCOUNT';
-export const SET_BANK_BIC = 'SET_BANK_BIC';
-export const SET_DOC_DATE = 'SET_DOC_DATE';
-export const SET_DOC_ID = 'SET_DOC_ID';
-export const SET_DOC_NUNBER = 'SET_DOC_NUNBER';
-export const SET_FROM_DATE = 'SET_FROM_DATE';
 export const SET_TO_DATE = 'SET_TO_DATE';
-export const SET_BANK_NAME = 'SET_BANK_NAME';
+
+export const SET_ACC_ACCOUNT = 'SET_ACC_ACCOUNT';
+export const SET_ACC_BANK_BIC = 'SET_ACC_BANK_BIC';
+export const SET_ACC_BANK_NAME = 'SET_ACC_BANK_NAME';
+export const SET_ACC_ORG_NAME = 'SET_ACC_ORG_NAME';
 

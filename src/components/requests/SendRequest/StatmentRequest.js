@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import RequestNavigate from './../RequestNavigate'
 
 import store from './../../../store';
-import {setOrgId, setOrgInn, setOrgName, setAccount, setBankBIC, setDocDate, setDocId, setDocNumber, setFromDate, setToDate, setBankName} from './../../../actions/statmentRequestDataActionCreators'
+import {setDocDate, setDocId, setDocNumber} from './../../../actions/statmentRequestDataActionCreators'
+import {setFromDate, setOrgId, setOrgInn, setOrgName, setToDate} from './../../../actions/statmentRequestDataActionCreators'
+import {setAccAccount, setAccBankBIC, setAccBankName, setAccOrgName} from './../../../actions/statmentRequestDataActionCreators'
 import { statmentRequestRequest } from './../../../actions/statmentRequestRequestActionCreators';
 import MessageFromServer from './../../MessageFromServer.js'
 
@@ -13,37 +15,24 @@ class StatmentRequest extends React.Component {
   constructor(props) {
     super(props);
 
-    this.orgIdHandler = this.orgIdHandler.bind(this);
-    this.orgInnHandler = this.orgInnHandler.bind(this);
-    this.orgNameHandler = this.orgNameHandler.bind(this);
-    this.accountHandler = this.accountHandler.bind(this);
-    this.bankBICHandler = this.bankBICHandler.bind(this);
-    
     this.docDateHandler = this.docDateHandler.bind(this);
     this.docIdHandler = this.docIdHandler.bind(this);
     this.docNumberHandler = this.docNumberHandler.bind(this);
+
     this.fromDateHandler = this.fromDateHandler.bind(this);
+    this.orgIdHandler = this.orgIdHandler.bind(this);
+    this.orgInnHandler = this.orgInnHandler.bind(this);
+    this.orgNameHandler = this.orgNameHandler.bind(this);
     this.toDateHandler = this.toDateHandler.bind(this);
-    this.bankNameHandler = this.bankNameHandler.bind(this);
+
+    this.accAccountHandler = this.accAccountHandler.bind(this);
+    this.accBankBICHandler = this.accBankBICHandler.bind(this);
+    this.accBankNameHandler = this.accBankNameHandler.bind(this);
+    this.accOrgNameHandler = this.accOrgNameHandler.bind(this);
 
     this.buttonHandler = this.buttonHandler.bind(this);
   }
 
-  orgIdHandler(event) {
-    store.dispatch(setOrgId(event.target.value));
-  }
-  orgInnHandler(event) {
-    store.dispatch(setOrgInn(event.target.value));
-  }
-  orgNameHandler(event) {
-    store.dispatch(setOrgName(event.target.value));
-  }
-  accountHandler(event) {
-    store.dispatch(setAccount(event.target.value));
-  }
-  bankBICHandler(event) {
-    store.dispatch(setBankBIC(event.target.value));
-  }
   docDateHandler(event) {
     store.dispatch(setDocDate(event.target.value));
   }
@@ -53,14 +42,34 @@ class StatmentRequest extends React.Component {
   docNumberHandler(event) {
     store.dispatch(setDocNumber(event.target.value));
   }
+
   fromDateHandler(event) {
     store.dispatch(setFromDate(event.target.value));
+  }
+  orgIdHandler(event) {
+    store.dispatch(setOrgId(event.target.value));
+  }
+  orgInnHandler(event) {
+    store.dispatch(setOrgInn(event.target.value));
+  }
+  orgNameHandler(event) {
+    store.dispatch(setOrgName(event.target.value));
   }
   toDateHandler(event) {
     store.dispatch(setToDate(event.target.value));
   }
-  bankNameHandler(event) {
-    store.dispatch(setBankName(event.target.value));
+
+  accAccountHandler(event) {
+    store.dispatch(setAccAccount(event.target.value));
+  }
+  accBankBICHandler(event) {
+    store.dispatch(setAccBankBIC(event.target.value));
+  }
+  accBankNameHandler(event) {
+    store.dispatch(setAccBankName(event.target.value));
+  }
+  accOrgNameHandler(event) {
+    store.dispatch(setAccOrgName(event.target.value));
   }
 
   buttonHandler(event) {
@@ -74,25 +83,6 @@ class StatmentRequest extends React.Component {
       <div className="StatmentRequest">
         <RequestNavigate />
         <form method="post" onSubmit={this.buttonHandler}>
-          <label>orgId: </label>
-          <input type="text" onChange={this.orgIdHandler}/>
-
-          <br/>
-          <label>orgInn: </label>
-          <input type="text" onChange={this.orgInnHandler}/>
-
-          <br/>
-          <label>orgName: </label>
-          <input type="text" onChange={this.orgNameHandler}/>
-
-          <br/>
-          <label>account: </label>
-          <input type="text" onChange={this.accountHandler}/>
-
-          <br/>
-          <label>bankBIC: </label>
-          <input type="text" onChange={this.bankBICHandler}/>
-
           <br/>
           <label>docDate: </label>
           <input type="text" onChange={this.docDateHandler}/>
@@ -106,16 +96,42 @@ class StatmentRequest extends React.Component {
           <input type="text" onChange={this.docNumberHandler}/>
 
           <br/>
+          <br/>
           <label>fromDate: </label>
           <input type="text" onChange={this.fromDateHandler}/>
+
+          <br/>
+          <label>orgId: </label>
+          <input type="text" onChange={this.orgIdHandler}/>
+
+          <br/>
+          <label>orgInn: </label>
+          <input type="text" onChange={this.orgInnHandler}/>
+
+          <br/>
+          <label>orgName: </label>
+          <input type="text" onChange={this.orgNameHandler}/>
 
           <br/>
           <label>toDate: </label>
           <input type="text" onChange={this.toDateHandler}/>
 
           <br/>
-          <label>bankName: </label>
-          <input type="text" onChange={this.bankNameHandler}/>
+          <br/>
+          <label>Acc account: </label>
+          <input type="text" onChange={this.accAccountHandler}/>
+
+          <br/>
+          <label>Acc bankBIC: </label>
+          <input type="text" onChange={this.accBankBICHandler}/>
+
+          <br/>
+          <label>Acc bankName: </label>
+          <input type="text" onChange={this.accBankNameHandler}/>
+
+          <br/>
+          <label>Acc orgName: </label>
+          <input type="text" onChange={this.accOrgNameHandler}/>
 
           <br/>
           <input type="submit" value="Отправить" />

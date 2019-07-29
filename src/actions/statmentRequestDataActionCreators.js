@@ -1,5 +1,33 @@
 import * as types from './actionTypes';
 
+export function setDocDate(data) {
+	return {
+		type: types.SET_DOC_DATE,
+		docDate: data,
+	};
+}
+
+export function setDocId(data) {
+	return {
+		type: types.SET_DOC_ID,
+		docId: data,
+	};
+}
+
+export function setDocNumber(data) {
+	return {
+		type: types.SET_DOC_NUMBER,
+		docNumber: data,
+	};
+}
+
+export function setFromDate(data) {
+	return {
+		type: types.SET_FROM_DATE,
+		fromDate: data,
+	};
+}
+
 export function setOrgId(data) {
 	return {
 		type: types.SET_ORG_ID,
@@ -21,48 +49,6 @@ export function setOrgName(data) {
 	};
 }
 
-export function setAccount(data) {
-	return {
-		type: types.SET_ACCOUNT,
-		account: data,
-	};
-}
-
-export function setBankBIC(data) {
-	return {
-		type: types.SET_BANK_BIC,
-		bankBIC: data,
-	};
-}
-
-export function setDocDate(data) {
-	return {
-		type: types.SET_DOC_DATE,
-		docDate: data,
-	};
-}
-
-export function setDocId(data) {
-	return {
-		type: types.SET_DOC_ID,
-		docId: data,
-	};
-}
-
-export function setDocNumber(data) {
-	return {
-		type: types.SET_DOC_NUNBER,
-		docNumber: data,
-	};
-}
-
-export function setFromDate(data) {
-	return {
-		type: types.SET_FROM_DATE,
-		fromDate: data,
-	};
-}
-
 export function setToDate(data) {
 	return {
 		type: types.SET_TO_DATE,
@@ -70,9 +56,30 @@ export function setToDate(data) {
 	};
 }
 
-export function setBankName(data) {
+export function setAccAccount(data) {
 	return {
-		type: types.SET_BANK_NAME,
-		bankName: data,
+		type: types.SET_ACC_ACCOUNT,
+		accAccount: data,
+	};
+}
+
+export function setAccBankBIC(data) {
+	return {
+		type: types.SET_ACC_BANK_BIC,
+		accBankBIC: data,
+	};
+}
+
+export function setAccBankName(data) {
+	return {
+		type: types.SET_ACC_BANK_NAME,
+		accBankName: data,
+	};
+}
+
+export function setAccOrgName(data) {
+	return {
+		type: types.SET_ACC_ORG_NAME,
+		accOrgName: data,
 	};
 }

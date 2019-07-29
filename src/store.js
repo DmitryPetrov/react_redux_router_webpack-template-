@@ -15,17 +15,20 @@ const initialState = {
     message: '(initialState)',
   },
   statmentRequestData: {
-    orgId: '(initialState)',
-    orgInn: '(initialState)',
-    orgName: '(initialState)',
-    account: '(initialState)',
-    bankBIC: '(initialState)',
     docDate: '(initialState)',
     docId: '(initialState)',
     docNumber: '(initialState)',
+
     fromDate: '(initialState)',
+    orgId: '(initialState)',
+    orgInn: '(initialState)',
+    orgName: '(initialState)',
     toDate: '(initialState)',
-    bankName: '(initialState)',
+    
+    accAccount: '(initialState)',
+    accBankBIC: '(initialState)',
+    accBankName: '(initialState)',
+    accOrgName: '(initialState)',
   },
   statmentRequestRequest: {
     isFail: '(initialState)',
