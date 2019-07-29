@@ -8,9 +8,6 @@ function Navigate() {
         <li>
           <Link to="/">Authorization</Link>
         </li>
-        <li>
-          <Link to="/requestList">Requests list</Link>
-        </li>
       </ul>
     </nav>
   );
