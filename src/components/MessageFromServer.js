@@ -1,32 +1,32 @@
 import React from 'react';
 
 function MessageFromServer(props) {
-  if (props.response.isFail === true) {
+  if (props.request.isFail === true) {
     return (
       <div>
         <h1>Sorry! There was an error loading the items</h1> 
-        <p>{props.response.message}</p>
+        <p>{props.request.message}</p>
       </div>
       );
   }
 
-  if (props.response.isLoading === true) {
+  if (props.request.isLoading === true) {
     return (
       <div>
         <h1>Loading…</h1>
-        <p>{props.response.message}</p>
+        <p>{props.request.message}</p>
       </div>
       );
   }
 
-  if (props.response.isSuccessed === true) {
+  if (props.request.isSuccessed === true) {
     return (
       <div>
-        <h1>Message from server: {props.response.message.status}</h1>
-        <p>{props.response.message.message}</p>
+        <h1>Message from server: {props.request.message.status}</h1>
+        <p>{props.request.message.message}</p>
         <br />
         <h3>SOAP messages:</h3>
-        <pre>{xmlPrint(props.response.message.soapMessages || "no soap messages")}</pre>
+        <pre>{xmlPrint(props.request.message.soapMessages || "no soap messages")}</pre>
       </div>
       );
   }

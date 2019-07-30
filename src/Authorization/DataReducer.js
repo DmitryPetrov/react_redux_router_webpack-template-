@@ -1,12 +1,10 @@
-import * as types from './../actions/actionTypes';
+import * as types from './ActionTypes';
 
-export function userDataReducer(state = false, action) {
+export function authorizationDataReducer(state = false, action) {
   if (action.type === types.SET_USERNAME) {
-    console.log("setUserNameReducer");
     return Object.assign({}, state, {userName: action.userName});
   }
   if (action.type === types.SET_PASSWORD) {
-    console.log("setPasswordReducer");
     return Object.assign({}, state, {password: action.password});
   }
   return state;

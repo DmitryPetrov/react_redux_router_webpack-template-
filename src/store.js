@@ -1,41 +1,15 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import rootReducer from './reducers/rootReducer.js';
+import rootReducer from './RootReducer.js';
+import { authorizationData, authorizationRequest } from './Authorization/InitialState'
+import { statmentRequestData, statmentRequestRequest } from './StatmentRequest/InitialState'
 
 const initialState = {
-  userData: {
-    userName: '(initialState)',
-    password: '(initialState)',
-  },
-  authorizationRequest: {
-    isFail: '(initialState)',
-    isLoading: '(initialState)',
-    isSuccessed: '(initialState)',
-    message: '(initialState)',
-  },
-  statmentRequestData: {
-    docDate: '(initialState)',
-    docId: '(initialState)',
-    docNumber: '(initialState)',
-
-    fromDate: '(initialState)',
-    orgId: '(initialState)',
-    orgInn: '(initialState)',
-    orgName: '(initialState)',
-    toDate: '(initialState)',
-    
-    accAccount: '(initialState)',
-    accBankBIC: '(initialState)',
-    accBankName: '(initialState)',
-    accOrgName: '(initialState)',
-  },
-  statmentRequestRequest: {
-    isFail: '(initialState)',
-    isLoading: '(initialState)',
-    isSuccessed: '(initialState)',
-    message: '(initialState)',
-  },  
+  authorizationData: authorizationData,
+  authorizationRequest: authorizationRequest,
+  statmentRequestData: statmentRequestData,
+  statmentRequestRequest: statmentRequestRequest,  
 };
 
 const store = createStore(rootReducer, initialState , applyMiddleware(thunk));

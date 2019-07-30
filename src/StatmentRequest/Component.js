@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import store from './../../../store';
-import {setDocDate, setDocId, setDocNumber} from './../../../actions/statmentRequestDataActionCreators'
-import {setFromDate, setOrgId, setOrgInn, setOrgName, setToDate} from './../../../actions/statmentRequestDataActionCreators'
-import {setAccAccount, setAccBankBIC, setAccBankName, setAccOrgName} from './../../../actions/statmentRequestDataActionCreators'
-import { statmentRequestRequest } from './../../../actions/statmentRequestRequestActionCreators';
-import MessageFromServer from './../../MessageFromServer.js'
-
+import store from './../Store';
+import {setDocDate, setDocId, setDocNumber} from './DataActionCreators'
+import {setFromDate, setOrgId, setOrgInn, setOrgName, setToDate} from './DataActionCreators'
+import {setAccAccount, setAccBankBIC, setAccBankName, setAccOrgName} from './DataActionCreators'
+import { statmentRequestRequest } from './RequestActionCreators';
+import MessageFromServer from './../components/MessageFromServer.js'
 
 class StatmentRequest extends React.Component {
   constructor(props) {
@@ -133,7 +132,7 @@ class StatmentRequest extends React.Component {
           <br/>
           <input type="submit" value="Отправить" />
         </form>
-        <MessageFromServer response={this.props.statmentRequestResponse} />
+        <MessageFromServer request={this.props.statmentRequestResponse} />
       </div>
     )
   }
@@ -141,10 +140,6 @@ class StatmentRequest extends React.Component {
 
 
 function mapStateToProps(store) {
-  console.log("StatmentRequest mapStateToProps store.statmentRequestRequest");
-  console.log(store.statmentRequestRequest);
-
-
   return {
   	statmentRequestData : store.statmentRequestData,
     statmentRequestResponse: store.statmentRequestRequest,

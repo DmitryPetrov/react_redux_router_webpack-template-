@@ -1,4 +1,4 @@
-import * as types from './../actions/actionTypes';
+import * as types from './ActionTypes';
 
 export function statmentRequestDataReducer(state = false, action) {
   if (action.type === types.SET_DOC_DATE) {

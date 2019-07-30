@@ -1,9 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-import store from './../store';
-import { setUserName, setPassword } from './../actions/userDataActionCreators';
+import store from './../Store';
+import { setUserName, setPassword } from './DataActionCreators';
+import MessageFromServer from './../components/MessageFromServer.js'
+import { authorizationRequest } from './RequestActionCreators';
 
-class Authorization extends React.Component {
+class AuthorizationContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,7 +25,7 @@ class Authorization extends React.Component {
 
   buttonHandler(event) {
     event.preventDefault();
-    this.props.fetchData(this.props.userData);
+    this.props.fetchData(this.props.authorizationData);
   }
 
   render() {
@@ -39,9 +42,24 @@ class Authorization extends React.Component {
           <br/>
           <input type="submit" value="Отправить" />
         </form>
+        <MessageFromServer request={this.props.authorizationRequest} />
       </div>
     )
   }
 }
 
-export default Authorization;
+function mapStateToProps(store) {
+  return {
+    authorizationData: store.authorizationData,
+    authorizationRequest: store.authorizationRequest,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchData: (action) => dispatch(authorizationRequest(action))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthorizationContainer);
+

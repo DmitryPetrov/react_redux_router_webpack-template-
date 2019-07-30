@@ -1,7 +1,7 @@
-import * as types from './../actions/actionTypes';
+import * as types from './ActionTypes';
 
-export function statmentRequestRequestReducer(state = false, action) {
-  if (action.type === types.STATMENT_REQUEST_IS_LOADING) {
+export function authorizationRequestReducer(state = false, action) {
+  if (action.type === types.AUTHORIZATION_IS_LOADING) {
     return Object.assign({}, state, {
       isFail: action.isFail,
       isLoading: action.isLoading,
@@ -10,7 +10,7 @@ export function statmentRequestRequestReducer(state = false, action) {
     });
   }
 
-  if (action.type === types.STATMENT_REQUEST_SUCCESSED) {
+  if (action.type === types.AUTHORIZATION_SUCCESSED) {
     return Object.assign({}, state, {
       isFail: action.isFail,
       isLoading: action.isLoading,
@@ -19,7 +19,7 @@ export function statmentRequestRequestReducer(state = false, action) {
     });
   }
 
-  if (action.type === types.STATMENT_REQUEST_FAILED) {
+  if (action.type === types.AUTHORIZATION_FAILED) {
     return Object.assign({}, state, {
       isFail: action.isFail,
       isLoading: action.isLoading,

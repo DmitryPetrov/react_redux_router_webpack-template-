@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import RequestNavigate from './requests/RequestNavigate'
-
 function Navigate() {
   return (
     <nav>
@@ -10,8 +8,13 @@ function Navigate() {
         <li>
           <Link to="/">Authorization</Link>
         </li>
+        <li>
+          <Link to="/request/statmentRequest">....StatmentRequest</Link>
+        </li>
+        <li>
+          <Link to="/request/getRequestStatus">....GetRequestStatus</Link>
+        </li>
       </ul>
-      <RequestNavigate/>
     </nav>
   );
 }
