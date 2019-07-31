@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import store from './../Store';
+import AccComponent from './AccComponent';
 import {setDocDate, setDocId, setDocNumber} from './DataActionCreators'
 import {setFromDate, setOrgId, setOrgInn, setOrgName, setToDate} from './DataActionCreators'
-import {setAccAccount, setAccBankBIC, setAccBankName, setAccOrgName} from './DataActionCreators'
+import {addAccount} from './DataActionCreators'
 import { statmentRequestRequest } from './RequestActionCreators';
 import MessageFromServer from './../components/MessageFromServer.js'
 
@@ -22,12 +23,10 @@ class StatmentRequest extends React.Component {
     this.orgNameHandler = this.orgNameHandler.bind(this);
     this.toDateHandler = this.toDateHandler.bind(this);
 
-    this.accAccountHandler = this.accAccountHandler.bind(this);
-    this.accBankBICHandler = this.accBankBICHandler.bind(this);
-    this.accBankNameHandler = this.accBankNameHandler.bind(this);
-    this.accOrgNameHandler = this.accOrgNameHandler.bind(this);
+    this.addAccountHandler = this.addAccountHandler.bind(this);
+    this.addAddComponents = this.addAddComponents.bind(this);
 
-    this.buttonHandler = this.buttonHandler.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
   }
 
   docDateHandler(event) {
@@ -56,90 +55,94 @@ class StatmentRequest extends React.Component {
     store.dispatch(setToDate(event.target.value));
   }
 
-  accAccountHandler(event) {
-    store.dispatch(setAccAccount(event.target.value));
-  }
-  accBankBICHandler(event) {
-    store.dispatch(setAccBankBIC(event.target.value));
-  }
-  accBankNameHandler(event) {
-    store.dispatch(setAccBankName(event.target.value));
-  }
-  accOrgNameHandler(event) {
-    store.dispatch(setAccOrgName(event.target.value));
+  addAccountHandler(event) {
+    event.preventDefault();
+    store.dispatch(addAccount());
   }
 
-  buttonHandler(event) {
+  submitHandler(event) {
     event.preventDefault();
-    console.log(this.props.statmentRequestData);
     this.props.fetchData(this.props.statmentRequestData);
+  }
+
+  componentDidMount(){
+    store.dispatch(addAccount());
+  }
+
+  addAddComponents() {
+    this.props.statmentRequestData.accounts.forEach((item, i, arr) => {
+      if(item !== null){
+        return <AccComponent index={i} />;
+      }
+    });
   }
 
   render() {
     return (
       <div className="StatmentRequest">
-        <form method="post" onSubmit={this.buttonHandler}>
-          <br/>
-          <label>docDate: </label>
-          <input type="text" onChange={this.docDateHandler}/>
+      <form method="post" id="StatmentRequestForm" onSubmit={this.submitHandler} >
+      <br/>
+      <label>docDate: </label>
+      <input type="text" onChange={this.docDateHandler}/>
 
-          <br/>
-          <label>docId: </label>
-          <input type="text" onChange={this.docIdHandler}/>
+      <br/>
+      <label>docId: </label>
+      <input type="text" onChange={this.docIdHandler}/>
 
-          <br/>
-          <label>docNumber: </label>
-          <input type="text" onChange={this.docNumberHandler}/>
+      <br/>
+      <label>docNumber: </label>
+      <input type="text" onChange={this.docNumberHandler}/>
 
-          <br/>
-          <br/>
-          <label>fromDate: </label>
-          <input type="text" onChange={this.fromDateHandler}/>
+      <br/>
+      <br/>
+      <label>fromDate: </label>
+      <input type="text" onChange={this.fromDateHandler}/>
 
-          <br/>
-          <label>orgId: </label>
-          <input type="text" onChange={this.orgIdHandler}/>
+      <br/>
+      <label>orgId: </label>
+      <input type="text" onChange={this.orgIdHandler}/>
 
-          <br/>
-          <label>orgInn: </label>
-          <input type="text" onChange={this.orgInnHandler}/>
+      <br/>
+      <label>orgInn: </label>
+      <input type="text" onChange={this.orgInnHandler}/>
 
-          <br/>
-          <label>orgName: </label>
-          <input type="text" onChange={this.orgNameHandler}/>
+      <br/>
+      <label>orgName: </label>
+      <input type="text" onChange={this.orgNameHandler}/>
 
-          <br/>
-          <label>toDate: </label>
-          <input type="text" onChange={this.toDateHandler}/>
+      <br/>
+      <label>toDate: </label>
+      <input type="text" onChange={this.toDateHandler}/>
 
-          <br/>
-          <br/>
-          <label>Acc account: </label>
-          <input type="text" onChange={this.accAccountHandler}/>
+      </form>
+      
+      <br/>
+      <PrintAccounts accounts={this.props.statmentRequestData.accounts}/>
+      <br/>
+      <input type="button" value="Add account" onClick={this.addAccountHandler}/>      
 
-          <br/>
-          <label>Acc bankBIC: </label>
-          <input type="text" onChange={this.accBankBICHandler}/>
-
-          <br/>
-          <label>Acc bankName: </label>
-          <input type="text" onChange={this.accBankNameHandler}/>
-
-          <br/>
-          <label>Acc orgName: </label>
-          <input type="text" onChange={this.accOrgNameHandler}/>
-
-          <br/>
-          <input type="submit" value="Отправить" />
-        </form>
-        <MessageFromServer request={this.props.statmentRequestResponse} />
+      <br/>
+      <input type="submit" form="StatmentRequestForm" value="Отправить" />
+      <MessageFromServer request={this.props.statmentRequestResponse} />
       </div>
-    )
+      )
   }
+}
+
+function PrintAccounts(props) {
+  const list = props.accounts.map((item, index) => {
+    if(item !== undefined){
+      return <AccComponent key={index} index={index}/> 
+    }
+  });
+  return <div>{list}</div>
 }
 
 
 function mapStateToProps(store) {
+  console.log("store.statmentRequestData.accounts");
+  console.log(store.statmentRequestData);
+  
   return {
   	statmentRequestData : store.statmentRequestData,
     statmentRequestResponse: store.statmentRequestRequest,
@@ -147,9 +150,9 @@ function mapStateToProps(store) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        fetchData: (action) => dispatch(statmentRequestRequest(action))
-    };
+  return {
+    fetchData: (action) => dispatch(statmentRequestRequest(action))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(StatmentRequest);

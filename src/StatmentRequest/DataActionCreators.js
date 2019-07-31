@@ -56,30 +56,8 @@ export function setToDate(data) {
 	};
 }
 
-export function setAccAccount(data) {
+export function addAccount() {
 	return {
-		type: types.SET_ACC_ACCOUNT,
-		accAccount: data,
-	};
-}
-
-export function setAccBankBIC(data) {
-	return {
-		type: types.SET_ACC_BANK_BIC,
-		accBankBIC: data,
-	};
-}
-
-export function setAccBankName(data) {
-	return {
-		type: types.SET_ACC_BANK_NAME,
-		accBankName: data,
-	};
-}
-
-export function setAccOrgName(data) {
-	return {
-		type: types.SET_ACC_ORG_NAME,
-		accOrgName: data,
+		type: types.ADD_ACC,
 	};
 }

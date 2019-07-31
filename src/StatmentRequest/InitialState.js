@@ -9,10 +9,13 @@ export var statmentRequestData = {
     orgName: '(initialState)',
     toDate: '(initialState)',
     
-    accAccount: '(initialState)',
-    accBankBIC: '(initialState)',
-    accBankName: '(initialState)',
-    accOrgName: '(initialState)',
+    accounts: [],
+};
+
+export var AccData = {
+    account: '(initialState)',
+    bankBIC: '(initialState)',
+    bankName: '(initialState)',
 };
 
 export var statmentRequestRequest = {
