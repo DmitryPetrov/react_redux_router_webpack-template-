@@ -6,10 +6,10 @@ import { authorizationData, authorizationRequest } from './Authorization/Initial
 import { statmentRequestData, statmentRequestRequest } from './StatmentRequest/InitialState'
 
 const initialState = {
-  authorizationData: authorizationData,
-  authorizationRequest: authorizationRequest,
-  statmentRequestData: statmentRequestData,
-  statmentRequestRequest: statmentRequestRequest,  
+  authorizationData: Object.assign({}, authorizationData),
+  authorizationRequest: Object.assign({}, authorizationRequest),
+  statmentRequestData: Object.assign({}, statmentRequestData),
+  statmentRequestRequest: Object.assign({}, statmentRequestRequest),  
 };
 
 const store = createStore(rootReducer, initialState , applyMiddleware(thunk));
