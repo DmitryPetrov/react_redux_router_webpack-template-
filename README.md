@@ -66,3 +66,32 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+____________________________________________________________________________________________________________________________
+### `npm install`
+Download dependencies
+RU - загрузка зависимостей проекта
+
+### `npm start`
+Runs the app in the development mode. Open [http://localhost:3000] to view it in the browser.
+RU - запуск приложения в режиме "разработка" по адресу [http://localhost:3000].
+
+### `npm run dev` 
+build app in development mode
+input './src/index.js'
+output './dist/dev.js'
+RU - [
+	сборка приложения в режиме "разработка"
+	точка входа './src/index.js'
+	результат сборки './dist/dev.js'
+]
+
+### `npm run prod` 	
+build app in production mode
+input './src/index.js'
+output './dist/prod.js'.
+RU - [
+	сборка приложения в режиме "продакшн"
+	точка входа './src/index.js'
+	результат сборки './dist/prod.js'
+]
