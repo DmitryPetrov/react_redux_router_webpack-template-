@@ -2,17 +2,17 @@ import axios from 'axios';
 
 import * as types from './ActionTypes';
 
-function statmentRequestIsLoading() {
+function statementRequestIsLoading() {
 	return {
 		type: types.STATMENT_REQUEST_IS_LOADING,
 		isFail: false,
 		isLoading: true,
 		isSuccessed: false,
-		message: 'statmentRequest is loading',
+		message: 'statementRequest is loading',
 	};
 }
 
-function statmentRequestSuccessed(response) {
+function statementRequestSuccessed(response) {
 	return {
 		type: types.STATMENT_REQUEST_SUCCESSED,
 		isFail: false,
@@ -22,7 +22,7 @@ function statmentRequestSuccessed(response) {
 	};
 }
 
-function statmentRequestFailed(errorMessage) {
+function statementRequestFailed(errorMessage) {
 	return {
 		type: types.STATMENT_REQUEST_FAILED,
 		isFail: true,
@@ -32,16 +32,16 @@ function statmentRequestFailed(errorMessage) {
 	};
 }
 
-export function statmentRequestRequest(requestBody) {
+export function statementRequestRequest(requestBody) {
     return (dispatch) => {
-        dispatch(statmentRequestIsLoading());
+        dispatch(statementRequestIsLoading());
         axios
             .post('/sendRequests/statementRequest', requestBody)
             .then(response => {
-                dispatch(statmentRequestSuccessed(response.data));
+                dispatch(statementRequestSuccessed(response.data));
             })
             .catch(function (error) {
-                dispatch(statmentRequestFailed(error.message));
+                dispatch(statementRequestFailed(error.message));
             });
     };
 }

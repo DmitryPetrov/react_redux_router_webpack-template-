@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import store from './../Store.js';
 import Authorization from './../Authorization/Component';
-import StatmentRequest from './../StatmentRequest/Component';
+import StatmentRequest from './../StatementRequest/Component';
 //import GetRequestStatus from './../GetRequestStatus/Component';
 import Navigate from './Navigate';
 

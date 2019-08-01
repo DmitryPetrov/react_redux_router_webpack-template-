@@ -14,6 +14,9 @@ export const SET_ORG_INN = 'SET_ORG_INN';
 export const SET_ORG_NAME = 'SET_ORG_NAME';
 export const SET_TO_DATE = 'SET_TO_DATE';
 
+export const SET_ACCOUNTS = 'SET_ACCOUNTS';
+
+
 export const SET_ACCOUNT = 'SET_ACCOUNT';
 export const SET_BANK_BIC = 'SET_BANK_BIC';
 export const SET_BANK_NAME = 'SET_BANK_NAME';

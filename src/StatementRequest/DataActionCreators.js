@@ -56,8 +56,9 @@ export function setToDate(data) {
 	};
 }
 
-export function addAccount() {
+export function setAccounts(data) {
 	return {
-		type: types.ADD_ACC,
+		type: types.SET_ACCOUNTS,
+		accounts: data,
 	};
 }

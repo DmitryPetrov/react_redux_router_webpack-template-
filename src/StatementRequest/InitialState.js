@@ -1,4 +1,4 @@
-export var statmentRequestData = {
+export var statementRequestData = {
     docDate: '(initialState)',
     docId: '(initialState)',
     docNumber: '(initialState)',
@@ -12,13 +12,17 @@ export var statmentRequestData = {
     accounts: [],
 };
 
-export var AccData = {
+export var accounts = {
+    acc: [],
+};
+
+export var accData = {
     account: '(initialState)',
     bankBIC: '(initialState)',
     bankName: '(initialState)',
 };
 
-export var statmentRequestRequest = {
+export var statementRequestRequest = {
     isFail: '(initialState)',
     isLoading: '(initialState)',
     isSuccessed: '(initialState)',

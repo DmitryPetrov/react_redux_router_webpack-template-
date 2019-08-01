@@ -3,15 +3,18 @@ import { combineReducers } from 'redux';
 import { authorizationDataReducer } from "./Authorization/DataReducer";
 import { authorizationRequestReducer } from "./Authorization/RequestReducer";
 
-import { statmentRequestDataReducer } from "./StatmentRequest/DataReducer";
-import { statmentRequestRequestReducer } from "./StatmentRequest/RequestReducer";
+import { statementRequestDataReducer } from "./StatementRequest/DataReducer";
+import { statementRequestRequestReducer } from "./StatementRequest/RequestReducer";
+
+import { accountReducer } from "./StatementRequest/AccountList/Reducer";
 
 
 const rootReducer = combineReducers({
 	authorizationData: authorizationDataReducer,
 	authorizationRequest: authorizationRequestReducer,
-	statmentRequestData: statmentRequestDataReducer,
-	statmentRequestRequest: statmentRequestRequestReducer,
+	statementRequestData: statementRequestDataReducer,
+	statementRequestRequest: statementRequestRequestReducer,
+	statementRequestDataAccounts: accountReducer,
 })
 
 export default rootReducer;

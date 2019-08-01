@@ -1,7 +1,6 @@
 import * as types from './ActionTypes';
-import { AccData } from './InitialState'
 
-export function statmentRequestDataReducer(state = false, action) {
+export function statementRequestDataReducer(state = false, action) {
   if (action.type === types.SET_DOC_DATE) {
     return Object.assign({}, state, {docDate: action.docDate});
   }
@@ -28,10 +27,14 @@ export function statmentRequestDataReducer(state = false, action) {
     return Object.assign({}, state, {toDate: action.toDate});
   }
 
-  if (action.type === types.ADD_ACC) {
-    let newAcc = Object.assign({}, AccData);
-    let newState = Object.assign({}, state);
-    newState.accounts.push(newAcc);
+  if (action.type === types.SET_ACCOUNTS) {
+    let newAccounts =  action.accounts.filter(function(item) {
+      return item !== undefined;
+    });
+    let newState =  Object.assign({}, state);
+
+    newState.accounts.splice(0, newState.accounts.length); //clear array
+    newState.accounts.push(...newAccounts);
     return newState;
   }
   
