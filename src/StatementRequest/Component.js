@@ -66,10 +66,6 @@ class StatementRequest extends React.Component {
     this.props.fetchData(this.props.statementRequestData);
   }
 
-  componentDidMount(){
-    store.dispatch(addAccount());
-  }
-
   render() {
     return (
       <div className="StatementRequest">

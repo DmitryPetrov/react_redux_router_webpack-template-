@@ -13,7 +13,13 @@ export var statementRequestData = {
 };
 
 export var accounts = {
-    acc: [],
+    acc: [
+        {
+            account: '(initialState)',
+            bankBIC: '(initialState)',
+            bankName: '(initialState)',
+        }
+    ],
 };
 
 export var accData = {
