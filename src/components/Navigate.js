@@ -12,7 +12,7 @@ function Navigate() {
           <Link to="/request/statmentRequest">....StatmentRequest</Link>
         </li>
         <li>
-          <Link to="/request/getRequestStatus">....GetRequestStatus</Link>
+          <Link to="/requestList">....RequestList</Link>
         </li>
       </ul>
     </nav>
