@@ -1,49 +1,42 @@
 import React from 'react';
 
+import SoapMessageList from './SoapMessageList'
+import ObjectFromServer from './ObjectFromServer'
+
 function MessageFromServer(props) {
   if (props.request.isFail === true) {
     return (
-      <div>
-        <h1>Sorry! There was an error loading the items</h1> 
-        <p>{props.request.message}</p>
+      <div className="MessageFromServer">
+        <h2>Request status: {props.request.message}</h2>
       </div>
       );
   }
 
   if (props.request.isLoading === true) {
     return (
-      <div>
-        <h1>Loading…</h1>
-        <p>{props.request.message}</p>
+      <div className="MessageFromServer">
+        <h2>Request status: {props.request.message}</h2>
       </div>
       );
   }
 
   if (props.request.isSuccessed === true) {
     return (
-      <div>
-        <h1>Message from server: {props.request.message.status}</h1>
-        <p>{props.request.message.message}</p>
+      <div className="MessageFromServer">
+        <h2>Request status: {props.request.message}</h2>
+        <h2>Server response status: {props.request.response.status}</h2>
+        <h2>Message from server: {props.request.response.message}</h2>
         <br />
-        <h3>SOAP messages:</h3>
-        <pre>{xmlPrint(props.request.message.soapMessages || "no soap messages")}</pre>
+        <SoapMessageList list={props.request.response.soapMessageList}/>
+        <ObjectFromServer object={props.request.response.object}/>
       </div>
       );
   }
 
   return (
     <div className="MessageFromServer">
-      <h1>Message from server: </h1>
     </div>
-    );
+  );
 }
-
-function xmlPrint(xml) {
-  var format = require('xml-formatter');
- 
-  var formattedXml = format(xml);
-  return formattedXml;
-}
-
 
 export default MessageFromServer;

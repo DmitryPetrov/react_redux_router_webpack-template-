@@ -8,7 +8,8 @@ function statementRequestIsLoading() {
 		isFail: false,
 		isLoading: true,
 		isSuccessed: false,
-		message: 'statementRequest is loading',
+		message: '"/statementRequest" is loading',
+		response: null,
 	};
 }
 
@@ -18,7 +19,8 @@ function statementRequestSuccessed(response) {
 		isFail: false,
 		isLoading: false,
 		isSuccessed: true,
-		message: response,
+		message: '"/statementRequest" successed',
+		response: response,
 	};
 }
 
@@ -28,20 +30,21 @@ function statementRequestFailed(errorMessage) {
 		isFail: true,
 		isLoading: false,
 		isSuccessed: false,
-		message: errorMessage,
+		message: '"/statementRequest" failed',
+		response: errorMessage,
 	};
 }
 
 export function statementRequestRequest(requestBody) {
-    return (dispatch) => {
-        dispatch(statementRequestIsLoading());
-        axios
-            .post('/sendRequests/statementRequest', requestBody)
-            .then(response => {
-                dispatch(statementRequestSuccessed(response.data));
-            })
-            .catch(function (error) {
-                dispatch(statementRequestFailed(error.message));
-            });
-    };
+  return (dispatch) => {
+    dispatch(statementRequestIsLoading());
+    axios
+      .post('/sendRequests/statementRequest', requestBody)
+      .then(response => {
+        dispatch(statementRequestSuccessed(response.data));
+      })
+      .catch(function (error) {
+        dispatch(statementRequestFailed(error.message));
+      });
+  };
 }

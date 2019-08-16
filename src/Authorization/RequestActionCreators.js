@@ -8,7 +8,8 @@ function authorizationIsLoading() {
 		isFail: false,
 		isLoading: true,
 		isSuccessed: false,
-		message: 'request is loading',
+		message: '"/authorization" is loading',
+		response: null,
 	};
 }
 
@@ -18,7 +19,8 @@ function authorizationSuccessed(response) {
 		isFail: false,
 		isLoading: false,
 		isSuccessed: true,
-		message: response,
+		message: '"/authorization" successed',
+		response: response,
 	};
 }
 
@@ -28,20 +30,21 @@ function authorizationFailed(errorMessage) {
 		isFail: true,
 		isLoading: false,
 		isSuccessed: false,
-		message: errorMessage,
+		message: '"/authorization" failed',
+		response: errorMessage,
 	};
 }
 
 export function authorizationRequest(requestBody) {
-    return (dispatch) => {
-        dispatch(authorizationIsLoading());
-        axios
-            .post('/login', requestBody)
-            .then(response => {
-                dispatch(authorizationSuccessed(response.data));
-            })
-            .catch(function (error) {
-                dispatch(authorizationFailed(error.message));
-            });
-    };
+  return (dispatch) => {
+    dispatch(authorizationIsLoading());
+    axios
+      .post('/login', requestBody)
+      .then(response => {
+        dispatch(authorizationSuccessed(response.data));
+      })
+      .catch(function (error) {
+        dispatch(authorizationFailed(error.message));
+      });
+  };
 }

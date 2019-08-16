@@ -7,6 +7,7 @@ export function authorizationRequestReducer(state = false, action) {
       isLoading: action.isLoading,
       isSuccessed: action.isSuccessed,
       message: action.message,
+      response: action.response,
     });
   }
 
@@ -16,6 +17,7 @@ export function authorizationRequestReducer(state = false, action) {
       isLoading: action.isLoading,
       isSuccessed: action.isSuccessed,
       message: action.message,
+      response: action.response,
     });
   }
 
@@ -25,6 +27,7 @@ export function authorizationRequestReducer(state = false, action) {
       isLoading: action.isLoading,
       isSuccessed: action.isSuccessed,
       message: action.message,
+      response: action.response,
     });
   }
   return state;
