@@ -38,8 +38,14 @@ function getRequestStatusFailed(errorMessage) {
 export function getRequestStatusRequest(requestParam) {
     return (dispatch) => {
         dispatch(getRequestStatusIsLoading());
+        console.log("getRequestStatusRequest");
+        console.log(requestParam);
         axios
-            .get('/sendRequests/getRequestStatus' + '?requestId' + requestParam)
+            .get('/sendRequests/getRequestStatus', {
+                    params: {
+                        requestId: requestParam,
+                    }
+                })
             .then(response => {
                 dispatch(getRequestStatusSuccessed(response.data));
             })

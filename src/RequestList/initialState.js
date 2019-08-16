@@ -7,6 +7,6 @@ export var requestListRequest = {
 			status: '(initialState)',
 			message: '(initialState)',
 			object: '(initialState)',
-			requestList: [{requestId: '(initialState)'}]
+			requestList: '(initialState)',
 		},
 };

@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 import store from './../../Store';
 import { getRequestStatusRequest } from './actionCreatorList';
-import MessageFromServer from './../../components/MessageFromServer'
-
 
 class Request extends React.Component {
   constructor(props) {
@@ -19,22 +17,41 @@ class Request extends React.Component {
   }
 
   render() {
+    let request = this.props.request;
+
+    const bankNameList = request.accounts.map((item, index) => {
+      if(item instanceof Object){
+        return (
+          <div key={index}>
+            <lable>bank name {index}: {item.bankName}</lable>
+          </div>)
+        }
+      return <div key={index}></div>;
+    });
+
     return (
-      <div className="Request"> 
-          <pre>{JSON.stringify(this.props.request, null, 2) }</pre>
-          <input type="submit" value="Отправить" onClick={this.buttonHandler}/>
-          <MessageFromServer request={this.props.getRequestStatusResponse} />
+      <div className="Request">
+        <br/>
+        <lable>request name: {request.requestName}</lable>
+        <br/>
+        <lable>request id: {request.requestId}</lable>
+        <br/>
+        <lable>org name: {request.orgName}</lable>
+        <br/>
+        <lable>from date: {request.fromDate}</lable>
+        <br/>
+        <lable>to date: {request.toDate}</lable>
+        {bankNameList}
+        <br/>
+
+        <input type="submit" value="Get Request Status" onClick={this.buttonHandler}/>
       </div>
       )
   }
 }
 
 function mapStateToProps(store) { 
-  console.log("Request mapStateToProps");
-  console.log(store.getRequestStatusRequest);
-  return {
-    getRequestStatusResponse: store.getRequestStatusRequest,
-  }
+  return {}
 }
 
 function mapDispatchToProps(dispatch) {

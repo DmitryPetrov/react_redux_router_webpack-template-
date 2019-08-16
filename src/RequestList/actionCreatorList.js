@@ -9,7 +9,7 @@ function requestListIsLoading() {
 		isLoading: true,
 		isSuccessed: false,
 		message: '"/requestList" is loading',
-		response: undefined,
+		response: null,
 	};
 }
 
@@ -36,23 +36,25 @@ function requestListFailed(errorMessage) {
 }
 
 export function requestListRequest() {
-    return (dispatch) => {
-        dispatch(requestListIsLoading());
-        // axios
-        //     .get('/requestList')
-        //     .then(response => {
-        //         dispatch(requestListSuccessed(response.data));
-        //     })
-        //     .catch(function (error) {
-        //         dispatch(requestListFailed(error.message));
-        //     });
-        dispatch(requestListSuccessed({
+  return (dispatch) => {
+    dispatch(requestListIsLoading());
+    axios
+      .get('/requestList')
+      .then(response => {
+        dispatch(requestListSuccessed(response.data));
+      })
+      .catch(function (error) {
+        dispatch(requestListFailed(error.message));
+      });
+
+    dispatch(requestListSuccessed({
     status: "OK",
     message: "Request list",
     object: null,
+    soapMessageList: null,
     requestList: [
 {
-    requestId: "e1c9e915-8ebe-4bb9-a361-8e254e8d1acd",
+    requestId: "84",
     acceptDate: "",
     bankMessage: "",
     bankMessageAuthor: "",
@@ -73,41 +75,7 @@ export function requestListRequest() {
     signCollectionBankMessage: "",
     signCollectionDigestName: "",
     sign: "",
-    accounts: [
-{ requestId: "", account: "40702810800000005897", bankBIC: "044030861", bankName: "АО \"АБ \"РОССИЯ\"" }
-],
-    requestAttrRequestId: "1852ccae-e9b2-48bf-adbd-6027653f194d",
-    requestAttrVersion: "1",
-    requestNameSpaceUpgValue: "http://bssys.com/upg/request",
-    requestNameSpaceUpgRaifValue: "http://bssys.com/upg/request/raif",
-    requestNameSpaceXsiValue: "http://www.w3.org/2001/XMLSchema-instance",
-    statementRequestAttrXmlns: "http://bssys.com/sbns/integration"
-},
-{
-    requestId: "ce0f6fe7-b716-4584-8025-b4e6ac14a9d0",
-    acceptDate: "",
-    bankMessage: "",
-    bankMessageAuthor: "",
-    docDate: "2018-05-15T17:08:00",
-    docId: "40702810800000005897",
-    docNumber: "78",
-    docTypeVersion: "",
-    externalId: "",
-    externalUPGId: "",
-    fromDate: "2018-05-07T00:00:00.715+03:00",
-    lastModifyDate: "",
-    messageOnlyForBank: "",
-    orgId: "0ce353c5-9a53-497d-ad02-df1fb6c37feb",
-    orgInn: "7842170415",
-    orgName: "ПАО МРСК Северного Кавказа",
-    template: "",
-    toDate: "2018-05-14T00:00:00.715+03:00",
-    signCollectionBankMessage: "",
-    signCollectionDigestName: "",
-    sign: "",
-    accounts: [
-{ requestId: "", account: "40702810800000005897", bankBIC: "044030861", bankName: "АО \"АБ \"РОССИЯ\"" }
-],
+    accounts: [{ requestId: "", account: "40702810800000005897", bankBIC: "044030861", bankName: "АО \"АБ \"РОССИЯ\"" }],
     requestAttrRequestId: "1852ccae-e9b2-48bf-adbd-6027653f194d",
     requestAttrVersion: "1",
     requestNameSpaceUpgValue: "http://bssys.com/upg/request",
@@ -117,5 +85,5 @@ export function requestListRequest() {
 }
 ]
 }));
-    };
+  };
 }
