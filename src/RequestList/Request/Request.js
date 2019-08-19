@@ -3,48 +3,70 @@ import { connect } from 'react-redux';
 
 import store from './../../Store';
 import { getRequestStatusRequest } from './actionCreatorList';
+import StatmentRequest from './StatmentRequest';
+import Incoming from './Incoming';
 
 class Request extends React.Component {
   constructor(props) {
     super(props);
 
-    this.buttonHandler = this.buttonHandler.bind(this);
+    this.state = {
+      requestData: JSON.stringify(this.props.request, undefined, 2),
+      showRequestData: false,
+      requestDataButtonName: 'Expand',
+    }
+
+    this.getRequestStatusHandler = this.getRequestStatusHandler.bind(this);
+    this.expandHandler = this.expandHandler.bind(this);
   }
 
-  buttonHandler(event) {
+  getRequestStatusHandler(event) {
     event.preventDefault();
     this.props.fetchData(this.props.request.requestId);
   }
 
-  render() {
-    let request = this.props.request;
+  expandHandler(event) {
+    event.preventDefault();
 
-    const bankNameList = request.accounts.map((item, index) => {
-      if(item instanceof Object){
-        return (
-          <div key={index}>
-            <lable>bank name {index}: {item.bankName}</lable>
-          </div>)
+    if (this.state.showRequestData) {
+      this.setState(
+        {
+          showRequestData: false,
+          requestDataButtonName: 'Expand',
         }
-      return <div key={index}></div>;
-    });
+      );
+    } else {
+      this.setState(
+        {
+          showRequestData: true,
+          requestDataButtonName: 'Collapse',
+        }
+      );
+    }
+  }
+
+  render() {
+    let element = null;
+    let requestData = null;
+
+    if (this.state.showRequestData) {
+      requestData = this.state.requestData;
+      element = <p><b>Request name: {this.props.request.requestName}</b></p>;
+    } else {
+      if(this.props.request.requestName === "Statement Request"){
+        element = <StatmentRequest request={this.props.request}/>;
+      }
+      if(this.props.request.requestName === "Incoming"){
+        element = <Incoming request={this.props.request}/>;
+      }
+    }
 
     return (
       <div className="Request">
-        <br/>
-        <lable>request name: {request.requestName}</lable>
-        <br/>
-        <lable>request id: {request.requestId}</lable>
-        <br/>
-        <lable>org name: {request.orgName}</lable>
-        <br/>
-        <lable>from date: {request.fromDate}</lable>
-        <br/>
-        <lable>to date: {request.toDate}</lable>
-        {bankNameList}
-        <br/>
-
-        <input type="submit" value="Get Request Status" onClick={this.buttonHandler}/>
+        {element}
+        <pre>{requestData}</pre>
+        <input type="button" value={this.state.requestDataButtonName} onClick={this.expandHandler}/>
+        <input type="button" value="Get request status" onClick={this.getRequestStatusHandler}/>
       </div>
       )
   }

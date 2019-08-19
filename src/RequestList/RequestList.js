@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import store from './../Store';
 import { requestListRequest } from './actionCreatorList';
 import Request from './Request/Request'
-import MessageFromServer from './../components/MessageFromServer';
+import GetRequestStatus from './Request/GetRequestStatus';
 
 
 class RequestList extends React.Component {
@@ -21,33 +21,32 @@ class RequestList extends React.Component {
   render() {
     let request = this.props.requestListRequest;
 
+    let list = null;
     if (request.isSuccessed === true) {
-      const list = request.response.requestList.map((item, index) => {
-        if(item !== undefined){
+      list = request.response.requestList.map((item, index) => {
+        if(item.requestName !== null){
+
+          let getRequestStatus = null;
+          if (this.props.getRequestStatusRequest.response.object.attrRequestId === item.requestId) {
+            getRequestStatus = <GetRequestStatus request={this.props.getRequestStatusRequest} />;
+          }
+
           return (
             <div key={index}>
               <br/>
               <Request index={index} request={item}/>
-            </div>)
-          }
+              {getRequestStatus}
+            </div>
+          )
+        }
         return <div key={index}></div>;
       });
-
-      return(
-        <div  className="RequestList">
-          <input type="submit" value="Обновить" onClick={this.buttonHandler}/>
-          {list}
-          <MessageFromServer request={this.props.requestListRequest} />
-          <MessageFromServer request={this.props.getRequestStatusRequest} />
-        </div>
-      )
     }
 
     return(
       <div className="RequestList">
-        <input type="submit" value="Обновить" onClick={this.buttonHandler}/>
-        <MessageFromServer request={this.props.requestListRequest} />
-        <MessageFromServer request={this.props.getRequestStatusRequest} />
+        <input type="submit" value="Refresh" onClick={this.buttonHandler}/>
+        {list}
       </div>
     )
   }
