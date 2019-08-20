@@ -7,12 +7,12 @@ function StatmentRequest(props) {
   const bankNameList = request.accounts.map((item, index) => {
     if(item instanceof Object){
       return (
-        <li key="bankNameList{index}">
+        <li key={index}>
           Bank name {index + 1}: {item.bankName}
         </li>
       )
     }
-    return <li key="bankNameList{index}"></li>;
+    return <li key={index}></li>;
   });
 
   return (
@@ -20,6 +20,7 @@ function StatmentRequest(props) {
       <p>
         <b>Request name: {request.requestName}</b>
         <br/>Request id: {request.requestId}
+        <br/>Response id: {request.responseId}
         <br/>Org name: {request.orgName}
         <br/>From date: {request.fromDate}
         <br/>To date: {request.toDate}

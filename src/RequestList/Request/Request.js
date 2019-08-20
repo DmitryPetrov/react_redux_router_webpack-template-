@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import store from './../../Store';
 import { getRequestStatusRequest } from './actionCreatorList';
 import StatmentRequest from './StatmentRequest';
 import Incoming from './Incoming';
@@ -22,7 +21,7 @@ class Request extends React.Component {
 
   getRequestStatusHandler(event) {
     event.preventDefault();
-    this.props.fetchData(this.props.request.requestId);
+    this.props.fetchData(this.props.request.responseId);
   }
 
   expandHandler(event) {

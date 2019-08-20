@@ -12,6 +12,9 @@ import { requestListReducer } from "./RequestList/reducer";
 
 import { getRequestStatusReducer } from "./RequestList/Request/reducer";
 
+import { docTypeReducer } from "./Incoming/DocTypeList/reducer";
+import { incomingReducer } from "./Incoming/reducer";
+
 
 
 const rootReducer = combineReducers({
@@ -25,6 +28,9 @@ const rootReducer = combineReducers({
 	requestListRequest: requestListReducer,
 
 	getRequestStatusRequest: getRequestStatusReducer,
+
+	incomingDocTypes: docTypeReducer,
+	incomingRequest: incomingReducer,
 
 })
 

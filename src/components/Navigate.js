@@ -12,6 +12,9 @@ function Navigate() {
           <Link to="/request/statmentRequest">....StatmentRequest</Link>
         </li>
         <li>
+          <Link to="/request/incoming">....Incoming</Link>
+        </li>
+        <li>
           <Link to="/requestList">....RequestList</Link>
         </li>
       </ul>

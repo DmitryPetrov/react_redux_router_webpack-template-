@@ -38,50 +38,17 @@ function getRequestStatusFailed(errorMessage) {
 export function getRequestStatusRequest(requestParam) {
   return (dispatch) => {
     dispatch(getRequestStatusIsLoading());
-
-    // axios
-    //   .get('/sendRequests/getRequestStatus', {
-    //       params: {
-    //         requestId: requestParam,
-    //       }
-    //     })
-    //   .then(response => {
-    //     dispatch(getRequestStatusSuccessed(response.data));
-    //   })
-    //   .catch(function (error) {
-    //     dispatch(getRequestStatusFailed(error.message));
-    //   });
-
-// dispatch(getRequestStatusSuccessed(
-{
-    status: "OK",
-    message: "GetRequestStatus to Soap server is success.",
-    object: {
-        requestId: "",
-        responseId: "",
-        requestName: "",
-        attrCreateTime: "2019-08-19T17:56:10",
-        attrRequestId: "1852ccae-e9b2-48bf-adbd-6027653f194d",
-        attrResponseId: "88236c36-de32-404a-a4fc-4ca0e0e53e24",
-        attrSender: "DBO",
-        attrVersion: "2.0",
-        notProcessedYet: false,
-        stateResponse: {
-    attrXmlns: "http:\//bssys.com/sbns/integration",
-    bankMessage: "",
-    docId: "40702810800000005897",
-    docType: "StatementRequest",
-    extId: "10135eed-76d3-4865-a0fd-c165971e94a7",
-    state: "DELIVERED"
-}
-},
-requestList: [],
-soapMessageList: []
-}
-// ));
-
-
-
-
-};
+    axios
+      .get('/sendRequests/getRequestStatus', {
+          params: {
+            responseId: requestParam,
+          }
+        })
+      .then(response => {
+        dispatch(getRequestStatusSuccessed(response.data));
+      })
+      .catch(function (error) {
+        dispatch(getRequestStatusFailed(error.message));
+      });
+    };
 }

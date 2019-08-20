@@ -6,6 +6,7 @@ import { authorizationData, authorizationRequest } from './Authorization/Initial
 import { statementRequestData, statementRequestRequest, accounts } from './StatementRequest/InitialState'
 import { requestListRequest } from './RequestList/initialState'
 import { getRequestStatusRequest } from './RequestList/Request/initialState'
+import { incomingDocTypes, incomingRequest } from './Incoming/initialState'
 
 
 
@@ -21,6 +22,8 @@ const initialState = {
 
   getRequestStatusRequest: Object.assign({}, getRequestStatusRequest),
 
+  incomingDocTypes:  Object.assign({}, incomingDocTypes),
+  incomingRequest:  Object.assign({}, incomingRequest),
 };
 
 const store = createStore(rootReducer, initialState , applyMiddleware(thunk));

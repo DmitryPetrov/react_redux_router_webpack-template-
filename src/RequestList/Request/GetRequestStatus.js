@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import SoapMessageList from './../../components/SoapMessageList'
-import ObjectFromServer from './../../components/ObjectFromServer'
 
 class GetRequestStatus extends React.Component  {
   constructor(props) {
@@ -54,6 +52,20 @@ class GetRequestStatus extends React.Component  {
     }
 
     if (this.props.request.isSuccessed === true) {
+
+      if(this.props.request.response.status === "ERROR") {
+        return (
+          <div className="GetRequestStatus">
+            <h2>Request status: {this.props.request.message}</h2>
+            <h3>Request status: {this.props.request.response.status}</h3>
+            <h3>Request status: {this.props.request.response.message}</h3>
+            <br />
+            <SoapMessageList list={this.props.request.response.soapMessageList}/>
+          </div>
+        )
+      }
+
+
       let element = null;
       let getRequestStatus = null;
 
@@ -73,6 +85,7 @@ class GetRequestStatus extends React.Component  {
 
       return (
         <div className="GetRequestStatus">
+          <h2>Request status: {this.props.request.response.message}</h2>
           {element}
           <pre>{getRequestStatus}</pre>
           <input type="button" value={this.state.showStatusButtonName} onClick={this.expandHandler}/>

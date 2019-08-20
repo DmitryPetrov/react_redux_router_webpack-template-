@@ -1,18 +1,18 @@
 import React from 'react';
 
-function Incoming(porps) {
+function Incoming(props) {
 
-  let request = this.props.request;
+  let request = props.request;
 
-  const docTypeList = request.accounts.map((item, index) => {
-    if(item instanceof Object){
+  const docTypeList = request.docTypes.map((item, index) => {
+    if((typeof item) === 'string'){
       return (
-        <li key="docTypeList{index}">
-          Doc Type {index + 1}: {item.docType}
+        <li key={index}>
+          Doc Type {index + 1}: {item}
         </li>
       )
     }
-    return <li key="docTypeList{index}"></li>;
+    return <li key={index}></li>;
   });
 
   return (

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import store from './../Store';
 import { requestListRequest } from './actionCreatorList';
 import Request from './Request/Request'
 import GetRequestStatus from './Request/GetRequestStatus';
@@ -25,17 +24,10 @@ class RequestList extends React.Component {
     if (request.isSuccessed === true) {
       list = request.response.requestList.map((item, index) => {
         if(item.requestName !== null){
-
-          let getRequestStatus = null;
-          if (this.props.getRequestStatusRequest.response.object.attrRequestId === item.requestId) {
-            getRequestStatus = <GetRequestStatus request={this.props.getRequestStatusRequest} />;
-          }
-
           return (
             <div key={index}>
               <br/>
               <Request index={index} request={item}/>
-              {getRequestStatus}
             </div>
           )
         }
@@ -47,6 +39,8 @@ class RequestList extends React.Component {
       <div className="RequestList">
         <input type="submit" value="Refresh" onClick={this.buttonHandler}/>
         {list}
+        <br/>
+        <GetRequestStatus request={this.props.getRequestStatusRequest} />
       </div>
     )
   }
