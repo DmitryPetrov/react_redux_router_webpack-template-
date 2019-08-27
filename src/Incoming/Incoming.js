@@ -14,11 +14,13 @@ class Incoming extends React.Component {
     this.state = {
       requestData: {
         incomingId: '(initialState)',
+        attrRequestId: '(initialState)',
         timestamp: '(initialState)',
       }
     }
 
     this.incomingIdHandler = this.incomingIdHandler.bind(this);
+    this.requestIdHandler = this.requestIdHandler.bind(this);
     this.timestampHandler = this.timestampHandler.bind(this);
 
     this.addDocTypeHandler = this.addDocTypeHandler.bind(this);
@@ -33,6 +35,18 @@ class Incoming extends React.Component {
           {}, 
           this.state.requestData,
           {incomingId: event.target.value}
+        )
+      }
+    );
+  }
+
+  requestIdHandler(event) {
+    this.setState(
+      {
+        requestData: Object.assign(
+          {}, 
+          this.state.requestData,
+          {attrRequestId: event.target.value}
         )
       }
     );
@@ -76,6 +90,10 @@ class Incoming extends React.Component {
           <br/>
           <label>Incoming id: </label>
           <input type="text" onChange={this.incomingIdHandler}/>
+
+          <br/>
+          <label>RequestId: </label>
+          <input type="text" onChange={this.requestIdHandler}/>
 
           <br/>
           <label>Timestamp: </label>

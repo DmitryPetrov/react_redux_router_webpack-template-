@@ -20,6 +20,7 @@ function Incoming(props) {
       <p>
         <b>Request name: {request.requestName}</b>
         <br/>Request id: {request.requestId}
+        <br/>Response id: {request.responseId}
       </p>
       <ul>
         {docTypeList}
