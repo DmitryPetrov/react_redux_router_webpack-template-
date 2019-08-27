@@ -16,7 +16,7 @@ export var getRequestStatusRequest = {
 					toDate: '(initialState)',
 					accounts: [
 						{
-							bankName: '(initialState)',
+							bankName: '(initialState)'
 						}
 					],
 				}
