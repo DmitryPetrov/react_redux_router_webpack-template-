@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import store from './../Store';
+import store from './../store';
 import { addDocType } from './DocTypeList/actionCreatorList';
 import { incomingRequest } from './actionCreatorList';
 import MessageFromServer from './../components/MessageFromServer'

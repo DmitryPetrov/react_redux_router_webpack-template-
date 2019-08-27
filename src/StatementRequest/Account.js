@@ -1,9 +1,9 @@
 import React from 'react';
 
-import store from './../../Store';
-import {setAccount, setBankBIC, setBankName, removeAcc} from './ActionCreators'
+import store from './../store';
+import { updateAccountData, removeAccount} from './actionCreatorList'
 
-class AccountComponent extends React.Component {
+class Account extends React.Component {
   constructor(props) {
     super(props);
 
@@ -11,28 +11,28 @@ class AccountComponent extends React.Component {
     this.bankBICHandler = this.bankBICHandler.bind(this);
     this.bankNameHandler = this.bankNameHandler.bind(this);
 
-    this.buttonHandler = this.buttonHandler.bind(this);
+    this.removeAccount = this.removeAccount.bind(this);
   }
 
   accountHandler(event) {
-    store.dispatch(setAccount(event.target.value, this.props.index));
+    store.dispatch(updateAccountData({account: event.target.value}, this.props.index));
   }
   bankBICHandler(event) {
-    store.dispatch(setBankBIC(event.target.value, this.props.index));
+    store.dispatch(updateAccountData({bankBIC: event.target.value}, this.props.index));
   }
   bankNameHandler(event) {
-    store.dispatch(setBankName(event.target.value, this.props.index));
+    store.dispatch(updateAccountData({bankName: event.target.value}, this.props.index));
   }
 
-  buttonHandler(event) {
+  removeAccount(event) {
     event.preventDefault();
-    store.dispatch(removeAcc(this.props.index));
+    store.dispatch(removeAccount(this.props.index));
   }
 
   render() {
     return (
-      <div className="AccountComponent">
-        <form method="post" onSubmit={this.buttonHandler}>
+      <div className="Account">
+        <form method="post" onSubmit={this.removeAccount}>
           <label>account: </label>
           <input type="text" onChange={this.accountHandler}/>
 
@@ -52,4 +52,4 @@ class AccountComponent extends React.Component {
   }
 }
 
-export default AccountComponent;
+export default Account;

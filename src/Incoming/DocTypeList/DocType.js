@@ -1,6 +1,6 @@
 import React from 'react';
 
-import store from './../../Store';
+import store from './../../store';
 import {setDocType, removeDocType} from './actionCreatorList'
 
 class DocType extends React.Component {

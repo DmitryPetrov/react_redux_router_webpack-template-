@@ -1,19 +1,19 @@
 import React from 'react';
 
-import AccountComponent from './AccountComponent'
+import Account from './Account'
 
-function AccountListComponent(props) {
+function AccountList(props) {
   const list = props.accounts.map((item, index) => {
     if(item !== undefined){
       return (
         <div key={index}>
           <br/>
-          <AccountComponent index={index}/>
+          <Account index={index}/>
         </div>)
       }
     return <div key={index}></div>;
   });
-  return <div className="AccountListComponent">{list}</div>;
+  return <div className="AccountList">{list}</div>;
 }
 
-export default AccountListComponent;
+export default AccountList;

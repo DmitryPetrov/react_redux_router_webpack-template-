@@ -1,36 +1,37 @@
-export var statementRequestData = {
+const DATA = {
     docDate: '(initialState)',
     docId: '(initialState)',
     docNumber: '(initialState)',
-
     fromDate: '(initialState)',
     orgId: '(initialState)',
     orgInn: '(initialState)',
     orgName: '(initialState)',
     toDate: '(initialState)',
-    
-    accounts: [],
-};
-
-export var accounts = {
-    acc: [
+    accounts: [
         {
-            account: '(initialState)',
-            bankBIC: '(initialState)',
-            bankName: '(initialState)',
+            account: "(initialState)", 
+            bankBIC: "(initialState)", 
+            bankName: "(initialState)",
         }
     ],
 };
 
-export var accData = {
-    account: '(initialState)',
-    bankBIC: '(initialState)',
-    bankName: '(initialState)',
-};
-
-export var statementRequestRequest = {
+const REQUEST = {
     isFail: '(initialState)',
     isLoading: '(initialState)',
     isSuccessed: '(initialState)',
     message: '(initialState)',
+};
+
+export const statementRequest = {
+    data: DATA,
+    request: REQUEST,
+}
+
+
+
+export var accountData = {
+    account: "(initialState)", 
+    bankBIC: "(initialState)", 
+    bankName: "(initialState)",
 };

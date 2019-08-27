@@ -1,6 +1,36 @@
 import axios from 'axios';
 
-import * as types from './ActionTypes';
+import * as types from './actionTypeList';
+
+const STATMENT_REQUEST_URL = '/request/new/statementRequest';
+
+export function updateData(data) {
+	return {
+		type: types.UPDATE_DATA,
+		data: data,
+	}
+}
+
+export function updateAccountData(data, index) {
+	return {
+		type: types.UPDATE_ACCOUNT_DATA,
+		index: index,
+		data: data,
+	}
+}
+
+export function addAccount() {
+	return {
+		type: types.ADD_ACCOUNT,
+	};
+}
+
+export function removeAccount(index) {
+	return {
+		type: types.REMOVE_ACCOUNT,
+		index: index,
+	};
+}
 
 function statementRequestIsLoading() {
 	return {
@@ -8,7 +38,7 @@ function statementRequestIsLoading() {
 		isFail: false,
 		isLoading: true,
 		isSuccessed: false,
-		message: '"/statementRequest" is loading',
+		message: '"' + STATMENT_REQUEST_URL + '" is loading',
 		response: null,
 	};
 }
@@ -19,7 +49,7 @@ function statementRequestSuccessed(response) {
 		isFail: false,
 		isLoading: false,
 		isSuccessed: true,
-		message: '"/statementRequest" successed',
+		message: '"' + STATMENT_REQUEST_URL + '" successed',
 		response: response,
 	};
 }
@@ -30,7 +60,7 @@ function statementRequestFailed(errorMessage) {
 		isFail: true,
 		isLoading: false,
 		isSuccessed: false,
-		message: '"/statementRequest" failed',
+		message: '"' + STATMENT_REQUEST_URL + '" failed',
 		response: errorMessage,
 	};
 }
@@ -39,7 +69,7 @@ export function statementRequestRequest(requestBody) {
   return (dispatch) => {
     dispatch(statementRequestIsLoading());
     axios
-      .post('/sendRequests/statementRequest', requestBody)
+      .post(STATMENT_REQUEST_URL, requestBody)
       .then(response => {
         dispatch(statementRequestSuccessed(response.data));
       })

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import store from './../Store';
+import store from './../store';
 import { setUserName, setPassword } from './DataActionCreators';
 import MessageFromServer from './../components/MessageFromServer.js'
 import { authorizationRequest } from './RequestActionCreators';

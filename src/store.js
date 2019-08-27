@@ -3,7 +3,8 @@ import thunk from 'redux-thunk';
 
 import rootReducer from './RootReducer.js';
 import { authorizationData, authorizationRequest } from './Authorization/InitialState'
-import { statementRequestData, statementRequestRequest, accounts } from './StatementRequest/InitialState'
+import { statementRequest } from './StatementRequest/initialState'
+
 import { requestListRequest } from './RequestList/initialState'
 import { getRequestStatusRequest } from './RequestList/Request/initialState'
 import { incomingDocTypes, incomingRequest } from './Incoming/initialState'
@@ -14,9 +15,7 @@ const initialState = {
   authorizationData: Object.assign({}, authorizationData),
   authorizationRequest: Object.assign({}, authorizationRequest),
   
-  statementRequestData: Object.assign({}, statementRequestData),
-  statementRequestRequest: Object.assign({}, statementRequestRequest),  
-  statementRequestDataAccounts: Object.assign({}, accounts),
+  statementRequest: Object.assign({}, statementRequest),
   
   requestListRequest: Object.assign({}, requestListRequest),
 

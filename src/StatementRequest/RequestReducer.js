@@ -1,4 +1,4 @@
-import * as types from './ActionTypes';
+import * as types from './actionTypeList';
 
 export function statementRequestRequestReducer(state = false, action) {
   if (action.type === types.STATMENT_REQUEST_IS_LOADING) {
@@ -30,5 +30,6 @@ export function statementRequestRequestReducer(state = false, action) {
       response: action.response,
     });
   }
+
   return state;
 }

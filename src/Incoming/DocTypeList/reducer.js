@@ -1,7 +1,7 @@
 import * as types from './../actionTypeList';
 import { docTypeData } from './../initialState'
 
-export function docTypeReducer(state = false, action) {    console.log("docTypeReducer");
+export function docTypeReducer(state = false, action) {
 
   if (action.type === types.SET_DOC_TYPE) {
     let index = action.index;
