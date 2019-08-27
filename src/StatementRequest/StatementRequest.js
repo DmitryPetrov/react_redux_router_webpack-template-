@@ -37,7 +37,6 @@ class StatementRequest extends React.Component {
     return (
       <div className="StatementRequest">
         <StatementRequestView />
-
         <AccountList accounts={this.props.data.accounts}/>
 
         <br/>
