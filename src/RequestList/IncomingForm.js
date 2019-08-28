@@ -2,12 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import store from './../store';
-import { addDocType } from './DocTypeList/actionCreatorList';
+import { addDocType } from './actionCreatorList';
 import { incomingRequest } from './actionCreatorList';
-import MessageFromServer from './../components/MessageFromServer'
-import DocTypelist from './DocTypeList/DocTypeList'
+import DocTypelist from './DocTypeList'
 
-class Incoming extends React.Component {
+class IncomingForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -85,10 +84,10 @@ class Incoming extends React.Component {
 
   render() {
     return (
-      <div className="Incoming">
+      <div className="IncomingForm">
         <form method="post" id="StatementRequestForm" onSubmit={this.submitHandler} >
           <br/>
-          <label>Incoming id: </label>
+          <label>IncomingForm id: </label>
           <input type="text" onChange={this.incomingIdHandler}/>
 
           <br/>
@@ -108,7 +107,6 @@ class Incoming extends React.Component {
         <br/>
         <input type="submit" form="StatementRequestForm" value="Отправить" />
 
-        <MessageFromServer request={this.props.incomingResponse} />
       </div>
       )
   }
@@ -116,7 +114,6 @@ class Incoming extends React.Component {
 
 function mapStateToProps(store) { 
   return {
-    incomingResponse: store.incomingRequest,
     incomingDocTypes: store.incomingDocTypes,
   }
 }
@@ -127,5 +124,5 @@ function mapDispatchToProps(dispatch) {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Incoming);
+export default connect(mapStateToProps, mapDispatchToProps)(IncomingForm);
 

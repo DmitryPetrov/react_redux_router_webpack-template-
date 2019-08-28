@@ -4,13 +4,10 @@ import { authorizationDataReducer } from "./Authorization/DataReducer";
 import { authorizationRequestReducer } from "./Authorization/RequestReducer";
 
 import { statementRequestReducer } from "./StatementRequest/reducer";
-
 import { requestListReducer } from "./RequestList/reducer";
+import { nextStepReducer } from "./RequestList/reducer";
 
-import { getRequestStatusReducer } from "./RequestList/Request/reducer";
-
-import { docTypeReducer } from "./Incoming/DocTypeList/reducer";
-import { incomingReducer } from "./Incoming/reducer";
+import { docTypeReducer } from "./RequestList/reducer";
 
 
 
@@ -19,13 +16,10 @@ const rootReducer = combineReducers({
 	authorizationRequest: authorizationRequestReducer,
 	
 	statementRequest: statementRequestReducer,
-	
-	requestListRequest: requestListReducer,
-
-	getRequestStatusRequest: getRequestStatusReducer,
+	requestList: requestListReducer,
+	nextStep: nextStepReducer,
 
 	incomingDocTypes: docTypeReducer,
-	incomingRequest: incomingReducer,
 
 })
 

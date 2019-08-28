@@ -1,13 +1,13 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import rootReducer from './RootReducer.js';
+import rootReducer from './rootReducer.js';
 import { authorizationData, authorizationRequest } from './Authorization/InitialState'
 import { statementRequest } from './StatementRequest/initialState'
 
 import { requestListRequest } from './RequestList/initialState'
-import { getRequestStatusRequest } from './RequestList/Request/initialState'
-import { incomingDocTypes, incomingRequest } from './Incoming/initialState'
+import { getRequestStatusRequest } from './RequestList/initialState'
+import { incomingDocTypes, incomingRequest } from './RequestList/initialState'
 
 
 
@@ -17,7 +17,7 @@ const initialState = {
   
   statementRequest: Object.assign({}, statementRequest),
   
-  requestListRequest: Object.assign({}, requestListRequest),
+  requestList: Object.assign({}, requestListRequest),
 
   getRequestStatusRequest: Object.assign({}, getRequestStatusRequest),
 
