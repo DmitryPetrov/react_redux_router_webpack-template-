@@ -8,6 +8,7 @@ import Statement from './Statement'
 
 function StatementDocument(props)  {
   const header = <b>Request name: {props.request.requestName}</b>;
+  console.log("StatementDocument ");
 
   if (props.showJson == true) {
     return (

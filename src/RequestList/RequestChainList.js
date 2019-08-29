@@ -19,17 +19,19 @@ class RequestChainList extends React.Component {
   }
 
   render() {
-    let chainList = this.props.request.response.requestChainList;
-    if (this.props.nextStep.isSuccessed === true) {
-      for (let i = 0; i < chainList.length; i++) {
-        if (this.props.nextStep.response.requestChain.responseId === chainList[i].responseId) {
-          chainList[i] = this.props.nextStep.response.requestChain;
-        }
-      }
-    }
-
     let list = null;
     if (this.props.request.isSuccessed === true) {
+
+      let chainList = this.props.request.response.requestChainList;
+      if (this.props.nextStep.isSuccessed === true) {
+        for (let i = 0; i < chainList.length; i++) {
+          if (this.props.nextStep.response.requestChain.responseId === chainList[i].responseId) {
+              console.log("RequestChainList ");
+            chainList[i] = this.props.nextStep.response.requestChain;
+          }
+        }
+      }
+
       list = itemList(RequestChain, chainList);
     }
 
@@ -43,6 +45,8 @@ class RequestChainList extends React.Component {
 }
 
 function mapStateToProps(store) { 
+  console.log("RequestChainList mapStateToProps");
+  console.log(store.nextStep);
   return {
     request: store.requestList,
     nextStep: store.nextStep,

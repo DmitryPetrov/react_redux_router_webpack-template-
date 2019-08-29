@@ -13,13 +13,12 @@ class IncomingForm extends React.Component {
     this.state = {
       requestData: {
         incomingId: '(initialState)',
-        attrRequestId: '(initialState)',
+        attrRequestId: this.props.responseId,
         timestamp: '(initialState)',
       }
     }
 
     this.incomingIdHandler = this.incomingIdHandler.bind(this);
-    this.requestIdHandler = this.requestIdHandler.bind(this);
     this.timestampHandler = this.timestampHandler.bind(this);
 
     this.addDocTypeHandler = this.addDocTypeHandler.bind(this);
@@ -34,18 +33,6 @@ class IncomingForm extends React.Component {
           {}, 
           this.state.requestData,
           {incomingId: event.target.value}
-        )
-      }
-    );
-  }
-
-  requestIdHandler(event) {
-    this.setState(
-      {
-        requestData: Object.assign(
-          {}, 
-          this.state.requestData,
-          {attrRequestId: event.target.value}
         )
       }
     );
@@ -87,12 +74,8 @@ class IncomingForm extends React.Component {
       <div className="IncomingForm">
         <form method="post" id="StatementRequestForm" onSubmit={this.submitHandler} >
           <br/>
-          <label>IncomingForm id: </label>
+          <label>Incoming id: </label>
           <input type="text" onChange={this.incomingIdHandler}/>
-
-          <br/>
-          <label>RequestId: </label>
-          <input type="text" onChange={this.requestIdHandler}/>
 
           <br/>
           <label>Timestamp: </label>

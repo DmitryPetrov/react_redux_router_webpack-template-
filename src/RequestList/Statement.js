@@ -4,13 +4,13 @@ import { withExpandButton } from './withExpandButton';
 
 
 function Statement(props)  {
-  const header = <b>Doc type: {props.response.docType}</b>;
+  const header = <b>Doc type: {props.item.docType}</b>;
 
   if (props.showJson == true) {
     return (
       <div className="Statement">
         <p>{header}</p>
-        <pre>{JSON.stringify(props.response, undefined, 2)}</pre>
+        <pre>{JSON.stringify(props.item, undefined, 2)}</pre>
       </div>
     )
   }
@@ -19,9 +19,9 @@ function Statement(props)  {
     <div className="Statement">
       <p>
         {header}
-        <br/>Org name: {props.request.orgName}
-        <br/>From date: {props.request.fromDate}
-        <br/>To date: {props.request.toDate}       
+        <br/>Org name: {props.item.orgName}
+        <br/>From date: {props.item.fromDate}
+        <br/>To date: {props.item.toDate}       
       </p>
     </div>
   );

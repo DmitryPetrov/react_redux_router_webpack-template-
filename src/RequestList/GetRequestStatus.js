@@ -15,10 +15,21 @@ function GetRequestStatus(props) {
     )
   }
 
+  if (props.request.notProcessedYet === true) {
+    return (
+      <div className="GetRequestStatus">
+        <p>
+          {header}
+          <br/>State: NOT PROCESSED YET
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="GetRequestStatus">
       <p>{header}</p>
-      <StateResponse response={props.request.stateResponseList[0]}/>
+      <StateResponse item={props.request.stateResponseList[0]}/>
     </div>
   );
 }
