@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { RequestStyle } from './../style';
+
 export function withExpandButton(Component) {
   return class extends React.Component {
     constructor(props) {
@@ -28,7 +30,7 @@ export function withExpandButton(Component) {
       }
 
       return (
-        <div>
+        <div style={RequestStyle}>
           <Component  {...props}/>
           <input type="button" value={this.state.buttonName} onClick={this.buttonHandler}/>
         </div>

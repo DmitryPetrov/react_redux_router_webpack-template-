@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import { requestListRequest } from './actionCreatorList';
 import RequestChain from './RequestChain'
 import { itemList } from './itemList'
-
-import GetRequestStatus from './GetRequestStatus';
+import { RequestChainListStyle } from './../style';
 
 class RequestChainList extends React.Component {
   constructor(props) {
@@ -26,7 +25,6 @@ class RequestChainList extends React.Component {
       if (this.props.nextStep.isSuccessed === true) {
         for (let i = 0; i < chainList.length; i++) {
           if (this.props.nextStep.response.requestChain.responseId === chainList[i].responseId) {
-              console.log("RequestChainList ");
             chainList[i] = this.props.nextStep.response.requestChain;
           }
         }
@@ -36,7 +34,7 @@ class RequestChainList extends React.Component {
     }
 
     return(
-      <div className="RequestChainList">
+      <div className="RequestChainList" style={RequestChainListStyle}>
         <input type="submit" value="Refresh" onClick={this.refreshHandler}/>
         {list}
       </div>
@@ -45,8 +43,6 @@ class RequestChainList extends React.Component {
 }
 
 function mapStateToProps(store) { 
-  console.log("RequestChainList mapStateToProps");
-  console.log(store.nextStep);
   return {
     request: store.requestList,
     nextStep: store.nextStep,

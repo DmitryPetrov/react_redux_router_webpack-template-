@@ -5,6 +5,8 @@ import store from './../store';
 import { addDocType } from './actionCreatorList';
 import { incomingRequest } from './actionCreatorList';
 import DocTypelist from './DocTypeList'
+import { RequestStyle } from './../style';
+
 
 class IncomingForm extends React.Component {
   constructor(props) {
@@ -71,7 +73,7 @@ class IncomingForm extends React.Component {
 
   render() {
     return (
-      <div className="IncomingForm">
+      <div className="IncomingForm" style={RequestStyle}>
         <form method="post" id="StatementRequestForm" onSubmit={this.submitHandler} >
           <br/>
           <label>Incoming id: </label>

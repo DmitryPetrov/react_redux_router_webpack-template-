@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { nextStepRequest } from './actionCreatorList';
-import { withExpandButton } from './withExpandButton';
 import IncomingForm from './IncomingForm';
 
 import StatmentRequest from './StatmentRequest';
 import GetRequestStatus from './GetRequestStatus';
 import Incoming from './Incoming';
 import StatementDocument from './StatementDocument';
+
+import { RequestChainStyle } from './../style';
 
 class RequestChain extends React.Component {
   constructor(props) {
@@ -41,26 +42,18 @@ class RequestChain extends React.Component {
   render() {
     const head = <h2>Request response id: {this.props.item.responseId}</h2>;
 
-    if (this.props.showJson == true) {
-      return (
-        <div className="RequestChain">
-          {head}
-          <pre>{JSON.stringify(this.props.item, undefined, 2)}</pre>
-          <input type="button" value="Next step" onClick={this.nextStepHandler}/>
-        </div>
-      )
-    }
-
     return (
-      <div className="RequestChain">
+      <div className="RequestChain" style={RequestChainStyle}>
         {head}
-        <p>Phase: {this.props.item.phase}</p>
+        <p>
+          <label>Phase: {this.props.item.phase}  </label>
+          <input type="button" value="Next step" onClick={this.nextStepHandler}/>
+        </p>
         {renderIfNotNull(StatmentRequest, this.props.item.statementRequest)}
         {renderIfNotNull(GetRequestStatus, this.props.item.getRequestStatus)}
         {renderIfNotNull(Incoming, this.props.item.incoming)}
         {renderIfNotNull(StatementDocument, this.props.item.statementDocument)}
         {renderIncomingForm(this.props.item.incoming, this.state.renderIncomingForm, this.props.item.responseId)}
-        <input type="button" value="Next step" onClick={this.nextStepHandler}/>
       </div>
       )
   }
@@ -90,5 +83,5 @@ function mapDispatchToProps(dispatch) {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withExpandButton(RequestChain));
+export default connect(mapStateToProps, mapDispatchToProps)(RequestChain);
 

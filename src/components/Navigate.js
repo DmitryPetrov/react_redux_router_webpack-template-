@@ -9,13 +9,10 @@ function Navigate() {
           <Link to="/">Authorization</Link>
         </li>
         <li>
-          <Link to="/request/statementRequest">....StatmentRequest</Link>
+          <Link to="/request/new/statementRequest">....StatmentRequest</Link>
         </li>
         <li>
-          <Link to="/request/incoming">....Incoming</Link>
-        </li>
-        <li>
-          <Link to="/requestList">....RequestList</Link>
+          <Link to="/request/list">....RequestList</Link>
         </li>
       </ul>
     </nav>

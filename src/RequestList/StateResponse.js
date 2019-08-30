@@ -3,7 +3,7 @@ import React from 'react';
 import { withExpandButton } from './withExpandButton';
 
 function StateResponse(props) {
-  if (props.showJson == true) {
+  if (props.showJson === true) {
     return (
       <div className="StateResponse">
         <p><b>Doc type: {props.item.docType}</b></p>

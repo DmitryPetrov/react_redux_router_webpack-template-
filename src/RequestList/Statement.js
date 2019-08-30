@@ -6,7 +6,7 @@ import { withExpandButton } from './withExpandButton';
 function Statement(props)  {
   const header = <b>Doc type: {props.item.docType}</b>;
 
-  if (props.showJson == true) {
+  if (props.showJson === true) {
     return (
       <div className="Statement">
         <p>{header}</p>

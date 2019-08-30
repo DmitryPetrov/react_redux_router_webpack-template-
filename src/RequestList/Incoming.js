@@ -5,7 +5,7 @@ import {withExpandButton} from './withExpandButton';
 function Incoming(props) {
   const header = <b>Request name: {props.request.requestName}</b>;
 
-  if (props.showJson == true) {
+  if (props.showJson === true) {
     return (
       <div className="Incoming">
         <p>{header}</p>

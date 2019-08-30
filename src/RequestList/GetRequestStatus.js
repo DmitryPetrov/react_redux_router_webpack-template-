@@ -6,7 +6,7 @@ import StateResponse from './StateResponse'
 function GetRequestStatus(props) {
   const header = <b>Request name: {props.request.requestName}</b>;
 
-  if (props.showJson == true) {
+  if (props.showJson === true) {
     return (
       <div className="GetRequestStatus">
         <p>{header}</p>
@@ -34,5 +34,5 @@ function GetRequestStatus(props) {
   );
 }
 
-export default (GetRequestStatus);
+export default withExpandButton(GetRequestStatus);
 

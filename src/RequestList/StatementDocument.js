@@ -6,39 +6,70 @@ import { withExpandButton } from './withExpandButton';
 import StateResponse from './StateResponse'
 import Statement from './Statement'
 
-function StatementDocument(props)  {
-  const header = <b>Request name: {props.request.requestName}</b>;
-  console.log("StatementDocument ");
+class StatementDocument extends React.Component  {
+  constructor(props) {
+    super(props);
 
-  if (props.showJson == true) {
-    return (
-      <div className="StatementDocument">
-        <p>{header}</p>
-        <pre>{JSON.stringify(props.request, undefined, 2)}</pre>
-      </div>
-    )
+    this.state = {
+      show: false,
+      buttonName: 'Show response',
+    }
+
+    this.buttonHandler = this.buttonHandler.bind(this);
   }
 
-  if (props.request.notProcessedYet === true) {
+  buttonHandler(event) {
+    if (this.state.show) {
+      this.setState({show: false, buttonName: 'Show response',});
+    } else {
+      this.setState({show: true, buttonName: 'Hide response',});
+    }
+  }
+
+  render(){
+    const header = <b>Request name: {this.props.request.requestName}</b>;
+    console.log("StatementDocument ");
+
+    if (this.props.showJson === true) {
+      return (
+        <div className="StatementDocument">
+          <p>{header}</p>
+          <pre>{JSON.stringify(this.props.request, undefined, 2)}</pre>
+        </div>
+      )
+    }
+
+    if (this.props.request.notProcessedYet === true) {
+      return (
+        <div className="StatementDocument">
+          <p>
+            {header}
+            <br/>State: NOT PROCESSED YET
+          </p>
+        </div>
+      );
+    }
+
+    let stateResponseData = null;
+    let statementData = null;
+    if (this.state.show) {
+      stateResponseData = itemList(StateResponse, this.props.request.stateResponseList);
+      statementData = itemList(Statement, this.props.request.statementList);
+    }
+
     return (
       <div className="StatementDocument">
         <p>
           {header}
-          <br/>State: NOT PROCESSED YET
+          <br />
+          <input type="button" value={this.state.buttonName} onClick={this.buttonHandler}/>
+          
+          {stateResponseData}
+          {statementData}
         </p>
       </div>
     );
   }
-
-  return (
-    <div className="StatementDocument">
-      <p>
-        {header}
-        {itemList(StateResponse, props.request.stateResponseList)}
-        {itemList(Statement, props.request.statementList)}
-      </p>
-    </div>
-  );
 }
 
 export default withExpandButton(StatementDocument);

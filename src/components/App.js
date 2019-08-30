@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
 
 import store from './../store.js';
@@ -11,15 +11,15 @@ import Navigate from './Navigate';
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
         <Navigate />
         
         <Switch>
           <Route path="/" exact component={Authorization} />
-          <Route path='/request/statementRequest' component={StatmentRequest}/>
-          <Route path='/requestList' component={RequestChainList}/>
+          <Route path='/request/new/statementRequest' component={StatmentRequest}/>
+          <Route path='/request/list' component={RequestChainList}/>
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 }
