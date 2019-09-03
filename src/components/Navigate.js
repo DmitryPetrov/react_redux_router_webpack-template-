@@ -14,6 +14,9 @@ function Navigate() {
         <li>
           <Link to="/request/list">....RequestList</Link>
         </li>
+        <li>
+          <Link to="/soapMessage/list">....SoapMessageList</Link>
+        </li>
       </ul>
     </nav>
   );

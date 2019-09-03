@@ -6,6 +6,7 @@ import store from './../store.js';
 import Authorization from './../Authorization/Component';
 import StatmentRequest from './../StatementRequest/StatementRequest';
 import RequestChainList from './../RequestList/RequestChainList';
+import MessageList from './../SoapMessageList/MessageList';
 import Navigate from './Navigate';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" exact component={Authorization} />
           <Route path='/request/new/statementRequest' component={StatmentRequest}/>
           <Route path='/request/list' component={RequestChainList}/>
+          <Route path='/soapMessage/list' component={MessageList}/>
         </Switch>
       </HashRouter>
     </Provider>
