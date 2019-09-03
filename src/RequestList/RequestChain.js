@@ -29,7 +29,6 @@ class RequestChain extends React.Component {
       this.setState({renderIncomingForm: true});
     }
     if (this.props.item.phase === "INCOMING") {
-      console.log("RequestChain nextStepHandler HII");
       this.setState({renderIncomingForm: null});
       this.props.fetchData(this.props.item.responseId);
     }

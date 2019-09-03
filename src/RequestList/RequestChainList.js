@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { requestListRequest } from './actionCreatorList';
-import RequestChain from './RequestChain'
-import { itemList } from './../functions/itemList'
+import RequestChain from './RequestChain';
+import { itemList } from './../functions/itemList';
 import { RequestChainListStyle } from './../style';
 
 class RequestChainList extends React.Component {

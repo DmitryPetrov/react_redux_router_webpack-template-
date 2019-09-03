@@ -34,12 +34,12 @@ function soapMessageListFailed(errorMessage) {
 		response: errorMessage,
 	};
 }
-export function soapMessageListRequest(requestParam) {
+export function soapMessageListRequest(url, requestParam) {
 
   return (dispatch) => {
     dispatch(soapMessageListIsLoading());
     axios
-      .get(SOAP_MESSAGE_LIST_URL )
+      .get(url)
       .then(response => {
         dispatch(soapMessageListSuccessed(response.data));
       })

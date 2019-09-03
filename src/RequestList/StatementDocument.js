@@ -28,7 +28,6 @@ class StatementDocument extends React.Component  {
 
   render(){
     const header = <b>Request name: {this.props.request.requestName}</b>;
-    console.log("StatementDocument ");
 
     if (this.props.showJson === true) {
       return (

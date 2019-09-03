@@ -82,8 +82,6 @@ class IncomingForm extends React.Component {
 }
 
 function mapStateToProps(store) { 
-console.log("IncomingForm mapStateToProps")
-console.log(store.incoming)
   return {
     incoming: Object.assign({}, store.incoming),
   }
