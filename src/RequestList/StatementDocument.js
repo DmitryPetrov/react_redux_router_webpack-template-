@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { itemList } from './itemList'
+import { itemList } from './../functions/itemList'
 import { withExpandButton } from './withExpandButton';
 
 import StateResponse from './StateResponse'

@@ -1,12 +1,14 @@
 import React from 'react';
 
+import { formatXml } from './../functions/formatXml';
+
 function SoapMessageList(props) {
   if (props.list === null) {
     return (<div className="SoapMessageList"></div>);
   }
 
   const list = props.list.map((item, index) => {
-      return (<p>{xmlPrint(item)}</p>);
+      return (<pre>{formatXml(item)}</pre>);
   });
 
   return (
@@ -17,14 +19,6 @@ function SoapMessageList(props) {
     </div>
   );
 }
-
-function xmlPrint(xml) {
-  var format = require('xml-formatter');
- 
-  var formattedXml = format(xml);
-  return formattedXml;
-}
-
 
 export default (SoapMessageList);
 
