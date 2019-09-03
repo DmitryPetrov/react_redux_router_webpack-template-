@@ -23,19 +23,13 @@ class MessageList extends React.Component  {
       );
     }
 
-    if (this.props.request.response.soapMessageList === null) {
-      return <div className="MessageList"></div>;
-    }
-
-    let list = itemList(Message, this.props.request.response.soapMessageList);
-
     return (
       <div className="MessageList">
         <input type="button" value="Refresh" onClick={this.refreshHandler}/>
         <br />
         <h3>SOAP messages:</h3>
         <br />
-        {list}
+        {itemList(Message, this.props.request.response.soapMessageList)}
       </div>
     );
   }

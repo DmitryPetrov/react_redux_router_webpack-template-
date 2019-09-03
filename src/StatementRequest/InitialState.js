@@ -1,3 +1,11 @@
+import { REQUEST } from './../globalInitialState'
+
+export var ACCOUT_DATA = {
+    account: "(initialState)", 
+    bankBIC: "(initialState)", 
+    bankName: "(initialState)",
+};
+
 const DATA = {
     docDate: '(initialState)',
     docId: '(initialState)',
@@ -7,31 +15,11 @@ const DATA = {
     orgInn: '(initialState)',
     orgName: '(initialState)',
     toDate: '(initialState)',
-    accounts: [
-        {
-            account: "(initialState)", 
-            bankBIC: "(initialState)", 
-            bankName: "(initialState)",
-        }
-    ],
+    accounts: [ACCOUT_DATA],
 };
 
-const REQUEST = {
-    isFail: '(initialState)',
-    isLoading: '(initialState)',
-    isSuccessed: '(initialState)',
-    message: '(initialState)',
-};
-
-export const statementRequest = {
+export const STATEMENT_REQUEST = {
     data: DATA,
     request: REQUEST,
 }
 
-
-
-export var accountData = {
-    account: "(initialState)", 
-    bankBIC: "(initialState)", 
-    bankName: "(initialState)",
-};

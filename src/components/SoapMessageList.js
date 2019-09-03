@@ -14,7 +14,6 @@ function SoapMessageList(props) {
   return (
     <div className="SoapMessageList">
       <h3>SOAP messages:</h3>
-      <br />
       {list}
     </div>
   );

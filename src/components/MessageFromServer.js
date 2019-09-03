@@ -26,9 +26,8 @@ function MessageFromServer(props) {
         <h2>Request status: {props.request.message}</h2>
         <h2>Server response status: {props.request.response.status}</h2>
         <h2>Message from server: {props.request.response.message}</h2>
-        <br />
         <SoapMessageList list={props.request.response.soapMessageList}/>
-        <ObjectFromServer object={props.request.response.object}/>
+        <ObjectFromServer object={props.request.response.requestChain}/>
       </div>
       );
   }

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import { nextStepRequest } from './actionCreatorList';
 import IncomingForm from './IncomingForm';
-
 import StatmentRequest from './StatmentRequest';
 import GetRequestStatus from './GetRequestStatus';
 import Incoming from './Incoming';

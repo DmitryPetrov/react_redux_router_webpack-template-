@@ -17,19 +17,18 @@ class DocType extends React.Component {
   }
 
   buttonHandler(event) {
-    event.preventDefault();
     store.dispatch(removeDocType(this.props.index));
   }
 
   render() {
     return (
       <div className="DocType">
-        <form method="post" onSubmit={this.buttonHandler}>
+        <form method="post" >
           <label>Doc type: </label>
           <input type="text" onChange={this.docTypeHandler}/>
 
           <br/>
-          <input type="submit" value="Remove" />
+          <input type="button" value="Remove" onClick={this.buttonHandler}/>
         </form>
       </div>
       )

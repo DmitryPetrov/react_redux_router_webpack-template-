@@ -2,28 +2,19 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import rootReducer from './rootReducer.js';
-import { authorizationData, authorizationRequest } from './Authorization/InitialState'
-
-import { statementRequest } from './StatementRequest/initialState'
-
-import { requestListRequest } from './RequestList/initialState'
-import { getRequestStatusRequest } from './RequestList/initialState'
-import { incomingDocTypes, incomingRequest } from './RequestList/initialState'
-
-import { soapMessageList } from './SoapMessageList/initialState'
+import { REQUEST } from './globalInitialState';
+import { authorizationData } from './Authorization/InitialState';
+import { STATEMENT_REQUEST } from './StatementRequest/initialState';
+import { INCOMING } from './RequestList/initialState';
 
 const initialState = {
   authorizationData: Object.assign({}, authorizationData),
-  authorizationRequest: Object.assign({}, authorizationRequest),
-  
-  statementRequest: Object.assign({}, statementRequest),
-  
-  requestList: Object.assign({}, requestListRequest),
-  getRequestStatusRequest: Object.assign({}, getRequestStatusRequest),
-  incomingDocTypes:  Object.assign({}, incomingDocTypes),
-  incomingRequest:  Object.assign({}, incomingRequest),
-
-  soapMessageList: Object.assign({}, statementRequest),
+  authorizationRequest: REQUEST,
+  statementRequest: STATEMENT_REQUEST,
+  requestList: REQUEST,
+  getRequestStatus: REQUEST,
+  incoming:  INCOMING,
+  soapMessageList: REQUEST,
 };
 
 const store = createStore(rootReducer, initialState , applyMiddleware(thunk));

@@ -1,15 +1,13 @@
 import * as types from './actionTypeList';
-import { accountData } from './initialState'
+import { ACCOUT_DATA} from './initialState'
 
 export function statementRequestReducer(state = false, action) {
-  //--------------------------------------------
   if (action.type === types.UPDATE_DATA) {
     let newState = Object.assign({}, state);
     let newData = Object.assign({}, newState.data, action.data);
     newState.data = newData;
     return newState;
   }
-
   if (action.type === types.UPDATE_ACCOUNT_DATA) {
     let index = action.index;
     let newState = Object.assign({}, state);
@@ -18,14 +16,13 @@ export function statementRequestReducer(state = false, action) {
     return newState;
   }
 
-  //--------------------------------------------
+
+
   if (action.type === types.ADD_ACCOUNT) {
-    let newState =  Object.assign({}, state);
-    let newAccount = Object.assign({}, accountData);
-    newState.data.accounts.push(newAccount);
+    let newState = Object.assign({}, state);   
+    newState.data.accounts.push(ACCOUT_DATA);
     return newState;
   }
-
   if (action.type === types.REMOVE_ACCOUNT) {
     let newState = Object.assign({}, state);
 
@@ -45,7 +42,8 @@ export function statementRequestReducer(state = false, action) {
     return newState; 
   }
 
-  //--------------------------------------------
+
+
   if (action.type === types.STATMENT_REQUEST_IS_LOADING) {
     let newState = Object.assign({}, state);
     newState.request = 
@@ -56,10 +54,8 @@ export function statementRequestReducer(state = false, action) {
         message: action.message,
         response: action.response,
       }
-
     return newState;
   }
-
   if (action.type === types.STATMENT_REQUEST_SUCCESSED) {
     let newState = Object.assign({}, state);
     newState.request = 
@@ -70,10 +66,8 @@ export function statementRequestReducer(state = false, action) {
         message: action.message,
         response: action.response,
       }
-
     return newState;
   }
-
   if (action.type === types.STATMENT_REQUEST_FAILED) {
     let newState = Object.assign({}, state);
     newState.request = 
@@ -84,9 +78,7 @@ export function statementRequestReducer(state = false, action) {
         message: action.message,
         response: action.response,
       }
-
     return newState;
   }
-
   return state;
 }

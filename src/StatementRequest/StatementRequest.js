@@ -2,28 +2,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import store from './../store';
-import MessageFromServer from './../components/MessageFromServer.js'
-import AccountList from './AccountList';
-import StatementRequestView from './StatementRequestView';
+import { itemList } from './../functions/itemList';
 import { statementRequestRequest, addAccount } from './actionCreatorList';
+import Account from './Account';
+import StatementRequestView from './StatementRequestView';
+import MessageFromServer from './../components/MessageFromServer.js';
+
 
 class StatementRequest extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {};
 
     this.addAccount = this.addAccount.bind(this);
     this.submit = this.submit.bind(this);
   }
 
   addAccount(event) {
-    event.preventDefault();
     store.dispatch(addAccount());
   }
 
   submit(event) {
-    event.preventDefault();
     let filteredAccounts =  this.props.data.accounts
       .filter(item => item !== undefined )
       .filter(item => item !== null);
@@ -37,7 +35,8 @@ class StatementRequest extends React.Component {
     return (
       <div className="StatementRequest">
         <StatementRequestView />
-        <AccountList accounts={this.props.data.accounts}/>
+        <br/>
+        {itemList(Account, this.props.data.accounts)}
 
         <br/>
         <input type="button" value="Add account" onClick={this.addAccount}/>      

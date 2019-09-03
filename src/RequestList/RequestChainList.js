@@ -18,25 +18,27 @@ class RequestChainList extends React.Component {
   }
 
   render() {
-    let list = null;
-    if (this.props.request.isSuccessed === true) {
+    if (this.props.request.isSuccessed !== true) {
+      return(
+        <div className="RequestChainList" style={RequestChainListStyle}>
+          <input type="submit" value="Refresh" onClick={this.refreshHandler}/>
+        </div>
+      );
+    }
 
-      let chainList = this.props.request.response.requestChainList;
-      if (this.props.nextStep.isSuccessed === true) {
-        for (let i = 0; i < chainList.length; i++) {
-          if (this.props.nextStep.response.requestChain.responseId === chainList[i].responseId) {
-            chainList[i] = this.props.nextStep.response.requestChain;
-          }
+    let chainList = this.props.request.response.requestChainList;
+    if (this.props.nextStep.isSuccessed === true) {
+      for (let i = 0; i < chainList.length; i++) {
+        if (this.props.nextStep.response.requestChain.responseId === chainList[i].responseId) {
+          chainList[i] = this.props.nextStep.response.requestChain;
         }
       }
-
-      list = itemList(RequestChain, chainList);
     }
 
     return(
       <div className="RequestChainList" style={RequestChainListStyle}>
         <input type="submit" value="Refresh" onClick={this.refreshHandler}/>
-        {list}
+        {itemList(RequestChain, chainList)}
       </div>
     )
   }

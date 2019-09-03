@@ -1,5 +1,7 @@
 import * as types from './actionTypeList';
 
+import { DOC_TYPE } from './initialState';
+
 export function nextStepReducer(state = false, action) {
   if (action.type === types.NEXT_STEP_IS_LOADING) {
     return Object.assign({}, state, {
@@ -34,19 +36,16 @@ export function nextStepReducer(state = false, action) {
 }
 
 
-const docTypeData = {docType: '(initialState)'};
 export function docTypeReducer(state = false, action) {
   if (action.type === types.SET_DOC_TYPE) {
-    let index = action.index;
     let newState = Object.assign({}, state);
-    newState.docTypes[index] = action.docType
+    newState.docTypes[action.index] = action.docType
     return newState;
   }
 
   if (action.type === types.ADD_DOC_TYPE) {
-    let newDocType = Object.assign({}, docTypeData);
-    let newState =  Object.assign({}, state);
-    newState.docTypes.push(newDocType.docType);
+    let newState = Object.assign({}, state);
+    newState.docTypes.push(DOC_TYPE);
     return newState;
   }
   
@@ -54,12 +53,11 @@ export function docTypeReducer(state = false, action) {
     let newState = Object.assign({}, state);
 
     let docTypeCount = 0;
-    newState.docTypes.filter((item) => {
-      if(item !== undefined){
+    for (var i = 0; i < newState.docTypes.length; i++) {
+      if(newState.docTypes[i] !== undefined){
         docTypeCount++;
       }
-      return 1;
-    });
+    }
 
     if (docTypeCount === 1) {
       return state;
