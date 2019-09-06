@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { withExpandButton } from './withExpandButton';
+import { JsonStyle } from './../style';
 
 
 function Statement(props)  {
@@ -10,7 +11,7 @@ function Statement(props)  {
     return (
       <div className="Statement">
         <p>{header}</p>
-        <pre>{JSON.stringify(props.item, undefined, 2)}</pre>
+        <pre style={JsonStyle}>{JSON.stringify(props.item, undefined, 2)}</pre>
       </div>
     )
   }

@@ -21,3 +21,8 @@ export const RequestStyle = {
   width: "390px", /*Фиксируем ширину блока*/
   marginRight: "5px",
 }
+
+export const JsonStyle = {
+  width:"390px",
+  overflow:"auto",
+}

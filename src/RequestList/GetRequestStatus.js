@@ -2,6 +2,8 @@ import React from 'react';
 
 import { withExpandButton } from './withExpandButton';
 import StateResponse from './StateResponse'
+import { JsonStyle } from './../style';
+
 
 function GetRequestStatus(props) {
   const header = <b>Request name: {props.request.requestName}</b>;
@@ -10,7 +12,7 @@ function GetRequestStatus(props) {
     return (
       <div className="GetRequestStatus">
         <p>{header}</p>
-        <pre>{JSON.stringify(props.request, undefined, 2)}</pre>
+        <pre style={JsonStyle}>{JSON.stringify(props.request, undefined, 2)}</pre>
       </div>
     )
   }

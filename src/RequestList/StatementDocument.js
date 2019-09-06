@@ -2,6 +2,7 @@ import React from 'react';
 
 import { itemList } from './../functions/itemList'
 import { withExpandButton } from './withExpandButton';
+import { JsonStyle } from './../style';
 
 import StateResponse from './StateResponse'
 import Statement from './Statement'
@@ -33,7 +34,7 @@ class StatementDocument extends React.Component  {
       return (
         <div className="StatementDocument">
           <p>{header}</p>
-          <pre>{JSON.stringify(this.props.request, undefined, 2)}</pre>
+          <pre style={JsonStyle}>{JSON.stringify(this.props.request, undefined, 2)}</pre>
         </div>
       )
     }
