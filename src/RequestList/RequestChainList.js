@@ -18,7 +18,7 @@ class RequestChainList extends React.Component {
   }
 
   render() {
-    if (this.props.request.isSuccessed !== true) {
+    if (this.props.requestList.isSuccessed !== true) {
       return(
         <div className="RequestChainList" style={RequestChainListStyle}>
           <input type="submit" value="Refresh" onClick={this.refreshHandler}/>
@@ -26,11 +26,21 @@ class RequestChainList extends React.Component {
       );
     }
 
-    let chainList = this.props.request.response.requestChainList;
+    let chainList = this.props.requestList.response.requestChainList;
+    chainList.map((item, index) => {
+      item.status = this.props.requestList.response.status;
+      item.message = this.props.requestList.response.message;
+      item.soapMessageList = this.props.requestList.response.soapMessageList;
+    });
+
+
     if (this.props.nextStep.isSuccessed === true) {
       for (let i = 0; i < chainList.length; i++) {
         if (this.props.nextStep.response.requestChain.responseId === chainList[i].responseId) {
           chainList[i] = this.props.nextStep.response.requestChain;
+          chainList[i].status = this.props.nextStep.response.status;
+          chainList[i].message = this.props.nextStep.response.message;
+          chainList[i].soapMessageList = this.props.nextStep.response.soapMessageList;
         }
       }
     }
@@ -46,7 +56,7 @@ class RequestChainList extends React.Component {
 
 function mapStateToProps(store) { 
   return {
-    request: store.requestList,
+    requestList: store.requestList,
     nextStep: store.nextStep,
   }
 }
