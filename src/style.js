@@ -20,6 +20,20 @@ export const RequestStyle = {
   fontSize: "12px",
   width: "390px", /*Фиксируем ширину блока*/
   marginRight: "5px",
+  marginTop: "5px",
+  marginBottom: "5px",  
+}
+
+export const ErrorStyle = {
+  clear: "both",
+  border: "1px solid black",
+  backgroundColor: "#CD5C5C",
+  float: "left", /*Задаем обтекание*/
+  fontSize: "12px",
+  width: "1600px", /*Фиксируем ширину блока*/
+  marginRight: "5px",
+  marginTop: "5px",
+  marginBottom: "5px",
 }
 
 export const XmlStyle = {
