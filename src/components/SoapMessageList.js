@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { formatXml } from './../functions/formatXml';
+import { XmlStyle } from './../style';
+
 
 function SoapMessageList(props) {
   if (props.list === null) {
@@ -8,7 +10,7 @@ function SoapMessageList(props) {
   }
 
   const list = props.list.map((item, index) => {
-      return (<pre>{formatXml(item)}</pre>);
+      return (<pre key={index} style={XmlStyle}>{formatXml(item)}</pre>);
   });
 
   return (

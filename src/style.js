@@ -22,6 +22,11 @@ export const RequestStyle = {
   marginRight: "5px",
 }
 
+export const XmlStyle = {
+  width:"1600px",
+  overflow:"auto",
+}
+
 export const JsonStyle = {
   width:"390px",
   overflow:"auto",
