@@ -1,5 +1,5 @@
 export const RequestChainListStyle = {
-  backgroundColor: "#e4e9f7",
+
 }
 
 export const RequestChainStyle = {
