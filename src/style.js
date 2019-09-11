@@ -39,6 +39,7 @@ export const ErrorStyle = {
 export const XmlStyle = {
   width:"1600px",
   overflow:"auto",
+  backgroundColor: "#cfdbe6",
 }
 
 export const JsonStyle = {
