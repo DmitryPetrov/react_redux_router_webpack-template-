@@ -7,6 +7,7 @@ import { incomingRequest } from './actionCreatorList';
 import DocType from './DocType';
 import { itemList } from './../functions/itemList'
 import { RequestStyle } from './../style';
+import DateInput from './../components/DateInput.js'
 
 
 class IncomingForm extends React.Component {
@@ -33,8 +34,8 @@ class IncomingForm extends React.Component {
     this.setState({incomingId: event.target.value});
   }
 
-  timestampHandler(event) {
-    this.setState({timestamp: event.target.value});
+  timestampHandler(date) {
+    this.setState({timestamp: date});
   }
 
   addDocTypeHandler(event) {
@@ -62,9 +63,7 @@ class IncomingForm extends React.Component {
           <label>Incoming id: </label>
           <input type="text" onChange={this.incomingIdHandler}/>
 
-          <br/>
-          <label>Timestamp: </label>
-          <input type="text" onChange={this.timestampHandler}/>
+          <DateInput labelText={"Timestamp"} dispatchFunc={this.timestampHandler}/>
         </form>
 
         <br/>        

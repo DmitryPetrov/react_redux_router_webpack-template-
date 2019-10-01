@@ -2,6 +2,9 @@ import React from 'react';
 
 import store from './../store';
 import { updateData } from './actionCreatorList'
+import DateWithTimezoneInput from './../components/DateWithTimezoneInput.js'
+import DateInput from './../components/DateInput.js'
+
 
 class StatementRequestView extends React.Component {
   constructor(props) {
@@ -18,8 +21,8 @@ class StatementRequestView extends React.Component {
     this.toDateHandler = this.toDateHandler.bind(this);
   }
 
-  docDateHandler(event) {
-    store.dispatch(updateData({docDate: event.target.value}));
+  docDateHandler(date) {
+    store.dispatch(updateData({docDate: date}));
   }
   docIdHandler(event) {
     store.dispatch(updateData({docId: event.target.value}));
@@ -28,8 +31,8 @@ class StatementRequestView extends React.Component {
     store.dispatch(updateData({docNumber: event.target.value}));
   }
 
-  fromDateHandler(event) {
-    store.dispatch(updateData({fromDate: event.target.value}));
+  fromDateHandler(date) {
+    store.dispatch(updateData({fromDate: date}));
   }
   orgIdHandler(event) {
     store.dispatch(updateData({orgId: event.target.value}));
@@ -40,8 +43,8 @@ class StatementRequestView extends React.Component {
   orgNameHandler(event) {
     store.dispatch(updateData({orgName: event.target.value}));
   }
-  toDateHandler(event) {
-    store.dispatch(updateData({toDate: event.target.value}));
+  toDateHandler(date) {
+    store.dispatch(updateData({toDate: date}));
   }
 
   render() {
@@ -49,10 +52,8 @@ class StatementRequestView extends React.Component {
       <div className="StatementRequestView">
         <form method="post" id="StatementRequestForm" onSubmit={this.submitHandler} >
           <br/>
-          <label>docDate: </label>
-          <input type="text" onChange={this.docDateHandler}/>
+          <DateInput labelText={"docDate"} dispatchFunc={this.docDateHandler}/>
 
-          <br/>
           <label>docId: </label>
           <input type="text" onChange={this.docIdHandler}/>
 
@@ -62,10 +63,8 @@ class StatementRequestView extends React.Component {
 
           <br/>
           <br/>
-          <label>fromDate: </label>
-          <input type="text" onChange={this.fromDateHandler}/>
+          <DateWithTimezoneInput labelText={"fromDate"} dispatchFunc={this.fromDateHandler}/>
 
-          <br/>
           <label>orgId: </label>
           <input type="text" onChange={this.orgIdHandler}/>
 
@@ -78,8 +77,7 @@ class StatementRequestView extends React.Component {
           <input type="text" onChange={this.orgNameHandler}/>
 
           <br/>
-          <label>toDate: </label>
-          <input type="text" onChange={this.toDateHandler}/>
+          <DateWithTimezoneInput labelText={"toDate"} dispatchFunc={this.toDateHandler}/>
         </form>
       </div>
       )
