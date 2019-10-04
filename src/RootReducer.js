@@ -1,14 +1,12 @@
 import { combineReducers } from 'redux';
 
-import { authorizationDataReducer } from "./Authorization/DataReducer";
-import { authorizationRequestReducer } from "./Authorization/RequestReducer";
+import { authorizationReducer } from "./Authorization/reducer";
 import { statementRequestReducer } from "./StatementRequest/reducer";
 import { requestListReducer, nextStepReducer, docTypeReducer } from "./RequestList/reducer";
 import { soapMessageListReducer } from "./SoapMessageList/reducer";
 
 const rootReducer = combineReducers({
-	authorizationData: authorizationDataReducer,
-	authorizationRequest: authorizationRequestReducer,
+	authorization: authorizationReducer,
 	statementRequest: statementRequestReducer,
 	requestList: requestListReducer,
 	nextStep: nextStepReducer,

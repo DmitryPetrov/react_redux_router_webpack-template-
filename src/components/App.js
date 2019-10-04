@@ -3,7 +3,7 @@ import { HashRouter, Route, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
 
 import store from './../store.js';
-import Authorization from './../Authorization/Component';
+import Authorization from './../Authorization/Authorization';
 import StatmentRequest from './../StatementRequest/StatementRequest';
 import RequestChainList from './../RequestList/RequestChainList';
 import MessageList from './../SoapMessageList/MessageList';

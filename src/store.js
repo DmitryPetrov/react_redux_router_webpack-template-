@@ -1,15 +1,14 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import rootReducer from './rootReducer.js';
+import rootReducer from './rootReducer';
 import { REQUEST } from './globalInitialState';
-import { authorizationData } from './Authorization/InitialState';
+import { AUTORIZATION } from './Authorization/initialState';
 import { STATEMENT_REQUEST } from './StatementRequest/initialState';
 import { INCOMING } from './RequestList/initialState';
 
 const initialState = {
-  authorizationData: Object.assign({}, authorizationData),
-  authorizationRequest: REQUEST,
+  authorization: AUTORIZATION,
   statementRequest: STATEMENT_REQUEST,
   requestList: REQUEST,
   getRequestStatus: REQUEST,
@@ -17,6 +16,6 @@ const initialState = {
   soapMessageList: REQUEST,
 };
 
-const store = createStore(rootReducer, initialState , applyMiddleware(thunk));
+const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
 
 export default store;
