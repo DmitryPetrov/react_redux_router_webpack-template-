@@ -8,18 +8,10 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 
 
+import { GLOBAL_STYLE, CONTAINER_MAX_WIDTH } from './../style';
+
+
 const useStyles = makeStyles(theme => ({
-  '@global': {
-    body: {
-      backgroundColor: theme.palette.common.white,
-    },
-  },
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.primary.light,
@@ -35,10 +27,11 @@ const useStyles = makeStyles(theme => ({
 
 const AuthorizationView = (props) => {
   const classes = useStyles();
+  const globalStyle = GLOBAL_STYLE();
 
   return (
-    <Container component="main" maxWidth="xs">
-      <div className={classes.paper}>
+    <Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={globalStyle.paper}>
+      <div className={GLOBAL_STYLE.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -78,7 +71,6 @@ const AuthorizationView = (props) => {
             Sign In
           </Button>
         </form>
-
       </div>
     </Container>
   )

@@ -1,20 +1,21 @@
 import React from 'react';
 import { HashRouter, Route, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
+import Drawer from '@material-ui/core/Drawer';
+
 
 import store from './../store.js';
 import Authorization from './../Authorization/Authorization';
 import StatmentRequest from './../StatementRequest/StatementRequest';
 import RequestChainList from './../RequestList/RequestChainList';
 import MessageList from './../SoapMessageList/MessageList';
-import Navigate from './Navigate';
+import SideBar from './SideBar';
 
 function App() {
   return (
     <Provider store={store}>
       <HashRouter>
-        <Navigate />
-        
+        <SideBar/>
         <Switch>
           <Route path="/" exact component={Authorization} />
           <Route path='/request/new/statementRequest' component={StatmentRequest}/>

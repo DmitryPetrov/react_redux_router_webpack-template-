@@ -1,5 +1,23 @@
-export const RequestChainListStyle = {
+import { makeStyles } from '@material-ui/core/styles';
 
+export const CONTAINER_MAX_WIDTH="xl";
+
+export const GLOBAL_STYLE = makeStyles(theme => ({
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.common.white,
+    },
+  },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  }
+}));
+
+
+export const RequestChainListStyle = {
 }
 
 export const RequestChainStyle = {

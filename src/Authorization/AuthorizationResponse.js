@@ -1,40 +1,32 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-import SoapMessageList from './../components/SoapMessageList'
-import ObjectFromServer from './../components/ObjectFromServer'
+
+import { GLOBAL_STYLE, CONTAINER_MAX_WIDTH } from './../style';
+
 
 const useStyles = makeStyles(theme => ({
-  '@global': {
-    body: {
-      backgroundColor: theme.palette.common.white,
-    },
-  },
-  paper: {
-    marginTop: theme.spacing(2),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
   typography: {
   	marginTop: theme.spacing(2),
+  },
+  typography_error: {
+    marginTop: theme.spacing(2),
+    color: theme.palette.error.dark,
   }
 }));
 
 
 function AuthorizationResponse(props) {
   const classes = useStyles();
+  const globalStyle = GLOBAL_STYLE();
 
   if (props.request.isFail === true) {
     return (
-    	<Container component="main" maxWidth="md" className={classes.paper}>
-        <Typography component="h1" variant="h5" className={classes.typography}>
+    	<Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={globalStyle.paper}>
+        <Typography component="h1" variant="h5" className={classes.typography_error}>
           Authorization failed
         </Typography>
       </Container>
@@ -43,7 +35,8 @@ function AuthorizationResponse(props) {
 
   if (props.request.isLoading === true) {
     return (
-    	<Container component="main" maxWidth="md" className={classes.paper}>
+    	<Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={globalStyle.paper}>
+        <CircularProgress disableShrink />
         <Typography component="h1" variant="h5" className={classes.typography}>
           Authorization in process
         </Typography>
@@ -53,23 +46,18 @@ function AuthorizationResponse(props) {
 
   if (props.request.isSuccessed === true) {
     return (
-    	<Container component="main" maxWidth="md">
-      	<div className={classes.paper}>
+    	<Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={globalStyle.paper}>
 	        <Typography component="h1" variant="h5" className={classes.typography}>
 	          Authorization successed
 	        </Typography>
 	        <Typography component="h1" variant="h5" className={classes.typography}>
 	          {props.request.response.message}
 	        </Typography>
-      	</div>
       </Container>
     );
   }
 
-  return (
-    <div className="AuthorizationResponse">
-    </div>
-  );
+  return (<div className="AuthorizationResponse"></div>);
 }
 
 export default AuthorizationResponse;
