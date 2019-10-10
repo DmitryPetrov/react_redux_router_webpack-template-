@@ -1,7 +1,6 @@
 import React from 'react';
 import { HashRouter, Route, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
-import Drawer from '@material-ui/core/Drawer';
 
 
 import store from './../store.js';

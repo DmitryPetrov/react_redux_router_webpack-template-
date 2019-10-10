@@ -1,87 +1,119 @@
 import React from 'react';
+import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
-import store from './../store';
-import { updateData } from './actionCreatorList'
-import DateWithTimezoneInput from './../components/DateWithTimezoneInput.js'
-import DateInput from './../components/DateInput.js'
+import DateWithTimezoneInput from './../components/DateWithTimezoneInput';
+import { itemList } from './../functions/itemList';
+import Account from './Account';
 
+import { GLOBAL_STYLE, CONTAINER_MAX_WIDTH } from './../style';
 
-class StatementRequestView extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.docDateHandler = this.docDateHandler.bind(this);
-    this.docIdHandler = this.docIdHandler.bind(this);
-    this.docNumberHandler = this.docNumberHandler.bind(this);
-
-    this.fromDateHandler = this.fromDateHandler.bind(this);
-    this.orgIdHandler = this.orgIdHandler.bind(this);
-    this.orgInnHandler = this.orgInnHandler.bind(this);
-    this.orgNameHandler = this.orgNameHandler.bind(this);
-    this.toDateHandler = this.toDateHandler.bind(this);
+const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  gridContainer: {
+    marginTop: theme.spacing(1),
+  },
+  gridItem: {
+    width: theme.spacing(50),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  textField: {
+    width: theme.spacing(50),
+  },
+  button: {
+    marginTop: theme.spacing(1),
+    height: theme.spacing(5),
   }
+}));
 
-  docDateHandler(date) {
-    store.dispatch(updateData({docDate: date}));
-  }
-  docIdHandler(event) {
-    store.dispatch(updateData({docId: event.target.value}));
-  }
-  docNumberHandler(event) {
-    store.dispatch(updateData({docNumber: event.target.value}));
-  }
+function StatementRequestView(props) {
+  const classes = useStyles();
+  const globalStyle = GLOBAL_STYLE();
 
-  fromDateHandler(date) {
-    store.dispatch(updateData({fromDate: date}));
-  }
-  orgIdHandler(event) {
-    store.dispatch(updateData({orgId: event.target.value}));
-  }
-  orgInnHandler(event) {
-    store.dispatch(updateData({orgInn: event.target.value}));
-  }
-  orgNameHandler(event) {
-    store.dispatch(updateData({orgName: event.target.value}));
-  }
-  toDateHandler(date) {
-    store.dispatch(updateData({toDate: date}));
-  }
+  const textField = (text, handler) => <TextField
+                    label={text}
+                    className={classes.textField}
+                    margin="dense"
+                    variant="outlined"
+                    onChange={handler}
+                  />;
 
-  render() {
-    return (
-      <div className="StatementRequestView">
-        <form method="post" id="StatementRequestForm" onSubmit={this.submitHandler} >
-          <br/>
-          <DateInput labelText={"docDate"} dispatchFunc={this.docDateHandler}/>
+  return (
+    <div className={globalStyle.paper}>
+      <Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={classes.paper}>
+        <Typography component="h1" variant="h5">
+          Statement request
+        </Typography>
 
-          <label>docId: </label>
-          <input type="text" onChange={this.docIdHandler}/>
+        <Grid container 
+          spacing={3} 
+          direction="row"
+          justify="center"
+          alignItems="flex-start"
+          className={classes.gridContainer}
+        >
+          <Grid item xs={4} className={classes.gridItem}>
+            <form method="post" id="StatementRequestForm" submit="StatementRequestForm" className={classes.form}>
+              <TextField
+                label="docDate"
+                variant="outlined"
+                type="datetime-local"
+                defaultValue="2010-01-01T00:00:00"
+                className={classes.textField}
+                margin="dense"
+                inputProps={{step: 1}} // 1 sec
+                onChange={props.docDateHandler}
+              />
+              {textField("doc Id", props.docIdHandler)}
+              {textField("doc Number", props.docNumberHandler)}
+              <DateWithTimezoneInput labelText={"fromDate"} dispatchFunc={props.fromDateHandler}/>
+              {textField("org Id", props.orgIdHandler)}
+              {textField("org Inn", props.orgInnHandler)}
+              {textField("org Name", props.orgNameHandler)}
+              <DateWithTimezoneInput labelText={"toDate"} dispatchFunc={props.toDateHandler}/>
+            </form>
+          </Grid>
+          <Grid item xs={4} className={classes.gridItem}>
+            {itemList(Account, props.accounts)}   
+          </Grid>
+        </Grid>
 
-          <br/>
-          <label>docNumber: </label>
-          <input type="text" onChange={this.docNumberHandler}/>
-
-          <br/>
-          <br/>
-          <DateWithTimezoneInput labelText={"fromDate"} dispatchFunc={this.fromDateHandler}/>
-
-          <label>orgId: </label>
-          <input type="text" onChange={this.orgIdHandler}/>
-
-          <br/>
-          <label>orgInn: </label>
-          <input type="text" onChange={this.orgInnHandler}/>
-
-          <br/>
-          <label>orgName: </label>
-          <input type="text" onChange={this.orgNameHandler}/>
-
-          <br/>
-          <DateWithTimezoneInput labelText={"toDate"} dispatchFunc={this.toDateHandler}/>
-        </form>
-      </div>
-      )
-  }
+        <Button 
+          color="primary" 
+          variant="outlined" 
+          onClick={props.addAccountHandler}
+          className={classes.button}
+        >
+          Add account
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={props.submitHandler}
+          className={classes.button}
+          form="StatementRequestForm"
+        >
+          Submit
+        </Button>
+      </Container>
+    </div>
+    )
 }
 
 export default StatementRequestView;

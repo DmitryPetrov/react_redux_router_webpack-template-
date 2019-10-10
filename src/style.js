@@ -9,10 +9,9 @@ export const GLOBAL_STYLE = makeStyles(theme => ({
     },
   },
   paper: {
-    marginTop: theme.spacing(8),
+    marginLeft: theme.spacing(30),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
   }
 }));
 

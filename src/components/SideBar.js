@@ -13,18 +13,16 @@ import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 import { Link } from "react-router-dom";
 
 
-const drawerWidth = 240;
-
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   },
   drawer: {
-    width: drawerWidth,
+    width: theme.spacing(30),
     flexShrink: 0,
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: theme.spacing(30),
   }
 }));
 
@@ -75,7 +73,13 @@ function SideBar() {
           <Divider />
           <MenuList>
             {PAGE_LIST.map((item, index) => (
-              <MenuItem button component={Link} to={item.link} onClick={() => setAddress(item.name)}>
+              <MenuItem 
+                button 
+                component={Link} 
+                to={item.link} 
+                onClick={() => setAddress(item.name)} 
+                key={item.link}
+              >
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText>{item.name}</ListItemText>
               </MenuItem>

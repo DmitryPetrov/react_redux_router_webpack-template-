@@ -12,6 +12,13 @@ import { GLOBAL_STYLE, CONTAINER_MAX_WIDTH } from './../style';
 
 
 const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(10),
+    width: theme.spacing(60),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.primary.light,
@@ -30,8 +37,8 @@ const AuthorizationView = (props) => {
   const globalStyle = GLOBAL_STYLE();
 
   return (
-    <Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={globalStyle.paper}>
-      <div className={GLOBAL_STYLE.paper}>
+    <div className={globalStyle.paper}>
+      <Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -71,8 +78,8 @@ const AuthorizationView = (props) => {
             Sign In
           </Button>
         </form>
-      </div>
-    </Container>
+      </Container>
+    </div>
   )
 }
 

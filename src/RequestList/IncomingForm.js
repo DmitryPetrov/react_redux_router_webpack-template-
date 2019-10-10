@@ -7,7 +7,6 @@ import { incomingRequest } from './actionCreatorList';
 import DocType from './DocType';
 import { itemList } from './../functions/itemList'
 import { RequestStyle } from './../style';
-import DateInput from './../components/DateInput.js'
 
 
 class IncomingForm extends React.Component {
@@ -34,7 +33,11 @@ class IncomingForm extends React.Component {
     this.setState({incomingId: event.target.value});
   }
 
-  timestampHandler(date) {
+  timestampHandler(event) {
+    var date = event.target.value;
+    if(date.length === 16) {
+      date += ":00";
+    }
     this.setState({timestamp: date});
   }
 
@@ -63,7 +66,10 @@ class IncomingForm extends React.Component {
           <label>Incoming id: </label>
           <input type="text" onChange={this.incomingIdHandler}/>
 
-          <DateInput labelText={"Timestamp"} dispatchFunc={this.timestampHandler}/>
+          <label>
+            Timestamp: 
+            <input type="date" defaultValue="2010-01-01T00:00" onChange={this.timestampHandler}/>
+          </label>
         </form>
 
         <br/>        
