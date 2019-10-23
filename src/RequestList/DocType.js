@@ -1,38 +1,44 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 import store from './../store';
 import {setDocType, removeDocType} from './actionCreatorList'
 
-class DocType extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.docTypeHandler = this.docTypeHandler.bind(this);
-
-    this.buttonHandler = this.buttonHandler.bind(this);
+const useStyles = makeStyles(theme => ({
+  textField: {
+    width: theme.spacing(34),
+  },
+  button: {
+    marginTop: theme.spacing(1),
+    marginLeft: theme.spacing(1),
+    minWidth: theme.spacing(15),
+    height: theme.spacing(5),
   }
+}));
 
-  docTypeHandler(event) {
-    store.dispatch(setDocType(event.target.value, this.props.index));
-  }
+function DocType(props) {
+  const classes = useStyles();
 
-  buttonHandler(event) {
-    store.dispatch(removeDocType(this.props.index));
-  }
-
-  render() {
-    return (
-      <div className="DocType">
-        <form method="post" >
-          <label>Doc type: </label>
-          <input type="text" onChange={this.docTypeHandler}/>
-
-          <br/>
-          <input type="button" value="Remove" onClick={this.buttonHandler}/>
-        </form>
-      </div>
-      )
-  }
+  return (
+    <div>
+      <TextField
+        label="Doc type:"
+        className={classes.textField}
+        margin="dense"
+        variant="outlined"
+        onChange={(event) => store.dispatch(setDocType(event.target.value, props.index))}
+      />
+      <Button 
+        variant="outlined" 
+        onClick={(event) => store.dispatch(removeDocType(props.index))}
+        className={classes.button}
+      >
+        Remove
+      </Button>
+    </div>
+    )
 }
 
 export default DocType;

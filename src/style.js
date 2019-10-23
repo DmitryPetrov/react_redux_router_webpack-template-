@@ -12,9 +12,9 @@ export const GLOBAL_STYLE = makeStyles(theme => ({
     marginLeft: theme.spacing(30),
     display: 'flex',
     flexDirection: 'column',
+
   }
 }));
-
 
 export const RequestChainListStyle = {
 }
@@ -53,15 +53,15 @@ export const ErrorStyle = {
   marginBottom: "5px",
 }
 
+export const JsonStyle = {
+  width:"390px",
+  overflow:"auto",
+}
+
 export const XmlStyle = {
   width:"1600px",
   overflow:"auto",
   backgroundColor: "#cfdbe6",
-}
-
-export const JsonStyle = {
-  width:"390px",
-  overflow:"auto",
 }
 
 //working app

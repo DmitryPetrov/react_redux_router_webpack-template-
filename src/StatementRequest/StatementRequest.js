@@ -40,7 +40,6 @@ class StatementRequest extends React.Component {
   }
 
   fromDateHandler(date) {
-    console.log(date);
     store.dispatch(updateData({fromDate: date}));
   }
   orgIdHandler(event) {

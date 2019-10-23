@@ -1,5 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import grey from '@material-ui/core/colors/grey';
 
 import { nextStepRequest } from './actionCreatorList';
 import Error from './Error';
@@ -9,65 +14,91 @@ import GetRequestStatus from './GetRequestStatus';
 import Incoming from './Incoming';
 import StatementDocument from './StatementDocument';
 
-import { RequestChainStyle } from './../style';
+const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  expansionPanel: {
+    marginTop: theme.spacing(3),
+    backgroundColor: grey[200],
+  },
+  textField: {
+    width: theme.spacing(50),
+  },
+  button: {
 
-const START = 0;
+  },
+  heading: {
+    width: theme.spacing(50),
+    fontSize: theme.typography.pxToRem(17),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+}));
+
+//const START = 0;
+//const FINNISH = 5;
 const STATEMENT_REQUEST = 1;
 const STATEMENT_REQUEST_STATUS = 2;
 const INCOMING = 3;
 const STATEMENT_DOCUMENT = 4;
-const FINNISH = 5;
 
-class RequestChain extends React.Component {
-  constructor(props) {
-    super(props);
+function RequestChain(props) {
+  const classes = useStyles();
+  
+  const [renderIncomingFormFlag, setRenderIncomingForm] = React.useState(false);
 
-    this.state = {renderIncomingForm: null};
-
-    this.nextStepHandler = this.nextStepHandler.bind(this);
-  }
-
-  nextStepHandler(event) {
-    event.preventDefault();
-    if (this.props.item.phaseNum === STATEMENT_REQUEST) {
-      this.setState({renderIncomingForm: null});
-      this.props.fetchData(this.props.item.responseId);
+  const nextStepHandler = event => {
+    if (props.item.phaseNum === STATEMENT_REQUEST) {
+      setRenderIncomingForm(false);
+      props.fetchData(props.item.responseId);
     }
-    if (this.props.item.phaseNum === STATEMENT_REQUEST_STATUS) {
-      this.setState({renderIncomingForm: true});
+    if (props.item.phaseNum === STATEMENT_REQUEST_STATUS) {
+      setRenderIncomingForm(true);
     }
-    if (this.props.item.phaseNum === INCOMING) {
-      this.setState({renderIncomingForm: null});
-      this.props.fetchData(this.props.item.responseId);
+    if (props.item.phaseNum === INCOMING) {
+      setRenderIncomingForm(false);
+      props.fetchData(props.item.responseId);
     }
-    if (this.props.item.phaseNum === STATEMENT_DOCUMENT) {
+    if (props.item.phaseNum === STATEMENT_DOCUMENT) {
       //запросить документ отдельно
     }
   }
-
-  render() {
-    const head = <h2>Request response id: {this.props.item.responseId}</h2>;
-
-    return (
-      <div className="RequestChain" style={RequestChainStyle}>
-        {head}
-        <p>
-          <label>Phase: {this.props.item.phase}  </label>
-          <input type="button" value="Next step" onClick={this.nextStepHandler}/>
-        </p>
-        {renderIfNotNull(StatmentRequest, this.props.item.statementRequest)}
-        {renderIfNotNull(GetRequestStatus, this.props.item.getRequestStatus)}
-        {renderIfNotNull(Incoming, this.props.item.incoming)}
-        {renderIfNotNull(StatementDocument, this.props.item.statementDocument)}
-        {renderIncomingForm(this.props.item.incoming, this.state.renderIncomingForm, this.props.item.responseId)}
-        {renderError(this.props.item.status, this.props.item.soapMessageList, this.props.item.message)}
-      </div>
-      )
-  }
+  return (
+    <div className="RequestChain">
+      <Grid container 
+        spacing={3} 
+        direction="row"
+        justify="flex-start"
+        alignItems="baseline"
+      >
+        <Grid item xs={4}>
+          <Typography className={classes.heading}>Phase: {props.item.phase}</Typography>
+        </Grid>
+        <Grid item xs={3}>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={nextStepHandler}
+          >
+            Next step
+          </Button>
+        </Grid>
+      </Grid>    
+      {renderIfNotNull(StatmentRequest, props.item.statementRequest)}
+      {renderIfNotNull(GetRequestStatus, props.item.getRequestStatus)}
+      {renderIfNotNull(Incoming, props.item.incoming)}
+      {renderIfNotNull(StatementDocument, props.item.statementDocument)}
+      {renderIncomingForm(props.item.incoming, renderIncomingFormFlag, props.item.responseId)}
+      {renderError(props.item.status, props.item.soapMessageList, props.item.message)}
+    </div>
+    )
 }
 
-function renderIncomingForm(incomingResponse, renderIncomingForm, responseId) {
-  if ((incomingResponse === null) && (renderIncomingForm === true)) {
+function renderIncomingForm(incomingResponse, renderIncomingFormFlag, responseId) {
+  if ((incomingResponse === null) && (renderIncomingFormFlag === true)) {
       return <IncomingForm responseId={responseId}/>;
   }
   return null;

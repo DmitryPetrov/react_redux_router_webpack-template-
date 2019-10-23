@@ -285,83 +285,6 @@ export function requestListRequest() {
 //             },
 //             "phase": "STATEMENT_REQUEST_STATUS",
 //             "requestId": "1852ccae-e9b2-48bf-adbd-6027653f194d",
-//             "responseId": "84",
-//             "statementRequestStatus": "DELIVERED",
-//             "incomingRequestId": "",
-//             "incomingResponseId": "",
-//             "statementDocumentStatus": "",
-//             "statementRequest": {
-//                 "requestId": "1852ccae-e9b2-48bf-adbd-6027653f194d",
-//                 "responseId": "84",
-//                 "requestName": "Statement request",
-//                 "attrRequestId": "1852ccae-e9b2-48bf-adbd-6027653f194d",
-//                 "attrVersion": "1",
-//                 "acceptDate": "",
-//                 "bankMessage": "",
-//                 "bankMessageAuthor": "",
-//                 "docDate": "2018-05-15T17:08:00",
-//                 "docId": "0b64c0df-1690-4c15-0000-000000000020",
-//                 "docNumber": "78",
-//                 "docTypeVersion": "",
-//                 "externalId": "",
-//                 "externalUPGId": "",
-//                 "fromDate": "2018-05-07T00:00:00.715+03:00",
-//                 "lastModifyDate": "",
-//                 "messageOnlyForBank": "",
-//                 "orgId": "0ce353c5-9a53-497d-ad02-df1fb6c37feb",
-//                 "orgInn": "7842170415",
-//                 "orgName": "АО РЗК",
-//                 "template": "",
-//                 "toDate": "2018-05-14T00:00:00.715+03:00",
-//                 "accounts": [
-//                     {
-//                         "account": "40702810800000005897",
-//                         "bankBIC": "044030861",
-//                         "bankName": "АО \"АБ \"РОССИЯ\""
-//                     }
-//                 ],
-//                 "signCollection": {
-//                     "bankMessage": "",
-//                     "digestName": "",
-//                     "signs": []
-//                 }
-//             },
-//             "getRequestStatus": {
-//                 "requestId": "1852ccae-e9b2-48bf-adbd-6027653f194d",
-//                 "responseId": "a671acae-bb4d-4763-a79c-796d56d9166f",
-//                 "requestName": "Get Request Status",
-//                 "attrCreateTime": "2019-08-29T11:32:54",
-//                 "attrRequestId": "1852ccae-e9b2-48bf-adbd-6027653f194d",
-//                 "attrResponseId": "a671acae-bb4d-4763-a79c-796d56d9166f",
-//                 "attrSender": "DBO",
-//                 "attrVersion": "2.0",
-//                 "notProcessedYet": false,
-//                 "stateResponseList": [
-//                     {
-//                         "bankMessage": "",
-//                         "bankMessageAuthor": "",
-//                         "createTime": "",
-//                         "docId": "0b64c0df-1690-4c15-0000-000000000020",
-//                         "docType": "StatementRequest",
-//                         "extId": "b7b896cd-06a8-4588-b6dd-6f7de7ba012a",
-//                         "messageOnlyForBank": "",
-//                         "operationDate": "",
-//                         "state": "DELIVERED"
-//                     }
-//                 ],
-//                 "statementList": []
-//             },
-//             "incoming": null,
-//             "statementDocument": null
-//         },
-//         {
-//             "user": {
-//                 "userName": "testui",
-//                 "password": "ZWF5S2",
-//                 "sessionId": "42"
-//             },
-//             "phase": "STATEMENT_REQUEST_STATUS",
-//             "requestId": "1852ccae-e9b2-48bf-adbd-6027653f194d",
 //             "responseId": "168",
 //             "statementRequestStatus": "DELIVERED",
 //             "incomingRequestId": "",
@@ -429,10 +352,12 @@ export function requestListRequest() {
 //                 "statementList": []
 //             },
 //             "incoming": null,
-//             "statementDocument": null
+//             "statementDocument": null,
+//             "phaseNum": 2
 //         }
 //     ],
-//     "soapMessageList": []
+//     "soapMessageList": [],
+//     "logInfo": "ResponseBodyData{status='OK', message='Request list'}"
 // }
 // ));
 

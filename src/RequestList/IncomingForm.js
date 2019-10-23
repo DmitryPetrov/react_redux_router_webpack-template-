@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 import store from './../store';
 import { addDocType } from './actionCreatorList';
 import { incomingRequest } from './actionCreatorList';
-import DocType from './DocType';
-import { itemList } from './../functions/itemList'
-import { RequestStyle } from './../style';
-
+import IncomingFormView from './IncomingFormView';
 
 class IncomingForm extends React.Component {
   constructor(props) {
@@ -21,11 +18,8 @@ class IncomingForm extends React.Component {
 
     this.incomingIdHandler = this.incomingIdHandler.bind(this);
     this.timestampHandler = this.timestampHandler.bind(this);
-
     this.getFiltredDocTypes = this.getFiltredDocTypes.bind(this);
-
     this.addDocTypeHandler = this.addDocTypeHandler.bind(this);
-
     this.submitHandler = this.submitHandler.bind(this);
   }
 
@@ -34,7 +28,7 @@ class IncomingForm extends React.Component {
   }
 
   timestampHandler(event) {
-    var date = event.target.value;
+    let date = event.target.value;
     if(date.length === 16) {
       date += ":00";
     }
@@ -48,7 +42,6 @@ class IncomingForm extends React.Component {
   submitHandler(event) {
     let requestData = this.state;
     requestData.docTypes = this.getFiltredDocTypes();
-
     this.props.fetchData(requestData);
   }
 
@@ -60,28 +53,13 @@ class IncomingForm extends React.Component {
 
   render() {
     return (
-      <div className="IncomingForm" style={RequestStyle}>
-        <form method="post" id="IncomingForm" onSubmit={this.submitHandler} >
-          <br/>
-          <label>Incoming id: </label>
-          <input type="text" onChange={this.incomingIdHandler}/>
-
-          <label>
-            Timestamp: 
-            <input type="date" defaultValue="2010-01-01T00:00" onChange={this.timestampHandler}/>
-          </label>
-        </form>
-
-        <br/>        
-        {itemList(DocType, this.props.incoming.docTypes)}
-
-        <br/>
-        <input type="button" value="Add doc type" onClick={this.addDocTypeHandler}/>      
-
-        <br/>
-        <input type="button" form="IncomingForm" value="Отправить" onClick={this.submitHandler}/>
-
-      </div>
+      <IncomingFormView
+        incomingIdHandler={this.incomingIdHandler}
+        timestampHandler={this.timestampHandler}
+        addDocTypeHandler={this.addDocTypeHandler}
+        submitHandler={this.submitHandler}
+        incoming={this.props.incoming}
+        />
       )
   }
 }

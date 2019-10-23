@@ -1,41 +1,21 @@
 import React from 'react';
 
-import { RequestStyle } from './../style';
-
 export function withExpandButton(Component) {
-  return class extends React.Component {
-    constructor(props) {
-      super(props);
+  return (props) => {
+    const [state, setState] = React.useState(false);
 
-      this.state = {
-        show: false,
-        buttonName: 'Expand',
-      }
-
-      this.buttonHandler = this.buttonHandler.bind(this);
+    const buttonHandler = event => {
+      setState(!state);
     }
 
-    buttonHandler(event) {
-      if (this.state.show) {
-        this.setState({show: false, buttonName: 'Expand',});
-      } else {
-        this.setState({show: true, buttonName: 'Collapse',});
-      }
+    const newProps = {
+      json: state,
+      buttonName: "JSON",
+      buttonHandler: buttonHandler,
+      ...props
     }
 
-    render() {
-      const props = {
-        showJson: this.state.show,
-        ...this.props,
-      }
-
-      return (
-        <div style={RequestStyle}>
-          <Component  {...props}/>
-          <input type="button" value={this.state.buttonName} onClick={this.buttonHandler}/>
-        </div>
-        )
-    }
+    return <Component  {...newProps}/>
   }
 }
 

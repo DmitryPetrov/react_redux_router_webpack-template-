@@ -1,57 +1,101 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import grey from '@material-ui/core/colors/grey';
 
 import { requestListRequest } from './actionCreatorList';
 import RequestChain from './RequestChain';
-import { itemList } from './../functions/itemList';
-import { RequestChainListStyle } from './../style';
 
-class RequestChainList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.refreshHandler = this.refreshHandler.bind(this);
-  }
+import { GLOBAL_STYLE, CONTAINER_MAX_WIDTH } from './../style';
 
-  refreshHandler(event) {
-    event.preventDefault();
-    this.props.fetchData();
-  }
+const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  expansionPanel: {
+    marginTop: theme.spacing(3),
+    backgroundColor: grey[300],
+  },
+  textField: {
+    width: theme.spacing(50),
+  },
+  button: {
+    marginTop: theme.spacing(1),
+    height: theme.spacing(5),
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(20),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+}));
 
-  render() {
-    if (this.props.requestList.isSuccessed !== true) {
-      return(
-        <div className="RequestChainList" style={RequestChainListStyle}>
-          <input type="submit" value="Refresh" onClick={this.refreshHandler}/>
-        </div>
-      );
+function RequestChainList(props) {
+  const classes = useStyles();
+  const globalStyle = GLOBAL_STYLE();
+
+  let chainList = [];
+  if (props.requestList.isSuccessed === true) {
+    chainList = props.requestList.response.requestChainList;
+    for (let i = 0; i < chainList.length; i++) {
+      chainList[i].status = props.requestList.response.status;
+      chainList[i].message = props.requestList.response.message;
+      chainList[i].soapMessageList = props.requestList.response.soapMessageList;
     }
-
-    let chainList = this.props.requestList.response.requestChainList;
-    chainList.map((item, index) => {
-      item.status = this.props.requestList.response.status;
-      item.message = this.props.requestList.response.message;
-      item.soapMessageList = this.props.requestList.response.soapMessageList;
-    });
+  }
 
 
-    if (this.props.nextStep.isSuccessed === true) {
-      for (let i = 0; i < chainList.length; i++) {
-        if (this.props.nextStep.response.requestChain.responseId === chainList[i].responseId) {
-          chainList[i] = this.props.nextStep.response.requestChain;
-          chainList[i].status = this.props.nextStep.response.status;
-          chainList[i].message = this.props.nextStep.response.message;
-          chainList[i].soapMessageList = this.props.nextStep.response.soapMessageList;
-        }
+  if (props.nextStep.isSuccessed === true) {
+    for (let i = 0; i < chainList.length; i++) {
+      if (props.nextStep.response.requestChain.responseId === chainList[i].responseId) {
+        chainList[i] = props.nextStep.response.requestChain;
+        chainList[i].status = props.nextStep.response.status;
+        chainList[i].message = props.nextStep.response.message;
+        chainList[i].soapMessageList = props.nextStep.response.soapMessageList;
       }
     }
-
-    return(
-      <div className="RequestChainList" style={RequestChainListStyle}>
-        <input type="submit" value="Refresh" onClick={this.refreshHandler}/>
-        {itemList(RequestChain, chainList)}
-      </div>
-    )
   }
+
+  return(
+    <div className={globalStyle.paper}>
+      <Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={classes.paper}>
+        <Typography component="h1" variant="h5">
+          Request chain list
+        </Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={props.fetchData}
+          className={classes.button}
+        >
+          Refresh
+        </Button>
+      </Container>
+      {chainList.map((item, index) => (
+        <ExpansionPanel className={classes.expansionPanel} defaultExpanded>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography className={classes.heading}>Request chain id: {item.responseId}</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <RequestChain item={item} index={index} key={index}/>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      ))}
+    </div>
+  )
 }
 
 function mapStateToProps(store) { 
