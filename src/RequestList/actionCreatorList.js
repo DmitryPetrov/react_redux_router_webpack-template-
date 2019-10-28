@@ -11,7 +11,7 @@ function incomingIsLoading() {
         isFail: false,
         isLoading: true,
         isSuccessed: false,
-        message: NEXT_STEP_URL + ' is loading',
+        message: 'Loading',
         response: null,
     };
 }
@@ -21,7 +21,7 @@ function incomingSuccessed(response) {
         isFail: false,
         isLoading: false,
         isSuccessed: true,
-        message: NEXT_STEP_URL + ' successed',
+        message: 'Successed',
         response: response,
     };
 }
@@ -31,7 +31,7 @@ function incomingFailed(errorMessage) {
         isFail: true,
         isLoading: false,
         isSuccessed: false,
-        message: NEXT_STEP_URL + ' failed',
+        message: 'Failed',
         response: errorMessage,
     };
 }
@@ -235,7 +235,7 @@ function requestListIsLoading() {
 		isFail: false,
 		isLoading: true,
 		isSuccessed: false,
-		message: REQUEST_LIST_URL + ' is loading',
+		message: 'Loading',
 		response: null,
 	};
 }
@@ -245,7 +245,7 @@ function requestListSuccessed(response) {
 		isFail: false,
 		isLoading: false,
 		isSuccessed: true,
-		message: REQUEST_LIST_URL + ' successed',
+		message: 'Successed',
 		response: response,
 	};
 }
@@ -255,7 +255,7 @@ function requestListFailed(errorMessage) {
 		isFail: true,
 		isLoading: false,
 		isSuccessed: false,
-		message: REQUEST_LIST_URL + ' failed',
+		message: 'Failed',
 		response: errorMessage,
 	};
 }
@@ -373,7 +373,7 @@ function nextStepIsLoading() {
         isFail: false,
         isLoading: true,
         isSuccessed: false,
-        message: NEXT_STEP_URL + ' is loading',
+        message: 'Loading',
         response: undefined,
     };
 }
@@ -383,7 +383,7 @@ function nextStepSuccessed(response) {
         isFail: false,
         isLoading: false,
         isSuccessed: true,
-        message: NEXT_STEP_URL + ' successed',
+        message: 'Successed',
         response: response,
     };
 }
@@ -393,7 +393,7 @@ function nextStepFailed(errorMessage) {
         isFail: true,
         isLoading: false,
         isSuccessed: false,
-        message: NEXT_STEP_URL + ' failed',
+        message: 'Failed',
         response: errorMessage,
     };
 }
