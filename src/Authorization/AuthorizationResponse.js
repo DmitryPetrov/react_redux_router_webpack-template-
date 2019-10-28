@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   	marginTop: theme.spacing(2),
   },
   typography_error: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(7),
     color: theme.palette.error.dark,
   }
 }));
