@@ -39,6 +39,11 @@ const useStyles = makeStyles(theme => ({
   button: {
     marginTop: theme.spacing(1),
     height: theme.spacing(5),
+  },
+  addAccountButton: {
+    marginTop: theme.spacing(1),
+    height: theme.spacing(5),
+    color: theme.palette.primary.main,
   }
 }));
 
@@ -95,16 +100,14 @@ function StatementRequestView(props) {
         </Grid>
 
         <Button 
-          color="primary" 
           variant="outlined" 
           onClick={props.addAccountHandler}
-          className={classes.button}
+          className={classes.addAccountButton}
         >
           Add account
         </Button>
         <Button
           variant="contained"
-          color="primary"
           onClick={props.submitHandler}
           className={classes.button}
           form="StatementRequestForm"
