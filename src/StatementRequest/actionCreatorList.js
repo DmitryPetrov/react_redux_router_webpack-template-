@@ -38,7 +38,7 @@ function statementRequestIsLoading() {
 		isFail: false,
 		isLoading: true,
 		isSuccessed: false,
-		message: '"' + STATMENT_REQUEST_URL + '" is loading',
+		message: 'Loading',
 		response: null,
 	};
 }
@@ -49,7 +49,7 @@ function statementRequestSuccessed(response) {
 		isFail: false,
 		isLoading: false,
 		isSuccessed: true,
-		message: '"' + STATMENT_REQUEST_URL + '" successed',
+		message: 'Successed',
 		response: response,
 	};
 }
@@ -60,7 +60,7 @@ function statementRequestFailed(errorMessage) {
 		isFail: true,
 		isLoading: false,
 		isSuccessed: false,
-		message: '"' + STATMENT_REQUEST_URL + '" failed',
+		message: 'Failed',
 		response: errorMessage,
 	};
 }
