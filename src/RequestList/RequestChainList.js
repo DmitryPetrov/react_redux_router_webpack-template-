@@ -33,6 +33,10 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1),
     height: theme.spacing(5),
   },
+  refreshButton: {
+    marginTop: theme.spacing(3),
+    width:  theme.spacing(18),
+  },
   heading: {
     fontSize: theme.typography.pxToRem(20),
     fontWeight: theme.typography.fontWeightRegular,
@@ -72,10 +76,9 @@ function RequestChainList(props) {
           Request chain list
         </Typography>
         <Button
-          variant="contained"
-          color="primary"
+          variant="outlined"
           onClick={props.fetchData}
-          className={classes.button}
+          className={classes.refreshButton}
         >
           Refresh
         </Button>
