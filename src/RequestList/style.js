@@ -11,7 +11,7 @@ export const REQUEST_STYLE = makeStyles(theme => ({
   innerExpansionPanel: {
     marginTop: theme.spacing(1),
     backgroundColor: grey[50],
-    width: theme.spacing(70),
+    width: theme.spacing(100),
   },
   expansionPanelError: {
     marginTop: theme.spacing(1),
