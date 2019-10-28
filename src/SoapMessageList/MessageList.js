@@ -1,56 +1,103 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import grey from '@material-ui/core/colors/grey';
 
-import Message from './Message';
+import { formatXml } from './../functions/formatXml';
 import { soapMessageListRequest } from './actionCreatorList';
-import { itemList } from './../functions/itemList'
+import { GLOBAL_STYLE } from './../style';
 
 const URL_GET_ALL_MESSAGE = '/soapMessage/list/all';
 const URL_GET_LAST_REQUEST_MESSAGE = '/soapMessage/list/lastRequest';
 const URL_REMOVE_ALL_MESSAGE = '/soapMessage/remove/all';
 
-class MessageList extends React.Component  {
-  constructor(props) {
-    super(props);
-    this.getAllHandler = this.getAllHandler.bind(this);
-    this.getLastRequestHandler = this.getLastRequestHandler.bind(this);
-    this.removeAllHandler = this.removeAllHandler.bind(this);
+const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  button: {
+    marginTop: theme.spacing(3),
+    marginRight: theme.spacing(1),
+  },
+  removeButton: {
+    marginTop: theme.spacing(3),
+    marginRight: theme.spacing(1),
+    color: theme.palette.secondary.light,
+  },
+  content: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'left',
+  },
+  xml: {
+    backgroundColor: grey[200],
+    padding: theme.spacing(2),
+  },
+}));
+
+function MessageList(props) {
+  const classes = useStyles();
+  const globalStyle = GLOBAL_STYLE();
+
+  let content = null;
+  if (props.request.isSuccessed === true) {
+    content = props.request.response.soapMessageList.map((item, index) => (
+          <Paper 
+            component="pre"
+            overflow="auto"
+            className={classes.xml}
+          >
+            <Box component="pre" overflow="auto">
+              <pre key={index}>{formatXml(item)}</pre>
+            </Box>
+          </Paper>
+        ));
   }
 
-  getAllHandler(event) {
-    this.props.fetchData(URL_GET_ALL_MESSAGE);
-  }
-
-  getLastRequestHandler(event) {
-    this.props.fetchData(URL_GET_LAST_REQUEST_MESSAGE);
-  }
-
-  removeAllHandler(event) {
-    this.props.fetchData(URL_REMOVE_ALL_MESSAGE);
-  }
-
-  render() {
-    if(this.props.request.isSuccessed !== true) {
-      return (
-        <div className="MessageList">
-          <input type="button" value="Get all message list" onClick={this.getAllHandler}/>
-          <input type="button" value="Get last request message list" onClick={this.getLastRequestHandler}/>
+  return (
+    <div className={globalStyle.paper}>
+      <Container component="main" className={classes.paper}>
+        <Typography component="h1" variant="h5">
+          SOAP messages
+        </Typography>
+        <div>
+          <Button
+            variant="outlined" 
+            onClick={event => props.fetchData(URL_GET_ALL_MESSAGE)}
+            className={classes.button}
+          >
+            Get all message list
+          </Button>
+          <Button
+            variant="outlined" 
+            onClick={event => props.fetchData(URL_GET_LAST_REQUEST_MESSAGE)}
+            className={classes.button}
+          >
+            Get last request message list
+          </Button>
+          <Button
+            variant="outlined" 
+            onClick={event => props.fetchData(URL_REMOVE_ALL_MESSAGE)}
+            className={classes.removeButton}
+          >
+            Remove all
+          </Button>
         </div>
-      );
-    }
-
-    return (
-      <div className="MessageList">
-        <input type="button" value="Get all message list" onClick={this.getAllHandler}/>
-        <input type="button" value="Get last request message list" onClick={this.getLastRequestHandler}/>
-        <br />
-        <input type="button" value="Remove all" onClick={this.removeAllHandler}/>
-        <h3>SOAP messages:</h3>
-        <br />
-        {itemList(Message, this.props.request.response.soapMessageList)}
-      </div>
-    );
-  }
+      </Container>
+      <Container component="main" className={classes.content}>
+        {content}
+      </Container>
+    </div>
+  );
 }
 
 function mapStateToProps(store) { 
