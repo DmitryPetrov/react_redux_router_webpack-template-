@@ -12,12 +12,15 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  typography: {
+  loadingMessage: {
   	marginTop: theme.spacing(2),
   },
-  typography_error: {
+  errorMessage: {
     marginTop: theme.spacing(7),
     color: theme.palette.error.dark,
+  },
+  successMessage: {
+    marginTop: theme.spacing(7),
   }
 }));
 
@@ -29,7 +32,7 @@ function AuthorizationResponse(props) {
     return (
       <div className={globalStyle.paper}>
       	<Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={classes.paper}>
-          <Typography component="h1" variant="h5" className={classes.typography_error}>
+          <Typography component="h1" variant="h5" className={classes.errorMessage}>
             Authorization failed
           </Typography>
         </Container>
@@ -42,7 +45,7 @@ function AuthorizationResponse(props) {
       <div className={globalStyle.paper}>
       	<Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={classes.paper}>
           <CircularProgress disableShrink />
-          <Typography component="h1" variant="h5" className={classes.typography}>
+          <Typography component="h1" variant="h5" className={classes.loadingMessage}>
             Authorization in process
           </Typography>
         </Container>
@@ -54,10 +57,7 @@ function AuthorizationResponse(props) {
     return (
       <div className={globalStyle.paper}>
       	<Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={classes.paper}>
-	        <Typography component="h1" variant="h5" className={classes.typography}>
-	          Authorization successed
-	        </Typography>
-	        <Typography component="h1" variant="h5" className={classes.typography}>
+	        <Typography component="h1" variant="h5" className={classes.successMessage}>
 	          {props.request.response.message}
 	        </Typography>
         </Container>
