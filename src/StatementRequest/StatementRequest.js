@@ -23,6 +23,7 @@ class StatementRequest extends React.Component {
     this.orgInnHandler = this.orgInnHandler.bind(this);
     this.orgNameHandler = this.orgNameHandler.bind(this);
     this.toDateHandler = this.toDateHandler.bind(this);
+    this.signCollectionHandler = this.signCollectionHandler.bind(this);
   }
 
   docDateHandler(event) {
@@ -54,6 +55,9 @@ class StatementRequest extends React.Component {
   toDateHandler(date) {
     store.dispatch(updateData({toDate: date}));
   }
+  signCollectionHandler(data) {
+    store.dispatch(updateData(data));
+  }
 
   addAccount(event) {
     store.dispatch(addAccount());
@@ -66,6 +70,7 @@ class StatementRequest extends React.Component {
 
     let data = this.props.data;
     data.accounts = filteredAccounts;
+
     this.props.fetchData(data);
   }
 
@@ -84,6 +89,7 @@ class StatementRequest extends React.Component {
           accounts={this.props.data.accounts}
           addAccountHandler={this.addAccount}
           submitHandler={this.submit}
+          signCollectionHandler={this.signCollectionHandler}
         />
         <MessageFromServer request={this.props.request} />
       </div>

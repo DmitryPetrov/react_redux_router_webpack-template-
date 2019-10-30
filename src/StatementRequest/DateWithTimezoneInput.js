@@ -6,31 +6,44 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const DEFAULT_DATE = "2010-01-01T00:00:00";
-const DEFAULT_TIMEZONE = "+03:00" 
-
 const useStyles = makeStyles(theme => ({
+  div: {
+    width: "100%",
+  },
   formControl: {
     marginTop: theme.spacing(1),
-    marginLeft: theme.spacing(1),
-    minWidth: theme.spacing(15),
+    marginLeft: "3%",
+    minWidth: "25%",
   },
   textField: {
-    width: theme.spacing(34),
+    width: "72%",
   }
 }));
 
+function getDate(date) {
+  let start = 0;
+  let end = date.indexOf("+");
+  return date.substring(start, end);
+}
+
+function getTimezone(date) {
+  let start = date.indexOf("+");
+  let end = date.length;
+  return date.substring(start, end);
+}
+
 function DateWithTimezoneInput(props) {
   const classes = useStyles();
+  
   const [state, setState] = React.useState(
     {
-      date: DEFAULT_DATE,
-      timezone: DEFAULT_TIMEZONE
+      date: getDate(props.date),
+      timezone: getTimezone(props.date)
     });
 
   const timezoneHandler = event => {
     setState({...state, "timezone": event.target.value});
-    props.dispatchFunc(state.date + "T" + event.target.value);
+    props.dispatchFunc(state.date + event.target.value);
   }
 
   const dateHandler = event => {
@@ -39,7 +52,7 @@ function DateWithTimezoneInput(props) {
       newDate += ":00";
     }
     setState({...state, "date": newDate});
-    props.dispatchFunc(newDate + "T" + state.timezone);
+    props.dispatchFunc(newDate + state.timezone);
   };
 
   const inputLabel = React.useRef(null);
@@ -49,12 +62,12 @@ function DateWithTimezoneInput(props) {
   }, []);
 
   return (
-    <div className="DateWithTimezoneInput">
+    <div className={classes.div}>
       <TextField
         label={props.labelText}
         variant="outlined"
         type="datetime-local"
-        defaultValue="2010-01-01T00:00"
+        defaultValue={state.date}
         className={classes.textField}
         margin="dense"
         InputLabelProps={{shrink: true}}
