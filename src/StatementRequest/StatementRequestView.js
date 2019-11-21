@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 
 import { itemList } from './../functions/itemList';
 import Account from './Account';
-import SignGenerator from './SignGenerator';
+import SignGenerator from './../SignGenerator/SignGenerator';
 import StatementRequestForm from './StatementRequestForm';
 
 import { GLOBAL_STYLE, CONTAINER_MAX_WIDTH } from './../style';

@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import DeviceList from './DeviceList';
 import CertificateList from './CertificateList';
-import { gridCellStyle } from './style';
+import { GRID_ITEM_STYLE } from './../style';
 
 const useStyles = makeStyles(theme => ({
   textField: {
@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
 
 const SignView = (props) => {
   const classes = useStyles();
-  const gridCell = gridCellStyle();
+  const gridCell = GRID_ITEM_STYLE();
 
   const singResult = () => {
     if (props.sign.content !== undefined) {

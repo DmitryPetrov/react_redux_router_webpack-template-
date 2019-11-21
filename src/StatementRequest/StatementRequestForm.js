@@ -6,7 +6,7 @@ import grey from '@material-ui/core/colors/grey';
 
 import DateWithTimezoneInput from './DateWithTimezoneInput';
 import { DATA } from './initialState';
-import { gridCellStyle } from './style';
+import { GRID_ITEM_STYLE } from './../style';
 
 const DOC_DATE = DATA.docDate;
 const DOC_ID = DATA.docId;
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 
 function StatementRequestForm(props) {
   const classes = useStyles();
-  const gridCell = gridCellStyle();
+  const gridCell = GRID_ITEM_STYLE();
 
   const textField = (text, handler, value) => <TextField
                     label={text}

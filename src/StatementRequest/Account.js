@@ -8,7 +8,7 @@ import grey from '@material-ui/core/colors/grey';
 import store from './../store';
 import { updateAccountData, removeAccount} from './actionCreatorList'
 import { ACCOUT_DATA } from './initialState';
-import { gridCellStyle } from './style';
+import { GRID_ITEM_STYLE } from './../style';
 
 const ACCOUNT = ACCOUT_DATA.account;
 const BANK_BIC = ACCOUT_DATA.bankBIC;
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 
 function Account(props) {
   const classes = useStyles();
-  const gridCell = gridCellStyle();
+  const gridCell = GRID_ITEM_STYLE();
 
   const textField = (text, handler, value) => <TextField
                     label={text}
