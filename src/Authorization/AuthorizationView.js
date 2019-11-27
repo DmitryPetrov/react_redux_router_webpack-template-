@@ -53,7 +53,7 @@ const AuthorizationView = (props) => {
             fullWidth
             label="User name"
             autoFocus
-            onChange={(event) => props.userNameHandler(event)}
+            onChange={(event) => props.userNameHandle(event)}
           />
           <TextField
             variant="outlined"
@@ -65,7 +65,7 @@ const AuthorizationView = (props) => {
             type="password"
             id="password"
             autoComplete="current-password"
-            onChange={(event) => props.passwordHandler(event)}
+            onChange={(event) => props.passwordHandle(event)}
           />
           <Button
             type="submit"
@@ -73,7 +73,7 @@ const AuthorizationView = (props) => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={(event) => props.buttonHandler(event)}
+            onClick={(event) => props.buttonHandle(event)}
           >
             Sign In
           </Button>

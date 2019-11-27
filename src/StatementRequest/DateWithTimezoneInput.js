@@ -41,12 +41,12 @@ function DateWithTimezoneInput(props) {
       timezone: getTimezone(props.date)
     });
 
-  const timezoneHandler = event => {
+  const timezoneHandle = event => {
     setState({...state, "timezone": event.target.value});
     props.dispatchFunc(state.date + event.target.value);
   }
 
-  const dateHandler = event => {
+  const dateHandle = event => {
     let newDate = event.target.value;
     if(newDate.length === 16) {
       newDate += ":00";
@@ -72,7 +72,7 @@ function DateWithTimezoneInput(props) {
         margin="dense"
         InputLabelProps={{shrink: true}}
         inputProps={{step: 1}} // 1 sec
-        onChange={dateHandler}
+        onChange={dateHandle}
       />
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
@@ -81,7 +81,7 @@ function DateWithTimezoneInput(props) {
         <Select
           margin="dense"
           value={state.timezone}
-          onChange={timezoneHandler}
+          onChange={timezoneHandle}
           labelWidth={labelWidth}
         >
           <MenuItem value="-11:00">-11:00</MenuItem>

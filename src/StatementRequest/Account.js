@@ -30,12 +30,12 @@ function Account(props) {
   const classes = useStyles();
   const gridCell = GRID_ITEM_STYLE();
 
-  const textField = (text, handler, value) => <TextField
+  const textField = (text, handle, value) => <TextField
                     label={text}
                     className={classes.textField}
                     margin="dense"
                     variant="outlined"
-                    onChange={handler}
+                    onChange={handle}
                     defaultValue={value}
                   />;
 

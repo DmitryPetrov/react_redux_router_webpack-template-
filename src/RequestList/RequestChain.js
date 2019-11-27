@@ -50,7 +50,7 @@ function RequestChain(props) {
   
   const [renderIncomingFormFlag, setRenderIncomingForm] = React.useState(false);
 
-  const nextStepHandler = event => {
+  const nextStepHandle = event => {
     if (props.item.phaseNum === STATEMENT_REQUEST) {
       setRenderIncomingForm(false);
       props.fetchData(props.item.responseId);
@@ -81,7 +81,7 @@ function RequestChain(props) {
           <Button
             variant="outlined"
             size="small"
-            onClick={nextStepHandler}
+            onClick={nextStepHandle}
           >
             Next step
           </Button>

@@ -10,20 +10,20 @@ class Authorization extends React.Component {
   constructor(props) {
     super(props);
 
-    this.userNameHandler = this.userNameHandler.bind(this);
-    this.passwordHandler = this.passwordHandler.bind(this);
-    this.buttonHandler = this.buttonHandler.bind(this);
+    this.userNameHandle = this.userNameHandle.bind(this);
+    this.passwordHandle = this.passwordHandle.bind(this);
+    this.buttonHandle = this.buttonHandle.bind(this);
   }
 
-  userNameHandler(event) {
+  userNameHandle(event) {
     store.dispatch(updateAutorizationData({userName: event.target.value}));
   }
 
-  passwordHandler(event) {
+  passwordHandle(event) {
     store.dispatch(updateAutorizationData({password: event.target.value}));
   }
 
-  buttonHandler(event) {
+  buttonHandle(event) {
     event.preventDefault();
     this.props.fetchData(this.props.data);
   }
@@ -32,9 +32,9 @@ class Authorization extends React.Component {
     return (
       <div className="Authorization">
         <AuthorizationView
-          userNameHandler={this.userNameHandler}
-          passwordHandler={this.passwordHandler}
-          buttonHandler={this.buttonHandler}
+          userNameHandle={this.userNameHandle}
+          passwordHandle={this.passwordHandle}
+          buttonHandle={this.buttonHandle}
         />
         <AuthorizationResponse request={this.props.request}/>
       </div>

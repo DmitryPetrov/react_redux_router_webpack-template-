@@ -14,48 +14,48 @@ class StatementRequest extends React.Component {
     this.addAccount = this.addAccount.bind(this);
     this.submit = this.submit.bind(this);
 
-    this.docDateHandler = this.docDateHandler.bind(this);
-    this.docIdHandler = this.docIdHandler.bind(this);
-    this.docNumberHandler = this.docNumberHandler.bind(this);
+    this.docDateHandle = this.docDateHandle.bind(this);
+    this.docIdHandle = this.docIdHandle.bind(this);
+    this.docNumberHandle = this.docNumberHandle.bind(this);
 
-    this.fromDateHandler = this.fromDateHandler.bind(this);
-    this.orgIdHandler = this.orgIdHandler.bind(this);
-    this.orgInnHandler = this.orgInnHandler.bind(this);
-    this.orgNameHandler = this.orgNameHandler.bind(this);
-    this.toDateHandler = this.toDateHandler.bind(this);
-    this.signCollectionHandler = this.signCollectionHandler.bind(this);
+    this.fromDateHandle = this.fromDateHandle.bind(this);
+    this.orgIdHandle = this.orgIdHandle.bind(this);
+    this.orgInnHandle = this.orgInnHandle.bind(this);
+    this.orgNameHandle = this.orgNameHandle.bind(this);
+    this.toDateHandle = this.toDateHandle.bind(this);
+    this.signCollectionHandle = this.signCollectionHandle.bind(this);
   }
 
-  docDateHandler(event) {
+  docDateHandle(event) {
     let date = event.target.value;
     if(date.length === 16) {
       date += ":00";
     }
     store.dispatch(updateData({docDate: date}));
   }
-  docIdHandler(event) {
+  docIdHandle(event) {
     store.dispatch(updateData({docId: event.target.value}));
   }
-  docNumberHandler(event) {
+  docNumberHandle(event) {
     store.dispatch(updateData({docNumber: event.target.value}));
   }
 
-  fromDateHandler(date) {
+  fromDateHandle(date) {
     store.dispatch(updateData({fromDate: date}));
   }
-  orgIdHandler(event) {
+  orgIdHandle(event) {
     store.dispatch(updateData({orgId: event.target.value}));
   }
-  orgInnHandler(event) {
+  orgInnHandle(event) {
     store.dispatch(updateData({orgInn: event.target.value}));
   }
-  orgNameHandler(event) {
+  orgNameHandle(event) {
     store.dispatch(updateData({orgName: event.target.value}));
   }
-  toDateHandler(date) {
+  toDateHandle(date) {
     store.dispatch(updateData({toDate: date}));
   }
-  signCollectionHandler(data) {
+  signCollectionHandle(data) {
     store.dispatch(updateData(data));
   }
 
@@ -78,18 +78,18 @@ class StatementRequest extends React.Component {
     return (
       <div className="StatementRequest">
         <StatementRequestView 
-          docDateHandler={this.docDateHandler}
-          docIdHandler={this.docIdHandler}
-          docNumberHandler={this.docNumberHandler}
-          fromDateHandler={this.fromDateHandler}
-          orgIdHandler={this.orgIdHandler}
-          orgInnHandler={this.orgInnHandler}
-          orgNameHandler={this.orgNameHandler}
-          toDateHandler={this.toDateHandler}
+          docDateHandle={this.docDateHandle}
+          docIdHandle={this.docIdHandle}
+          docNumberHandle={this.docNumberHandle}
+          fromDateHandle={this.fromDateHandle}
+          orgIdHandle={this.orgIdHandle}
+          orgInnHandle={this.orgInnHandle}
+          orgNameHandle={this.orgNameHandle}
+          toDateHandle={this.toDateHandle}
           accounts={this.props.data.accounts}
-          addAccountHandler={this.addAccount}
-          submitHandler={this.submit}
-          signCollectionHandler={this.signCollectionHandler}
+          addAccountHandle={this.addAccount}
+          submitHandle={this.submit}
+          signCollectionHandle={this.signCollectionHandle}
         />
         <MessageFromServer request={this.props.request} />
       </div>

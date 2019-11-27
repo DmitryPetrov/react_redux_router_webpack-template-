@@ -53,7 +53,7 @@ function IncomingFormView (props) {
               className={form.textField}
               margin="dense"
               variant="outlined"
-              onChange={props.incomingIdHandler}
+              onChange={props.incomingIdHandle}
             />
             <TextField
               label="timestamp"
@@ -63,14 +63,14 @@ function IncomingFormView (props) {
               className={form.textField}
               margin="dense"
               inputProps={{step: 1}} // 1 sec
-              onChange={props.timestampHandler}
+              onChange={props.timestampHandle}
             />
           </form>
           {itemList(DocType, props.incoming.docTypes)}
           <Button 
             size="small"
             variant="outlined" 
-            onClick={props.addDocTypeHandler}
+            onClick={props.addDocTypeHandle}
             className={form.button}
           >
             Add DocType
@@ -78,7 +78,7 @@ function IncomingFormView (props) {
           <Button
             size="small"
             variant="contained"
-            onClick={props.submitHandler}
+            onClick={props.submitHandle}
             className={form.button}
             form="IncomingForm"
           >

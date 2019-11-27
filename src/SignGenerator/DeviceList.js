@@ -35,7 +35,7 @@ const DeviceList = (props) => {
         className={classes.select}
         margin="dense"
         value={props.defaultValue}
-        onChange={(event) => props.handler(event.target.value)}
+        onChange={(event) => props.handle(event.target.value)}
         labelWidth={labelWidth}
       >
         {props.items.map((item, index) => <MenuItem value={item} key={index}>{item}</MenuItem>)}

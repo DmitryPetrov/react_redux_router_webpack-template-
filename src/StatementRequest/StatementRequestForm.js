@@ -27,12 +27,12 @@ function StatementRequestForm(props) {
   const classes = useStyles();
   const gridCell = GRID_ITEM_STYLE();
 
-  const textField = (text, handler, value) => <TextField
+  const textField = (text, handle, value) => <TextField
                     label={text}
                     className={classes.textField}
                     margin="dense"
                     variant="outlined"
-                    onChange={handler}
+                    onChange={handle}
                     defaultValue={value}
                   />;
 
@@ -53,15 +53,15 @@ function StatementRequestForm(props) {
             className={classes.textField}
             margin="dense"
             inputProps={{step: 1}} // 1 sec
-            onChange={props.docDateHandler}
+            onChange={props.docDateHandle}
           />
-          {textField("doc Id", props.docIdHandler, DOC_ID)}
-          {textField("doc Number", props.docNumberHandler, DOC_NUMBER)}
-          <DateWithTimezoneInput labelText={"fromDate"} dispatchFunc={props.fromDateHandler} date={FROM_DATE}/>
-          {textField("org Id", props.orgIdHandler, ORG_ID)}
-          {textField("org Inn", props.orgInnHandler, ORG_INN)}
-          {textField("org Name", props.orgNameHandler, ORG_NAME)}
-          <DateWithTimezoneInput labelText={"toDate"} dispatchFunc={props.toDateHandler} date={TO_DATE}/>
+          {textField("doc Id", props.docIdHandle, DOC_ID)}
+          {textField("doc Number", props.docNumberHandle, DOC_NUMBER)}
+          <DateWithTimezoneInput labelWidth={"fromDate"} dispatchFunc={props.fromDateHandle} date={FROM_DATE}/>
+          {textField("org Id", props.orgIdHandle, ORG_ID)}
+          {textField("org Inn", props.orgInnHandle, ORG_INN)}
+          {textField("org Name", props.orgNameHandle, ORG_NAME)}
+          <DateWithTimezoneInput labelWidth={"toDate"} dispatchFunc={props.toDateHandle} date={TO_DATE}/>
         </form>
       </Box>
     </div>

@@ -16,18 +16,18 @@ class IncomingForm extends React.Component {
       timestamp: '(initialState)',
     }
 
-    this.incomingIdHandler = this.incomingIdHandler.bind(this);
-    this.timestampHandler = this.timestampHandler.bind(this);
+    this.incomingIdHandle = this.incomingIdHandle.bind(this);
+    this.timestampHandle = this.timestampHandle.bind(this);
     this.getFiltredDocTypes = this.getFiltredDocTypes.bind(this);
-    this.addDocTypeHandler = this.addDocTypeHandler.bind(this);
-    this.submitHandler = this.submitHandler.bind(this);
+    this.addDocTypeHandle = this.addDocTypeHandle.bind(this);
+    this.submitHandle = this.submitHandle.bind(this);
   }
 
-  incomingIdHandler(event) {
+  incomingIdHandle(event) {
     this.setState({incomingId: event.target.value});
   }
 
-  timestampHandler(event) {
+  timestampHandle(event) {
     let date = event.target.value;
     if(date.length === 16) {
       date += ":00";
@@ -35,11 +35,11 @@ class IncomingForm extends React.Component {
     this.setState({timestamp: date});
   }
 
-  addDocTypeHandler(event) {
+  addDocTypeHandle(event) {
     store.dispatch(addDocType());
   }
 
-  submitHandler(event) {
+  submitHandle(event) {
     let requestData = this.state;
     requestData.docTypes = this.getFiltredDocTypes();
     this.props.fetchData(requestData);
@@ -54,10 +54,10 @@ class IncomingForm extends React.Component {
   render() {
     return (
       <IncomingFormView
-        incomingIdHandler={this.incomingIdHandler}
-        timestampHandler={this.timestampHandler}
-        addDocTypeHandler={this.addDocTypeHandler}
-        submitHandler={this.submitHandler}
+        incomingIdHandle={this.incomingIdHandle}
+        timestampHandle={this.timestampHandle}
+        addDocTypeHandle={this.addDocTypeHandle}
+        submitHandle={this.submitHandle}
         incoming={this.props.incoming}
         />
       )

@@ -80,7 +80,7 @@ const SignView = (props) => {
             <div className={classes.device}>
               <DeviceList 
 	              items={props.devices} 
-	              handler={props.changeDevice} 
+	              handle={props.changeDevice} 
 	              defaultValue={props.defaultDevice}
               />
               <TextField
@@ -96,7 +96,7 @@ const SignView = (props) => {
           	<div className={classes.certificate}>
 	          	<CertificateList 
 		          	items={props.certificates} 
-		          	handler={props.setCertNum} 
+		          	handle={props.setCertNum} 
 		          	defaultValue={props.defaultCertNum}
 	          	/>
 	            <Button 

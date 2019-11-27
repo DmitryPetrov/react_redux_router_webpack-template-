@@ -20,7 +20,7 @@ function StatementDocument(props)  {
 
   const [state, setState] = React.useState(false);
 
-  const buttonHandler = event => {
+  const buttonHandle = event => {
     setState(!state);
   }
 
@@ -58,13 +58,13 @@ function StatementDocument(props)  {
         <div>
           <Button 
             variant="outlined" 
-            onClick={buttonHandler}
+            onClick={buttonHandle}
           >
             {BUTTON_NAME}
           </Button>
           <Button 
             variant="outlined" 
-            onClick={props.buttonHandler}
+            onClick={props.buttonHandle}
           >
             {props.buttonName}
           </Button>

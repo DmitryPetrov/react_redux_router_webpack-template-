@@ -62,34 +62,34 @@ function StatementRequestView(props) {
         >
           <Grid item xs={4} className={classes.gridItem}>
             <StatementRequestForm
-              docDateHandler={props.docDateHandler}
-              docIdHandler={props.docIdHandler}
-              docNumberHandler={props.docNumberHandler}
-              fromDateHandler={props.fromDateHandler}
-              orgIdHandler={props.orgIdHandler}
-              orgInnHandler={props.orgInnHandler}
-              orgNameHandler={props.orgNameHandler}
-              toDateHandler={props.toDateHandler}
-              submitHandler={props.submitHandler}
+              docDateHandle={props.docDateHandle}
+              docIdHandle={props.docIdHandle}
+              docNumberHandle={props.docNumberHandle}
+              fromDateHandle={props.fromDateHandle}
+              orgIdHandle={props.orgIdHandle}
+              orgInnHandle={props.orgInnHandle}
+              orgNameHandle={props.orgNameHandle}
+              toDateHandle={props.toDateHandle}
+              submitHandle={props.submitHandle}
             />
           </Grid>
           <Grid item xs={4} className={classes.gridItem}>
             {itemList(Account, props.accounts)}
             <Button 
               variant="outlined"
-              onClick={props.addAccountHandler}
+              onClick={props.addAccountHandle}
               className={classes.addAccountButton}
             >
               Add account
             </Button>
           </Grid>
           <Grid item xs={4} className={classes.gridItem}>
-            <SignGenerator handler={props.signCollectionHandler}/> 
+            <SignGenerator handle={props.signCollectionHandle}/> 
           </Grid>
         </Grid>
         <Button
           variant="contained"
-          onClick={props.submitHandler}
+          onClick={props.submitHandle}
           className={classes.button}
           form="StatementRequestForm"
         >

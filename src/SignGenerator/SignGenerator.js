@@ -74,7 +74,7 @@ const SignGenerator = (props) => {
     if (JSON.stringify(props.data) !== JSON.stringify(dataForSign)) {
       setDataForSign(props.data)
       setSign({...SIGN_DATA});
-      props.handler({signCollection: null});//если меняются данные для подписи, то невалидную подпись не отправляем на сервер
+      props.handle({signCollection: null});//если меняются данные для подписи, то невалидную подпись не отправляем на сервер
     }
   }, [props.data, dataForSign]);
 
@@ -188,7 +188,7 @@ const SignGenerator = (props) => {
 
     let signCollection = SIGN_COLLECTION;
     signCollection.signCollection.signs = [newSign];
-    props.handler(signCollection);
+    props.handle(signCollection);
   }
 
   return (

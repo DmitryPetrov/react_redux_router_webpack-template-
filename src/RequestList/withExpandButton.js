@@ -4,14 +4,14 @@ export function withExpandButton(Component) {
   return (props) => {
     const [state, setState] = React.useState(false);
 
-    const buttonHandler = event => {
+    const buttonHandle = event => {
       setState(!state);
     }
 
     const newProps = {
       json: state,
       buttonName: "JSON",
-      buttonHandler: buttonHandler,
+      buttonHandle: buttonHandle,
       ...props
     }
 

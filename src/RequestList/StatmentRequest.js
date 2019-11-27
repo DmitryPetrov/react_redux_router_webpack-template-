@@ -42,7 +42,7 @@ function StatmentRequest(props) {
           <Button
             size="small"
             variant="outlined" 
-            onClick={props.buttonHandler}
+            onClick={props.buttonHandle}
           >
             {props.buttonName}
           </Button>
