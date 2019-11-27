@@ -43,7 +43,7 @@ function DateWithTimezoneInput(props) {
 
   const timezoneHandle = event => {
     setState({...state, "timezone": event.target.value});
-    props.dispatchFunc(state.date + event.target.value);
+    props.handle(state.date + event.target.value);
   }
 
   const dateHandle = event => {
@@ -52,7 +52,7 @@ function DateWithTimezoneInput(props) {
       newDate += ":00";
     }
     setState({...state, "date": newDate});
-    props.dispatchFunc(newDate + state.timezone);
+    props.handle(newDate + state.timezone);
   };
 
   const inputLabel = React.useRef(null);
@@ -64,7 +64,7 @@ function DateWithTimezoneInput(props) {
   return (
     <div className={classes.div}>
       <TextField
-        label={props.labelText}
+        label={props.label}
         variant="outlined"
         type="datetime-local"
         defaultValue={state.date}

@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import grey from '@material-ui/core/colors/grey';
 
-import DateWithTimezoneInput from './DateWithTimezoneInput';
+import DateWithTimezoneInput from './../components/DateWithTimezoneInput';
 import { DATA } from './initialState';
 import { GRID_ITEM_STYLE } from './../style';
 
@@ -57,11 +57,11 @@ function StatementRequestForm(props) {
           />
           {textField("doc Id", props.docIdHandle, DOC_ID)}
           {textField("doc Number", props.docNumberHandle, DOC_NUMBER)}
-          <DateWithTimezoneInput labelWidth={"fromDate"} dispatchFunc={props.fromDateHandle} date={FROM_DATE}/>
+          <DateWithTimezoneInput label={"fromDate"} handle={props.fromDateHandle} date={FROM_DATE}/>
           {textField("org Id", props.orgIdHandle, ORG_ID)}
           {textField("org Inn", props.orgInnHandle, ORG_INN)}
           {textField("org Name", props.orgNameHandle, ORG_NAME)}
-          <DateWithTimezoneInput labelWidth={"toDate"} dispatchFunc={props.toDateHandle} date={TO_DATE}/>
+          <DateWithTimezoneInput label={"toDate"} handle={props.toDateHandle} date={TO_DATE}/>
         </form>
       </Box>
     </div>
