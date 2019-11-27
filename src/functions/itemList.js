@@ -2,7 +2,7 @@ import React from 'react';
 
 export function itemList(Component, itemList) {
 	if (itemList === null) {
-		return <div></div>
+		return null
 	}
 
   let list = itemList.map((item, index) => {
