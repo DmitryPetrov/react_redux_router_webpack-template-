@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(1),
     color: theme.palette.primary.main,
   },
-  singResult: {
+  singSection: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
   },
@@ -28,11 +28,11 @@ const useStyles = makeStyles(theme => ({
     width: "48%",
     marginLeft: "2%",
   },
-  device: {
+  deviceSection: {
     width: "100%",
     marginTop: theme.spacing(1),
   },
-  certificate: {
+  certificateSection: {
   	display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -48,16 +48,49 @@ const SignView = (props) => {
   const classes = useStyles();
   const gridCell = GRID_ITEM_STYLE();
 
-  const singResult = () => {
+  const singSection = () => {
     if (props.sign.content !== undefined) {
-      return <Typography component="h1" variant="body1" className={classes.singResult}>Document is signed</Typography>;
+      return <Typography component="h1" variant="body1" className={classes.singSection}>Document is signed</Typography>;
     }
 
     if (props.signGenerating === true) {
-      return <CircularProgress disableShrink className={classes.singResult}/>;
+      return <CircularProgress disableShrink className={classes.singSection}/>;
     }
 
     return null;
+  }
+
+  const deviceSection = () => {
+    if (props.devices === null) {
+      return null;
+    }
+
+    return (
+      <div className={classes.deviceSection}>
+        <DeviceList items={props.devices} handle={props.changeDevice} defaultValue={props.defaultDevice}/>
+        <TextField
+          label={"Token pin"}
+          margin="dense"
+          variant="outlined"
+          className={classes.pinField}
+          onChange={event => props.setPin(event.target.value)}
+          defaultValue={props.defaultPin}
+        />
+      </div>)
+  }
+
+  const certificateSection = () => {
+    if (props.certificates === null) {
+      return null
+    }
+
+    return (
+      <div className={classes.certificateSection}>
+        <CertificateList items={props.certificates} handle={props.setCertNum} defaultValue={props.defaultCertNum}/>
+        <Button variant="outlined" className={classes.buttonGenSign} onClick={() => props.createSign()}>
+          Generate signature
+        </Button>
+      </div>)
   }
 
   return (
@@ -69,45 +102,12 @@ const SignView = (props) => {
         className={gridCell.componentBorder}
       >
         <div className={gridCell.content}>
-          <Button
-            variant="outlined"
-            className={classes.buttonAddSignature}
-            onClick={event => props.getDevices()}
-          >
+          <Button variant="outlined" className={classes.buttonAddSignature} onClick={event => props.getDevices()}>
             Add signature
           </Button>
-          {(props.devices !== null) ? 
-            <div className={classes.device}>
-              <DeviceList 
-	              items={props.devices} 
-	              handle={props.changeDevice} 
-	              defaultValue={props.defaultDevice}
-              />
-              <TextField
-                label={"Token pin"}
-                margin="dense"
-                variant="outlined"
-                className={classes.pinField}
-                onChange={event => props.setPin(event.target.value)}
-                defaultValue={props.defaultPin}
-              />
-            </div> : null}
-          {(props.certificates !== null) ? 
-          	<div className={classes.certificate}>
-	          	<CertificateList 
-		          	items={props.certificates} 
-		          	handle={props.setCertNum} 
-		          	defaultValue={props.defaultCertNum}
-	          	/>
-	            <Button 
-	              variant="outlined" 
-	              className={classes.buttonGenSign} 
-	              onClick={() => props.createSign()}
-	            >
-	              Generate signature
-	            </Button>
-            </div> : null}
-          {singResult()}
+          {deviceSection()}
+          {certificateSection()}
+          {singSection()}
         </div>
       </Box>
     </div>
