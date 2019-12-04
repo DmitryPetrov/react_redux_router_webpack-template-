@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 
 import { itemList } from './../functions/itemList';
 import { createDigest } from './createDigest';
+import { DIGEST_SCHEME_INFO } from './initialState';
 import Account from './Account';
 import SignGenerator from './../SignGenerator/SignGenerator';
 import StatementRequestForm from './StatementRequestForm';
@@ -85,7 +86,12 @@ function StatementRequestView(props) {
             </Button>
           </Grid>
           <Grid item xs={4} className={classes.gridItem}>
-            <SignGenerator handle={props.signCollectionHandle} createDigest={createDigest}/> 
+            <SignGenerator 
+              handle={props.signCollectionHandle} 
+              createDigest={createDigest}
+              data={props.dataForSign}
+              digestSchemeInfo={DIGEST_SCHEME_INFO}
+            /> 
           </Grid>
         </Grid>
         <Button

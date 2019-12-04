@@ -13,6 +13,13 @@ const ACCOUNT_DEFAULT_VALUE = "40702810800000005897";
 const BANK_BIC_DEFAULT_VALUE = "044030861";
 const BANK_NAME_DEFAULT_VALUE = "АО \"АБ \"РОССИЯ\"";
 
+export const DIGEST_SCHEME_INFO = {
+    digestScheme: "com.bssys.sbns.dbo.rur.statement.R010SignDigest",
+    digestSchemeFormat: "",
+    digestSchemeVersion: "5",
+};
+
+
 export var ACCOUT_DATA = {
     account: ACCOUNT_DEFAULT_VALUE,
     bankBIC: BANK_BIC_DEFAULT_VALUE,

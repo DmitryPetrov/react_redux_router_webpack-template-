@@ -90,6 +90,7 @@ class StatementRequest extends React.Component {
           addAccountHandle={this.addAccount}
           submitHandle={this.submit}
           signCollectionHandle={this.signCollectionHandle}
+          dataForSign={this.props.dataForSign}
         />
         <MessageFromServer request={this.props.request} />
       </div>
@@ -98,8 +99,12 @@ class StatementRequest extends React.Component {
 }
 
 function mapStateToProps(store) { 
+  // {signCollection: null}
+  // предотвращяет исчезновение надписи о заверщенной генерации подписи 
+  // после генерации подписи
   return {
   	data : Object.assign({}, store.statementRequest.data),
+    dataForSign : Object.assign({}, store.statementRequest.data, {signCollection: null}),
     request: Object.assign({}, store.statementRequest.request),
   }
 }

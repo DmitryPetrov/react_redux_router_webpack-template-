@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import SignGeneratorView from './SignGeneratorView';
 import { loadPlugin } from './rutoken';
@@ -12,9 +11,6 @@ const SIGN_DATA =
     signType: "SINGLE",
     signAuthorityId: "2a67e143-5bad-4beb-95cc-dbf7f197b714",
     certificateGuid: "befaadb6-178f-4806-90d2-b9552c795610",
-    digestScheme: "com.bssys.sbns.dbo.rur.statement.R010SignDigest",
-    digestSchemeFormat: "",
-    digestSchemeVersion: "5",
     userName: "test9",
     signerFullName: "Образцов Михаил Юрьевич",
     safeTouchAutoSign: "false",
@@ -24,7 +20,6 @@ const SIGN_COLLECTION =
     signCollection: 
     {
       bankMessage: "",
-      digestName: SIGN_DATA.digestScheme,
     },
   };
 
@@ -143,12 +138,14 @@ const SignGenerator = (props) => {
       signHash: signHash,
       orgId: props.data.orgId,
       orgName: props.data.orgName,
+      ...props.digestSchemeInfo,
     }
 
     let newSign = Object.assign(sign, signData);
     setSign(Object.assign(sign, newSign));
 
     let signCollection = SIGN_COLLECTION;
+    signCollection.signCollection.digestName = signData.digestScheme;
     signCollection.signCollection.signs = [newSign];
     props.handle(signCollection);
   }
@@ -171,13 +168,4 @@ const SignGenerator = (props) => {
   )
 }
 
-function mapStateToProps(store) { 
-  // {signCollection: null}
-  // предотвращяет исчезновение надписи о заверщенной генерации подписи 
-  // после генерации подписи
-  return {
-    data : Object.assign({}, store.statementRequest.data, {signCollection: null}),
-  }
-}
-
-export default connect(mapStateToProps)(SignGenerator);
+export default SignGenerator;
