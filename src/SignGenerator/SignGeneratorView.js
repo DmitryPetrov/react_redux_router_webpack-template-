@@ -3,8 +3,6 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import grey from '@material-ui/core/colors/grey';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 import DeviceList from './DeviceList';
@@ -19,10 +17,6 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1.5),
     marginBottom: theme.spacing(1),
     color: theme.palette.primary.main,
-  },
-  singSection: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
   },
   pinField: {
     width: "48%",
@@ -47,18 +41,6 @@ const useStyles = makeStyles(theme => ({
 const SignView = (props) => {
   const classes = useStyles();
   const gridCell = GRID_ITEM_STYLE();
-
-  const singSection = () => {
-    if (props.sign.content !== undefined) {
-      return <Typography component="h1" variant="body1" className={classes.singSection}>Document is signed</Typography>;
-    }
-
-    if (props.signGenerating === true) {
-      return <CircularProgress disableShrink className={classes.singSection}/>;
-    }
-
-    return null;
-  }
 
   const deviceSection = () => {
     if (props.devices === null) {
@@ -107,7 +89,7 @@ const SignView = (props) => {
           </Button>
           {deviceSection()}
           {certificateSection()}
-          {singSection()}
+          <SingMarker sign={props.sign} signGenerating={props.signGenerating} />
         </div>
       </Box>
     </div>
