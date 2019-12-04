@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import blueGrey from '@material-ui/core/colors/blueGrey';
 
 export const CONTAINER_MAX_WIDTH="xl";
 
@@ -12,7 +13,33 @@ export const GLOBAL_STYLE = makeStyles(theme => ({
     marginLeft: theme.spacing(30),
     display: 'flex',
     flexDirection: 'column',
+  },
+  backgroundLight: {
+    backgroundColor: blueGrey[50],
+  },
+  backgroundMid: {
+    backgroundColor: blueGrey[100],
+  },
+  backgroundDark: {
+    backgroundColor: blueGrey[200],
+  },
+  gridCell: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: "100%",
+  },
+  gridCellContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: "94%",
+  },
+  primaryButtonColor: {
 
+  },
+  secondaryButtonColor: {
+    
   }
 }));
 
@@ -32,5 +59,3 @@ export const GRID_ITEM_STYLE = makeStyles(theme => ({
     margin: theme.spacing(1),
   }
 }));
-
-//working app

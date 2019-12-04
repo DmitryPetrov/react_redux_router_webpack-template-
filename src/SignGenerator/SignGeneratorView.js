@@ -1,13 +1,14 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Box from '@material-ui/core/Box';
-import grey from '@material-ui/core/colors/grey';
+import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
 
 import DeviceList from './DeviceList';
 import CertificateList from './CertificateList';
-import { GRID_ITEM_STYLE } from './../style';
+import SingMarker from './SingMarker';
+import { GLOBAL_STYLE } from './../style';
 
 const useStyles = makeStyles(theme => ({
   textField: {
@@ -36,11 +37,15 @@ const useStyles = makeStyles(theme => ({
     width: "80%",
     marginTop: theme.spacing(1),
   },
+  spacing: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+  }
 }));
 
 const SignView = (props) => {
-  const classes = useStyles();
-  const gridCell = GRID_ITEM_STYLE();
+  const style = useStyles();
+  const globalStyle = GLOBAL_STYLE();
 
   const deviceSection = () => {
     if (props.devices === null) {
@@ -48,17 +53,18 @@ const SignView = (props) => {
     }
 
     return (
-      <div className={classes.deviceSection}>
+      <div className={style.deviceSection}>
         <DeviceList items={props.devices} handle={props.changeDevice} defaultValue={props.defaultDevice}/>
         <TextField
           label={"Token pin"}
           margin="dense"
           variant="outlined"
-          className={classes.pinField}
+          className={style.pinField}
           onChange={event => props.setPin(event.target.value)}
           defaultValue={props.defaultPin}
         />
-      </div>)
+      </div>
+    )
   }
 
   const certificateSection = () => {
@@ -67,32 +73,26 @@ const SignView = (props) => {
     }
 
     return (
-      <div className={classes.certificateSection}>
+      <div className={style.certificateSection}>
         <CertificateList items={props.certificates} handle={props.setCertNum} defaultValue={props.defaultCertNum}/>
-        <Button variant="outlined" className={classes.buttonGenSign} onClick={() => props.createSign()}>
+        <Button variant="outlined" className={style.buttonGenSign} onClick={() => props.createSign()}>
           Generate signature
         </Button>
-      </div>)
+      </div>
+    )
   }
 
   return (
-    <div className={gridCell.component}>
-      <Box 
-        border={1} 
-        borderRadius={4}
-        borderColor={grey[500]}
-        className={gridCell.componentBorder}
-      >
-        <div className={gridCell.content}>
-          <Button variant="outlined" className={classes.buttonAddSignature} onClick={event => props.getDevices()}>
-            Add signature
-          </Button>
-          {deviceSection()}
-          {certificateSection()}
-          <SingMarker sign={props.sign} signGenerating={props.signGenerating} />
-        </div>
-      </Box>
-    </div>
+    <Paper component="div" className={clsx(globalStyle.backgroundLight, globalStyle.gridCell)}>
+      <div className={clsx(globalStyle.gridCellContent, style.spacing)}>
+        <Button variant="outlined" className={style.buttonAddSignature} onClick={event => props.getDevices()}>
+          Add signature
+        </Button>
+        {deviceSection()}
+        {certificateSection()}
+        <SingMarker sign={props.sign} signGenerating={props.signGenerating} />
+      </div>
+    </Paper>
   )
 }
 
