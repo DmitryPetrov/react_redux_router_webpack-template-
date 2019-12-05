@@ -6,7 +6,7 @@ const STATMENT_REQUEST_URL = '/request/new/statementRequest';
 
 export function updateData(data) {
 	return {
-		type: types.UPDATE_DATA,
+		type: types.STATMENT_REQUEST_UPDATE_DATA,
 		data: data,
 	}
 }

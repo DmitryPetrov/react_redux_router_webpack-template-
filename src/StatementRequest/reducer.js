@@ -2,7 +2,7 @@ import * as types from './actionTypeList';
 import { ACCOUT_DATA} from './initialState'
 
 export function statementRequestReducer(state = false, action) {
-  if (action.type === types.UPDATE_DATA) {
+  if (action.type === types.STATMENT_REQUEST_UPDATE_DATA) {
     let newState = Object.assign({}, state);
     let newData = Object.assign({}, newState.data, action.data);
     newState.data = newData;
