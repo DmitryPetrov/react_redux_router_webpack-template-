@@ -20,7 +20,7 @@ export const DIGEST_SCHEME_INFO = {
 };
 
 
-export var ACCOUT_DATA = {
+export const ACCOUT_DATA = {
     account: ACCOUNT_DEFAULT_VALUE,
     bankBIC: BANK_BIC_DEFAULT_VALUE,
     bankName: BANK_NAME_DEFAULT_VALUE,
