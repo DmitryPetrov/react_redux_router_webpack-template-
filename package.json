@@ -21,7 +21,7 @@
     "start": "react-scripts start",
     "dev": "webpack --mode development  ./src/index.js --output ./dist/dev.js",
     "build": "webpack --mode production ./src/index.js --output ./dist/prod.js",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
