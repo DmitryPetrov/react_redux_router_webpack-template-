@@ -1,6 +1,6 @@
-import { statementRequestReducer } from './reducer'
-import * as t from './actionTypeList'
-import { ACCOUT_DATA, REQUEST } from './initialState'
+import { statementRequestReducer } from './../reducer'
+import * as t from './../actionTypeList'
+import { ACCOUT_DATA, REQUEST } from './../initialState'
 
 
 describe('PayRequest reducer', () => {
