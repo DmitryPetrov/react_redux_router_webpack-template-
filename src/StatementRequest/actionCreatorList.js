@@ -32,7 +32,7 @@ export function removeAccount(index) {
 	};
 }
 
-function statementRequestIsLoading() {
+export function statementRequestIsLoading() {
 	return {
 		type: types.STATMENT_REQUEST_IS_LOADING,
 		isFail: false,
@@ -43,7 +43,7 @@ function statementRequestIsLoading() {
 	};
 }
 
-function statementRequestSuccessed(response) {
+export function statementRequestSuccessed(response) {
 	return {
 		type: types.STATMENT_REQUEST_SUCCESSED,
 		isFail: false,
@@ -54,7 +54,7 @@ function statementRequestSuccessed(response) {
 	};
 }
 
-function statementRequestFailed(errorMessage) {
+export function statementRequestFailed(errorMessage) {
 	return {
 		type: types.STATMENT_REQUEST_FAILED,
 		isFail: true,
@@ -70,11 +70,9 @@ export function statementRequestRequest(requestBody) {
     dispatch(statementRequestIsLoading());
     axios
       .post(STATMENT_REQUEST_URL, requestBody)
-      .then(response => {
-        dispatch(statementRequestSuccessed(response.data));
-      })
-      .catch(function (error) {
-        dispatch(statementRequestFailed(error.message));
-      });
+      .then(
+      		response => dispatch(statementRequestSuccessed(response.data)),
+      		error => dispatch(statementRequestFailed(error.message))
+      );
   };
 }
