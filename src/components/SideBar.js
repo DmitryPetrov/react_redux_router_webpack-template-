@@ -38,6 +38,11 @@ const PAGE_LIST = [
     icon: <PanoramaFishEye />
   },
   {
+    link: "/request/new/payRequest",
+    name: "Pay request",
+    icon: <PanoramaFishEye />
+  },
+  {
     link: "/request/list",
     name: "Request list",
     icon: <PanoramaFishEye />

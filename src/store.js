@@ -5,11 +5,13 @@ import rootReducer from './rootReducer';
 import { REQUEST } from './globalInitialState';
 import { AUTORIZATION } from './Authorization/initialState';
 import { STATEMENT_REQUEST } from './StatementRequest/initialState';
+import { PAY_REQUEST } from './PayRequest/initialState';
 import { INCOMING } from './RequestList/initialState';
 
 const initialState = {
   authorization: AUTORIZATION,
   statementRequest: STATEMENT_REQUEST,
+  payRequest: PAY_REQUEST,
   requestList: REQUEST,
   getRequestStatus: REQUEST,
   incoming:  INCOMING,
