@@ -40,10 +40,12 @@ const useStyles = makeStyles(theme => ({
 
 //const START = 0;
 //const FINNISH = 5;
-const STATEMENT_REQUEST = 1;
-const STATEMENT_REQUEST_STATUS = 2;
-const INCOMING = 3;
-const STATEMENT_DOCUMENT = 4;
+const START_PHASE = 0; //нет успешно отправленных запросов
+const STATEMENT_REQUEST_PHASE = 1; //успешно отправленный запрос StatementRequest, получен statementRequestResponseId
+const GET_REQUEST_STATUS_1_PHASE = 2; //успешно отправленный запрос GetRequestStatus, получен положительный ответ 'DELIVERED'
+const INCOMING_PHASE = 3; //успешно отправленный запрос Incoming, получен statementRequestResponseId
+const GET_REQUEST_STATUS_2_PHASE = 4; //успешно отправленный запрос GetRequestStatus, получен запрашиваемый документ
+const DOCUMENT_PHASE = 5; //цепочка запросов отработала;
 
 function RequestChain(props) {
   const classes = useStyles();
@@ -51,18 +53,18 @@ function RequestChain(props) {
   const [renderIncomingFormFlag, setRenderIncomingForm] = React.useState(false);
 
   const nextStepHandle = event => {
-    if (props.item.phaseNum === STATEMENT_REQUEST) {
+    if (props.item.phaseNum === STATEMENT_REQUEST_PHASE) {
       setRenderIncomingForm(false);
       props.fetchData(props.item.responseId);
     }
-    if (props.item.phaseNum === STATEMENT_REQUEST_STATUS) {
+    if (props.item.phaseNum === GET_REQUEST_STATUS_1_PHASE) {
       setRenderIncomingForm(true);
     }
-    if (props.item.phaseNum === INCOMING) {
+    if (props.item.phaseNum === INCOMING_PHASE) {
       setRenderIncomingForm(false);
       props.fetchData(props.item.responseId);
     }
-    if (props.item.phaseNum === STATEMENT_DOCUMENT) {
+    if (props.item.phaseNum === GET_REQUEST_STATUS_2_PHASE) {
       //запросить документ отдельно
     }
   }
@@ -88,9 +90,9 @@ function RequestChain(props) {
         </Grid>
       </Grid>    
       {renderIfNotNull(StatmentRequest, props.item.statementRequest)}
-      {renderIfNotNull(GetRequestStatus, props.item.getRequestStatus)}
+      {renderIfNotNull(GetRequestStatus, props.item.getRequestStatus1)}
       {renderIfNotNull(Incoming, props.item.incoming)}
-      {renderIfNotNull(StatementDocument, props.item.statementDocument)}
+      {renderIfNotNull(StatementDocument, props.item.getRequestStatus2)}
       {renderIncomingForm(props.item.incoming, renderIncomingFormFlag, props.item.responseId)}
       {renderError(props.item.status, props.item.soapMessageList, props.item.message)}
     </div>
