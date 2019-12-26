@@ -11,7 +11,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import grey from '@material-ui/core/colors/grey';
 
 import { requestListRequest } from './../actionCreatorList';
-import RequestChain from './RequestChain';
+import StatmentRequestChain from './StatmentRequestChain';
 
 import { GLOBAL_STYLE, CONTAINER_MAX_WIDTH } from './../../style';
 
@@ -93,7 +93,7 @@ function RequestChainList(props) {
             <Typography className={classes.heading}>Request chain id: {item.responseId}</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <RequestChain item={item} index={index} key={index}/>
+            <StatmentRequestChain item={item} index={index} key={index}/>
           </ExpansionPanelDetails>
         </ExpansionPanel>
       ))}

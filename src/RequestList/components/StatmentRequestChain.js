@@ -47,7 +47,7 @@ const INCOMING_PHASE = 3; //успешно отправленный запрос
 const GET_REQUEST_STATUS_2_PHASE = 4; //успешно отправленный запрос GetRequestStatus, получен запрашиваемый документ
 const DOCUMENT_PHASE = 5; //цепочка запросов отработала;
 
-function RequestChain(props) {
+function StatmentRequestChain(props) {
   const classes = useStyles();
   
   const [renderIncomingFormFlag, setRenderIncomingForm] = React.useState(false);
@@ -69,7 +69,7 @@ function RequestChain(props) {
     }
   }
   return (
-    <div className="RequestChain">
+    <div className="StatmentRequestChain">
       <Grid container 
         spacing={3} 
         direction="row"
@@ -130,5 +130,5 @@ function mapDispatchToProps(dispatch) {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RequestChain);
+export default connect(mapStateToProps, mapDispatchToProps)(StatmentRequestChain);
 
