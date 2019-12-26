@@ -20,18 +20,19 @@ export const PAY_REQUEST_PART_DATA = {
     strNum: STR_NUM,
 };
 
-export const ACCEPT_TERM = "";
-export const ACCOUNT_ID = "";
+export const ACCEPT_TERM = "5";
+export const ACCOUNT_ID = "27809083-1892-4467-b6a6-035a95b6230e";
 
 export const BANK_ACCEPT_DATE = "2010-10-10T10:10:10.710+03:00";
 export const BANK_MESSAGE = "";
 export const BANK_MESSAGE_AUTHOR = "";
 
-export const DOC_DATE = "2010-10-10T10:10:10.710+03:00";
+export const DOC_DATE = "2019-05-24T01:00:00.000+03:00";
 export const DOC_DISPATCH_DATE = "2010-10-10T10:10:10.710+03:00";
 export const DOC_ID = "";
-export const DOC_NUMBER = "";
-export const DOCUMENT_SUM = "";
+export const DOC_NUMBER = "1263";
+
+export const DOCUMENT_SUM = "10000";
 
 export const EXTERNAL_ID = "";
 export const EXTERNAL_UPG_ID = "";
@@ -41,44 +42,46 @@ export const MESSAGE_ONLY_FOR_BANK = "";
 export const NEW_STATE = "";
 
 export const OPERATION_DATE = "2010-10-10T10:10:10.710+03:00";
-export const OPERATION_TYPE = "";
+export const OPERATION_TYPE = "02";
 
-export const ORG_ID = "";
+export const ORG_ID = "2fb49185-712d-4be9-9242-a03e35a7e003";
 export const ORG_NAME = "";
 
-export const PAYER_ACCOUNT = "";
-export const PAYER_BANK_BIC = "";
-export const PAYER_BANK_CORR_ACCOUNT = "";
-export const PAYER_BANK_NAME = "";
+export const PAYER_ACCOUNT = "40702810042010000403";
+export const PAYER_BANK_BIC = "044525220";
+export const PAYER_BANK_CORR_ACCOUNT = "30101810145250000220";
+export const PAYER_BANK_NAME = "ЦЕНТРАЛЬНЫЙ ФИЛИАЛ АБ \"РОССИЯ\" г. Москва";
 export const PAYER_ID = "";
-export const PAYER_INN = "";
-export const PAYER_NAME = "";
+export const PAYER_INN = "5035017318";
+export const PAYER_NAME = "ООО \"Лагуна\"";
 
-export const PAYMENT_CONDITION = "";
-export const PAYMENT_CONDITION_CODE = "";
+export const PAYMENT_CONDITION = "2";
+export const PAYMENT_CONDITION_CODE = "1";
 export const PAYMENT_KIND = "";
 export const PAYMENT_KIND_CODE = "";
-export const PAYMENT_PRIORITY = "";
-export const PAYMENT_PURPOSE = "";
+export const PAYMENT_PRIORITY = "5";
+export const PAYMENT_PURPOSE = "Договор № 197 от 01.10.14 за водоснабжение и водоотведение на основании показаний приборов учета в соответствии с договором за Май 2019 г. НДС (20%) - 110-15";
 
 export const QUEUE_DATE = "2010-10-10T10:10:10.710+03:00";
 
-export const RECEIVER_ACCOUNT = "";
-export const RECEIVER_BANK_BIC = "";
-export const RECEIVER_BANK_CORR_ACCOUNT = "";
-export const RECEIVER_BANK_NAME = "";
-export const RECEIVER_INN = "";
-export const RECEIVER_NAME = "";
+export const RECEIVER_ACCOUNT = "40702810142010000251";
+export const RECEIVER_BANK_BIC = "044525220";
+export const RECEIVER_BANK_CORR_ACCOUNT = "30101810145250000220";
+export const RECEIVER_BANK_NAME = "ЦЕНТРАЛЬНЫЙ ФИЛИАЛ АБ \"РОССИЯ\" г. Москва";
+export const RECEIVER_INN = "5035019481";
+export const RECEIVER_NAME = "МУП \"Энергетик\"";
+
 export const RECIEVE_D_PAYER_BANK = "2010-10-10T10:10:10.710+03:00";
+
 export const RESERV_23 = "";
 
 export const TEMPLATE = "";
 
 export const UIP = "";
 
-export const VAT_CALCULATION_RULE = "";
-export const VAT_RATE = "";
-export const VAT_SUM = "";
+export const VAT_CALCULATION_RULE = "Vat1";
+export const VAT_RATE = "0";
+export const VAT_SUM = "0";
 
 export const DATA = {
     acceptTerm: ACCEPT_TERM,
