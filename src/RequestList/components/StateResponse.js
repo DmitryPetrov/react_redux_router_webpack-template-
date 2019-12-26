@@ -7,7 +7,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Button from '@material-ui/core/Button';
 
 import { withExpandButton } from './withExpandButton';
-import { REQUEST_STYLE } from './style';
+import { REQUEST_STYLE } from './../style';
 
 
 function StateResponse(props) {

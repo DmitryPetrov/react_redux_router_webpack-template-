@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import store from './../store';
-import { addDocType } from './actionCreatorList';
-import { incomingRequest } from './actionCreatorList';
+import store from './../../store';
+import { addDocType, incomingRequest } from './../actionCreatorList';
 import IncomingFormView from './IncomingFormView';
 
 class IncomingForm extends React.Component {

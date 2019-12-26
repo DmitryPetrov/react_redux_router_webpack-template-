@@ -5,8 +5,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 
-import SoapMessageList from './../components/SoapMessageList';
-import { REQUEST_STYLE } from './style';
+import SoapMessageList from './../../components/SoapMessageList';
+import { REQUEST_STYLE } from './../style';
 
 function Error(props)  {
   const classes = REQUEST_STYLE();

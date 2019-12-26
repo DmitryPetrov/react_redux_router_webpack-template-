@@ -6,19 +6,38 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Button from '@material-ui/core/Button';
 
+import { itemList } from './../../functions/itemList'
 import { withExpandButton } from './withExpandButton';
-import { REQUEST_STYLE } from './style';
-import StateResponse from './StateResponse'
+import { REQUEST_STYLE } from './../style';
 
-function GetRequestStatus(props) {
+import StateResponse from './StateResponse'
+import Statement from './Statement'
+
+const BUTTON_NAME = 'Show response';
+
+function StatementDocument(props)  {
   const classes = REQUEST_STYLE();
+
+  const [state, setState] = React.useState(false);
+
+  const buttonHandle = event => {
+    setState(!state);
+  }
+
+  let stateResponseData = null;
+  let statementData = null;
+  if (state) {
+    stateResponseData = itemList(StateResponse, props.request.stateResponseList);
+    statementData = itemList(Statement, props.request.statementList);
+  }
 
   let content;
   if (props.json === true) {
     content = <pre>{JSON.stringify(props.request, undefined, 2)}</pre>;
   } else {
     content = <div className={classes.content}>
-        <StateResponse item={props.request.stateResponseList[0]}/>
+        {stateResponseData}
+        {statementData}
       </div>
   }
 
@@ -38,7 +57,12 @@ function GetRequestStatus(props) {
       <ExpansionPanelDetails>
         <div>
           <Button 
-            size="small"
+            variant="outlined" 
+            onClick={buttonHandle}
+          >
+            {BUTTON_NAME}
+          </Button>
+          <Button 
             variant="outlined" 
             onClick={props.buttonHandle}
           >
@@ -51,5 +75,5 @@ function GetRequestStatus(props) {
   );
 }
 
-export default withExpandButton(GetRequestStatus);
+export default withExpandButton(StatementDocument);
 

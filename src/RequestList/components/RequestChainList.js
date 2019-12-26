@@ -10,10 +10,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import grey from '@material-ui/core/colors/grey';
 
-import { requestListRequest } from './actionCreatorList';
+import { requestListRequest } from './../actionCreatorList';
 import RequestChain from './RequestChain';
 
-import { GLOBAL_STYLE, CONTAINER_MAX_WIDTH } from './../style';
+import { GLOBAL_STYLE, CONTAINER_MAX_WIDTH } from './../../style';
 
 const useStyles = makeStyles(theme => ({
   paper: {

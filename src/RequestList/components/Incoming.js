@@ -6,43 +6,23 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Button from '@material-ui/core/Button';
 
-import { itemList } from './../functions/itemList'
-import { withExpandButton } from './withExpandButton';
-import { REQUEST_STYLE } from './style';
+import {withExpandButton} from './withExpandButton';
+import { REQUEST_STYLE } from './../style';
 
-import StateResponse from './StateResponse'
-import Statement from './Statement'
-
-const BUTTON_NAME = 'Show response';
-
-function StatementDocument(props)  {
+function Incoming(props) {
   const classes = REQUEST_STYLE();
-
-  const [state, setState] = React.useState(false);
-
-  const buttonHandle = event => {
-    setState(!state);
-  }
-
-  let stateResponseData = null;
-  let statementData = null;
-  if (state) {
-    stateResponseData = itemList(StateResponse, props.request.stateResponseList);
-    statementData = itemList(Statement, props.request.statementList);
-  }
 
   let content;
   if (props.json === true) {
     content = <pre>{JSON.stringify(props.request, undefined, 2)}</pre>;
   } else {
     content = <div className={classes.content}>
-        {stateResponseData}
-        {statementData}
-      </div>
-  }
-
-  if (props.request.notProcessedYet === true) {
-    content = <Typography className={classes.heading}>State: NOT PROCESSED YET</Typography>
+          <Typography className={classes.line}>Request id: {props.request.requestId}</Typography>
+          <Typography className={classes.line}>Response id: {props.request.responseId}</Typography>
+          {props.request.docTypes.map((item, index) => (
+            <Typography className={classes.line} key={index}>Doc Type {index + 1}: {item.bankName}</Typography>
+          ))}
+        </div>
   }
 
   return (
@@ -57,12 +37,7 @@ function StatementDocument(props)  {
       <ExpansionPanelDetails>
         <div>
           <Button 
-            variant="outlined" 
-            onClick={buttonHandle}
-          >
-            {BUTTON_NAME}
-          </Button>
-          <Button 
+            size="small"
             variant="outlined" 
             onClick={props.buttonHandle}
           >
@@ -72,8 +47,8 @@ function StatementDocument(props)  {
         </div>
       </ExpansionPanelDetails>
     </ExpansionPanel>
-  );
+    )
 }
 
-export default withExpandButton(StatementDocument);
+export default withExpandButton(Incoming);
 

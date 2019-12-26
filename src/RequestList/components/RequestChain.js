@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import grey from '@material-ui/core/colors/grey';
 
-import { nextStepRequest } from './actionCreatorList';
+import { nextStepRequest } from './../actionCreatorList';
 import Error from './Error';
 import IncomingForm from './IncomingForm';
 import StatmentRequest from './StatmentRequest';

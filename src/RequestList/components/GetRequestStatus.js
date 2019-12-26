@@ -6,10 +6,11 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Button from '@material-ui/core/Button';
 
-import {withExpandButton} from './withExpandButton';
-import { REQUEST_STYLE } from './style';
+import { withExpandButton } from './withExpandButton';
+import { REQUEST_STYLE } from './../style';
+import StateResponse from './StateResponse'
 
-function Incoming(props) {
+function GetRequestStatus(props) {
   const classes = REQUEST_STYLE();
 
   let content;
@@ -17,12 +18,12 @@ function Incoming(props) {
     content = <pre>{JSON.stringify(props.request, undefined, 2)}</pre>;
   } else {
     content = <div className={classes.content}>
-          <Typography className={classes.line}>Request id: {props.request.requestId}</Typography>
-          <Typography className={classes.line}>Response id: {props.request.responseId}</Typography>
-          {props.request.docTypes.map((item, index) => (
-            <Typography className={classes.line} key={index}>Doc Type {index + 1}: {item.bankName}</Typography>
-          ))}
-        </div>
+        <StateResponse item={props.request.stateResponseList[0]}/>
+      </div>
+  }
+
+  if (props.request.notProcessedYet === true) {
+    content = <Typography className={classes.heading}>State: NOT PROCESSED YET</Typography>
   }
 
   return (
@@ -47,8 +48,8 @@ function Incoming(props) {
         </div>
       </ExpansionPanelDetails>
     </ExpansionPanel>
-    )
+  );
 }
 
-export default withExpandButton(Incoming);
+export default withExpandButton(GetRequestStatus);
 

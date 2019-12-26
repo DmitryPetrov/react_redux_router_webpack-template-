@@ -7,7 +7,7 @@ import store from './../store.js';
 import Authorization from './../Authorization/Authorization';
 import StatmentRequest from './../StatementRequest/StatementRequest';
 import PayRequest from './../PayRequest/components/PayRequest';
-import RequestChainList from './../RequestList/RequestChainList';
+import RequestChainList from './../RequestList/components/RequestChainList';
 import MessageList from './../SoapMessageList/MessageList';
 import SideBar from './SideBar';
 
