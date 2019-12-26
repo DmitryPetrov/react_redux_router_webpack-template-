@@ -59,7 +59,7 @@ function OtherInfo(props) {
         {field("acceptTerm", ACCEPT_TERM, "number", event => store.dispatch(updateData({acceptTerm: event.target.value})))}
         {field("accountId", ACCOUNT_ID, "string", event => store.dispatch(updateData({accountId: event.target.value})))}
         <FormControlLabel
-          control={<Checkbox defaultValue={TEMPLATE} onChange={event => store.dispatch(updateData({template: event.target.value}))} />}
+          control={<Checkbox defaultValue={TEMPLATE} onChange={event => store.dispatch(updateData({template: event.target.checked}))} />}
           label="template"
         />
       </div>
