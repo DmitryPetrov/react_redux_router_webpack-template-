@@ -15,7 +15,7 @@ import Statement from './Statement'
 
 const BUTTON_NAME = 'Show response';
 
-function StatementDocument(props)  {
+function Document(props)  {
   const classes = REQUEST_STYLE();
 
   const [state, setState] = React.useState(false);
@@ -75,5 +75,5 @@ function StatementDocument(props)  {
   );
 }
 
-export default withExpandButton(StatementDocument);
+export default withExpandButton(Document);
 
