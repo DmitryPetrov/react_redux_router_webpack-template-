@@ -1,9 +1,7 @@
 import axios from 'axios';
 
 import * as types from './actionTypeList';
-
-const NEXT_STEP_URL = "/request/nextStep";
-const REQUEST_LIST_URL = "/request/list";
+import { REST_API } from './../globalInitialState';
 
 function incomingIsLoading() {
     return {
@@ -39,13 +37,11 @@ export function incomingRequest(requestBody) {
   return (dispatch) => {
     dispatch(incomingIsLoading());
     axios
-      .post(NEXT_STEP_URL, requestBody)
-      .then(response => {
-        dispatch(incomingSuccessed(response.data));
-      })
-      .catch(function (error) {
-        dispatch(incomingFailed(error.message));
-      });
+      .post(REST_API.incoming, requestBody)
+      .then(
+        response => dispatch(incomingSuccessed(response.data)),
+        error => dispatch(incomingFailed(error.message))
+      );
   };
 }
 
@@ -106,19 +102,17 @@ export function requestListRequest() {
   return (dispatch) => {
     dispatch(requestListIsLoading());
     axios
-      .get(REQUEST_LIST_URL)
-      .then(response => {
-        dispatch(requestListSuccessed(response.data));
-      })
-      .catch(function (error) {
-        dispatch(requestListFailed(error.message));
-      });
+      .get(REST_API.requestChains)
+      .then(
+        response => dispatch(requestListSuccessed(response.data)),
+        error => dispatch(requestListFailed(error.message))
+      );
     };
 }
 
 
 
-function nextStepIsLoading() {
+function getRequestStatusIsLoading() {
     return {
         type: types.NEXT_STEP_IS_LOADING,
         isFail: false,
@@ -128,7 +122,7 @@ function nextStepIsLoading() {
         response: undefined,
     };
 }
-function nextStepSuccessed(response) {
+function getRequestStatusSuccessed(response) {
     return {
         type: types.NEXT_STEP_SUCCESSED,
         isFail: false,
@@ -138,7 +132,7 @@ function nextStepSuccessed(response) {
         response: response,
     };
 }
-function nextStepFailed(errorMessage) {
+function getRequestStatusFailed(errorMessage) {
     return {
         type: types.NEXT_STEP_FAILED,
         isFail: true,
@@ -148,16 +142,14 @@ function nextStepFailed(errorMessage) {
         response: errorMessage,
     };
 }
-export function nextStepRequest(requestParam) {
+export function getRequestStatusRequest(requestParam) {
   return (dispatch) => {
-    dispatch(nextStepIsLoading());
+    dispatch(getRequestStatusIsLoading());
     axios
-      .get(NEXT_STEP_URL, {params: {responseId: requestParam}})
-      .then(response => {
-        dispatch(nextStepSuccessed(response.data));
-      })
-      .catch(function (error) {
-        dispatch(nextStepFailed(error.message));
-      });
+      .post(REST_API.getRequestStatus, {responseId: requestParam})
+      .then(
+        response => dispatch(getRequestStatusSuccessed(response.data)),
+        error => dispatch(getRequestStatusFailed(error.message))
+      );
     };
 }

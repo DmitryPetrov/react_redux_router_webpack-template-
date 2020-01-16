@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 import * as types from './actionTypeList';
-
-const STATMENT_REQUEST_URL = '/request/new/statementRequest';
+import { REST_API } from './../globalInitialState';
 
 export function updateData(data) {
 	return {
@@ -69,7 +68,7 @@ export function statementRequestRequest(requestBody) {
   return (dispatch) => {
     dispatch(statementRequestIsLoading());
     axios
-      .post(STATMENT_REQUEST_URL, requestBody)
+      .post(REST_API.statementRequest, requestBody)
       .then(
       		response => dispatch(statementRequestSuccessed(response.data)),
       		error => dispatch(statementRequestFailed(error.message))

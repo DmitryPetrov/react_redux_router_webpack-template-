@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import grey from '@material-ui/core/colors/grey';
 
-import { nextStepRequest } from './../actionCreatorList';
+import { getRequestStatusRequest } from './../actionCreatorList';
 import Error from './Error';
 import IncomingForm from './IncomingForm';
 import PayRequest from './PayRequest';
@@ -52,7 +52,7 @@ function PayRequestChain(props) {
   
   const [renderIncomingFormFlag, setRenderIncomingForm] = React.useState(false);
 
-  const nextStepHandle = event => {
+  const getRequestStatusHandle = event => {
     if (props.item.phaseNum === PAY_REQUEST_PHASE) {
       setRenderIncomingForm(false);
       props.fetchData(props.item.responseId);
@@ -83,7 +83,7 @@ function PayRequestChain(props) {
           <Button
             variant="outlined"
             size="small"
-            onClick={nextStepHandle}
+            onClick={getRequestStatusHandle}
           >
             Next step
           </Button>
@@ -126,7 +126,7 @@ function mapStateToProps(store) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchData: (action) => dispatch(nextStepRequest(action))
+    fetchData: (action) => dispatch(getRequestStatusRequest(action))
   };
 };
 

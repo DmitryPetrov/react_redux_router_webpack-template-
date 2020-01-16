@@ -10,7 +10,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import PanoramaFishEye from '@material-ui/icons/PanoramaFishEye';
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
+import { REST_API } from './../globalInitialState';
 
 
 const useStyles = makeStyles(theme => ({
@@ -28,27 +30,27 @@ const useStyles = makeStyles(theme => ({
 
 const PAGE_LIST = [
   {
-    link: "/",
+    link: REST_API.authorization,
     name: "Authorization",
     icon: <LockOutlinedIcon />
   },
   {
-    link: "/request/new/statementRequest",
+    link: REST_API.statementRequest,
     name: "Statement request",
     icon: <PanoramaFishEye />
   },
   {
-    link: "/request/new/payRequest",
+    link: REST_API.payRequest,
     name: "Pay request",
     icon: <PanoramaFishEye />
   },
   {
-    link: "/request/list",
+    link: REST_API.requestChains,
     name: "Request list",
     icon: <PanoramaFishEye />
   },
   {
-    link: "/soapMessage/list",
+    link: REST_API.soapMessages,
     name: "Soap message list",
     icon: <PanoramaFishEye />
   },

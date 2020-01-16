@@ -9,12 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import grey from '@material-ui/core/colors/grey';
 
 import { formatXml } from './../functions/formatXml';
-import { soapMessageListRequest } from './actionCreatorList';
+import { soapMessagesRequest, lastRequestSoapMessagesRequest, deleteSoapMessagesRequest } from './actionCreatorList';
 import { GLOBAL_STYLE } from './../style';
-
-const URL_GET_ALL_MESSAGE = '/soapMessage/list/all';
-const URL_GET_LAST_REQUEST_MESSAGE = '/soapMessage/list/lastRequest';
-const URL_REMOVE_ALL_MESSAGE = '/soapMessage/remove/all';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -72,21 +68,21 @@ function MessageList(props) {
         <div>
           <Button
             variant="outlined" 
-            onClick={event => props.fetchData(URL_GET_ALL_MESSAGE)}
+            onClick={event => props.fetchSoapMessages()}
             className={classes.button}
           >
             Get all message list
           </Button>
           <Button
             variant="outlined" 
-            onClick={event => props.fetchData(URL_GET_LAST_REQUEST_MESSAGE)}
+            onClick={event => props.fetchLastRequestSoapMessages()}
             className={classes.button}
           >
             Get last request message list
           </Button>
           <Button
             variant="outlined" 
-            onClick={event => props.fetchData(URL_REMOVE_ALL_MESSAGE)}
+            onClick={event => props.deleteSoapMessages()}
             className={classes.removeButton}
           >
             Remove all
@@ -100,7 +96,7 @@ function MessageList(props) {
   );
 }
 
-function mapStateToProps(store) { 
+function mapStateToProps(store) {
   return {
     request: store.soapMessageList,
   }
@@ -108,7 +104,9 @@ function mapStateToProps(store) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchData: (action) => dispatch(soapMessageListRequest(action))
+    fetchSoapMessages: (action) => dispatch(soapMessagesRequest(action)),
+    fetchLastRequestSoapMessages: (action) => dispatch(lastRequestSoapMessagesRequest(action)),
+    deleteSoapMessages: (action) => dispatch(deleteSoapMessagesRequest(action)),
   }
 }
 

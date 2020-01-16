@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import * as t from './actionTypeList';
 
-export const PAY_REQUEST_URL = '/request/new/payRequest';
+import { REST_API } from './../globalInitialState';
 
 export function updateData(data) {
 	return {
@@ -69,7 +69,7 @@ export function payRequestRequest(requestBody) {
   return (dispatch) => {
     dispatch(payRequestIsLoading());
     axios
-      .post(PAY_REQUEST_URL, requestBody)
+      .post(REST_API.payRequest, requestBody)
       .then(
       		response => dispatch(payRequestSuccessed(response.data)),
       		error => dispatch(payRequestFailed(error.message))
