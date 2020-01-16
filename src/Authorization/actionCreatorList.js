@@ -16,7 +16,7 @@ function requestIsLoading() {
 		isFail: false,
 		isLoading: true,
 		isSucceed: false,
-		message: '"/authorization" is loading',
+		message: 'Loading',
 		response: null,
 	};
 }
@@ -27,7 +27,7 @@ function requestSucceed(response) {
 		isFail: false,
 		isLoading: false,
 		isSucceed: true,
-		message: '"/authorization" successed',
+		message: 'Succeed',
 		response: response,
 	};
 }
@@ -38,7 +38,7 @@ function requestFailed(errorMessage) {
 		isFail: true,
 		isLoading: false,
 		isSucceed: false,
-		message: '"/authorization" failed',
+		message: 'Failed',
 		response: errorMessage,
 	};
 }
