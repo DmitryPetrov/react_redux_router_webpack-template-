@@ -21,6 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "dev": "webpack --mode development  ./src/index.js --output ./dist/dev.js",
+    "dev2": "webpack --mode development  ./src/index.js --output ./../../eclipse-workspace/QueryEmulator/src/main/resources/static/dev.js",
     "build": "webpack --mode production ./src/index.js --output ./dist/prod.js",
     "test": "jest",
     "eject": "react-scripts eject"
