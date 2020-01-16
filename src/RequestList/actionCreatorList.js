@@ -8,18 +8,18 @@ function incomingIsLoading() {
         type: types.NEXT_STEP_IS_LOADING,
         isFail: false,
         isLoading: true,
-        isSuccessed: false,
+        isSucceed: false,
         message: 'Loading',
         response: null,
     };
 }
-function incomingSuccessed(response) {
+function incomingSucceed(response) {
     return {
         type: types.NEXT_STEP_SUCCESSED,
         isFail: false,
         isLoading: false,
-        isSuccessed: true,
-        message: 'Successed',
+        isSucceed: true,
+        message: 'Succeed',
         response: response,
     };
 }
@@ -28,7 +28,7 @@ function incomingFailed(errorMessage) {
         type: types.NEXT_STEP_FAILED,
         isFail: true,
         isLoading: false,
-        isSuccessed: false,
+        isSucceed: false,
         message: 'Failed',
         response: errorMessage,
     };
@@ -39,7 +39,7 @@ export function incomingRequest(requestBody) {
     axios
       .post(REST_API.incoming, requestBody)
       .then(
-        response => dispatch(incomingSuccessed(response.data)),
+        response => dispatch(incomingSucceed(response.data)),
         error => dispatch(incomingFailed(error.message))
       );
   };
@@ -73,18 +73,18 @@ function requestListIsLoading() {
 		type: types.REQUEST_LIST_IS_LOADING,
 		isFail: false,
 		isLoading: true,
-		isSuccessed: false,
+		isSucceed: false,
 		message: 'Loading',
 		response: null,
 	};
 }
-function requestListSuccessed(response) {
+function requestListSucceed(response) {
 	return {
 		type: types.REQUEST_LIST_SUCCESSED,
 		isFail: false,
 		isLoading: false,
-		isSuccessed: true,
-		message: 'Successed',
+		isSucceed: true,
+		message: 'Succeed',
 		response: response,
 	};
 }
@@ -93,7 +93,7 @@ function requestListFailed(errorMessage) {
 		type: types.REQUEST_LIST_FAILED,
 		isFail: true,
 		isLoading: false,
-		isSuccessed: false,
+		isSucceed: false,
 		message: 'Failed',
 		response: errorMessage,
 	};
@@ -104,7 +104,7 @@ export function requestListRequest() {
     axios
       .get(REST_API.requestChains)
       .then(
-        response => dispatch(requestListSuccessed(response.data)),
+        response => dispatch(requestListSucceed(response.data)),
         error => dispatch(requestListFailed(error.message))
       );
     };
@@ -117,18 +117,18 @@ function getRequestStatusIsLoading() {
         type: types.NEXT_STEP_IS_LOADING,
         isFail: false,
         isLoading: true,
-        isSuccessed: false,
+        isSucceed: false,
         message: 'Loading',
         response: undefined,
     };
 }
-function getRequestStatusSuccessed(response) {
+function getRequestStatusSucceed(response) {
     return {
         type: types.NEXT_STEP_SUCCESSED,
         isFail: false,
         isLoading: false,
-        isSuccessed: true,
-        message: 'Successed',
+        isSucceed: true,
+        message: 'Succeed',
         response: response,
     };
 }
@@ -137,7 +137,7 @@ function getRequestStatusFailed(errorMessage) {
         type: types.NEXT_STEP_FAILED,
         isFail: true,
         isLoading: false,
-        isSuccessed: false,
+        isSucceed: false,
         message: 'Failed',
         response: errorMessage,
     };
@@ -148,7 +148,7 @@ export function getRequestStatusRequest(requestParam) {
     axios
       .post(REST_API.getRequestStatus, {responseId: requestParam})
       .then(
-        response => dispatch(getRequestStatusSuccessed(response.data)),
+        response => dispatch(getRequestStatusSucceed(response.data)),
         error => dispatch(getRequestStatusFailed(error.message))
       );
     };

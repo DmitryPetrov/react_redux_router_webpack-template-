@@ -36,19 +36,19 @@ export function statementRequestIsLoading() {
 		type: types.STATMENT_REQUEST_IS_LOADING,
 		isFail: false,
 		isLoading: true,
-		isSuccessed: false,
+		isSucceed: false,
 		message: 'Loading',
 		response: null,
 	};
 }
 
-export function statementRequestSuccessed(response) {
+export function statementRequestSucceed(response) {
 	return {
 		type: types.STATMENT_REQUEST_SUCCESSED,
 		isFail: false,
 		isLoading: false,
-		isSuccessed: true,
-		message: 'Successed',
+		isSucceed: true,
+		message: 'Succeed',
 		response: response,
 	};
 }
@@ -58,7 +58,7 @@ export function statementRequestFailed(errorMessage) {
 		type: types.STATMENT_REQUEST_FAILED,
 		isFail: true,
 		isLoading: false,
-		isSuccessed: false,
+		isSucceed: false,
 		message: 'Failed',
 		response: errorMessage,
 	};
@@ -70,7 +70,7 @@ export function statementRequestRequest(requestBody) {
     axios
       .post(REST_API.statementRequest, requestBody)
       .then(
-      		response => dispatch(statementRequestSuccessed(response.data)),
+      		response => dispatch(statementRequestSucceed(response.data)),
       		error => dispatch(statementRequestFailed(error.message))
       );
   };

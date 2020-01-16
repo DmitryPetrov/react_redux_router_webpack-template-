@@ -5,7 +5,7 @@ export function soapMessageListReducer(state = false, action) {
     return Object.assign({}, state, {
       isFail: action.isFail,
       isLoading: action.isLoading,
-      isSuccessed: action.isSuccessed,
+      isSucceed: action.isSucceed,
       message: action.message,
       response: action.response,
     });
@@ -15,7 +15,7 @@ export function soapMessageListReducer(state = false, action) {
     return Object.assign({}, state, {
       isFail: action.isFail,
       isLoading: action.isLoading,
-      isSuccessed: action.isSuccessed,
+      isSucceed: action.isSucceed,
       message: action.message,
       response: action.response,
     });
@@ -25,7 +25,7 @@ export function soapMessageListReducer(state = false, action) {
     return Object.assign({}, state, {
       isFail: action.isFail,
       isLoading: action.isLoading,
-      isSuccessed: action.isSuccessed,
+      isSucceed: action.isSucceed,
       message: action.message,
       response: action.response,
     });

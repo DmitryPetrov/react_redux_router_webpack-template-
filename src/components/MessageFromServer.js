@@ -58,7 +58,7 @@ function AuthorizationResponse(props) {
      );
   }
 
-  if (props.request.isSuccessed === true) {
+  if (props.request.isSucceed === true) {
     return (
       <div className={clsx(globalStyle.paper, classes.bottomSpace)}>
         <Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={classes.paper}>

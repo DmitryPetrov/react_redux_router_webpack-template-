@@ -15,18 +15,18 @@ function requestIsLoading() {
 		type: types.AUTHORIZATION_IS_LOADING,
 		isFail: false,
 		isLoading: true,
-		isSuccessed: false,
+		isSucceed: false,
 		message: '"/authorization" is loading',
 		response: null,
 	};
 }
 
-function requestSuccessed(response) {
+function requestSucceed(response) {
 	return {
 		type: types.AUTHORIZATION_SUCCESSED,
 		isFail: false,
 		isLoading: false,
-		isSuccessed: true,
+		isSucceed: true,
 		message: '"/authorization" successed',
 		response: response,
 	};
@@ -37,7 +37,7 @@ function requestFailed(errorMessage) {
 		type: types.AUTHORIZATION_FAILED,
 		isFail: true,
 		isLoading: false,
-		isSuccessed: false,
+		isSucceed: false,
 		message: '"/authorization" failed',
 		response: errorMessage,
 	};
@@ -49,7 +49,7 @@ export function authorizationRequest(requestBody) {
     axios
       .post(REST_API.authorization, requestBody)
       .then(response => {
-        dispatch(requestSuccessed(response.data));
+        dispatch(requestSucceed(response.data));
       })
       .catch(function (error) {
         dispatch(requestFailed(error.message));

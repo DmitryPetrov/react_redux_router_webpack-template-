@@ -37,19 +37,19 @@ export function payRequestIsLoading() {
 		type: t.PAY_REQUEST_IS_LOADING,
 		isFail: false,
 		isLoading: true,
-		isSuccessed: false,
+		isSucceed: false,
 		message: 'Loading',
 		response: null,
 	};
 }
 
-export function payRequestSuccessed(response) {
+export function payRequestSucceed(response) {
 	return {
 		type: t.PAY_REQUEST_SUCCESSED,
 		isFail: false,
 		isLoading: false,
-		isSuccessed: true,
-		message: 'Successed',
+		isSucceed: true,
+		message: 'Succeed',
 		response: response,
 	};
 }
@@ -59,7 +59,7 @@ export function payRequestFailed(errorMessage) {
 		type: t.PAY_REQUEST_FAILED,
 		isFail: true,
 		isLoading: false,
-		isSuccessed: false,
+		isSucceed: false,
 		message: 'Failed',
 		response: errorMessage,
 	};
@@ -71,7 +71,7 @@ export function payRequestRequest(requestBody) {
     axios
       .post(REST_API.payRequest, requestBody)
       .then(
-      		response => dispatch(payRequestSuccessed(response.data)),
+      		response => dispatch(payRequestSucceed(response.data)),
       		error => dispatch(payRequestFailed(error.message))
       );
   };

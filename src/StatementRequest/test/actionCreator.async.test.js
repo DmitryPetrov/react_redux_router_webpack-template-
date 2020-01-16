@@ -24,8 +24,8 @@ describe('StatementRequest actionCreatorList async test', () => {
       type: t.STATMENT_REQUEST_SUCCESSED,
       isFail: false,
       isLoading: false,
-      isSuccessed: true,
-      message: 'Successed',
+      isSucceed: true,
+      message: 'Succeed',
       response: response.data,
     });
 
@@ -43,7 +43,7 @@ describe('StatementRequest actionCreatorList async test', () => {
       type: t.STATMENT_REQUEST_FAILED,
       isFail: true,
       isLoading: false,
-      isSuccessed: false,
+      isSucceed: false,
       message: 'Failed',
       response: error.message,
     }); 

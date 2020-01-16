@@ -8,17 +8,17 @@ function soapMessageListIsLoading() {
 		type: types.SOAP_MESSAGE_LIST_IS_LOADING,
 		isFail: false,
 		isLoading: true,
-		isSuccessed: false,
+		isSucceed: false,
 		message: 'Loading',
 		response: null,
 	};
 }
-function soapMessageListSuccessed(response) {
+function soapMessageListSucceed(response) {
 	return {
 		type: types.SOAP_MESSAGE_LIST_SUCCESSED,
 		isFail: false,
 		isLoading: false,
-		isSuccessed: true,
+		isSucceed: true,
 		message: 'Succeed',
 		response: response,
 	};
@@ -28,7 +28,7 @@ function soapMessageListFailed(errorMessage) {
 		type: types.SOAP_MESSAGE_LIST_FAILED,
 		isFail: true,
 		isLoading: false,
-		isSuccessed: false,
+		isSucceed: false,
 		message: 'Failed',
 		response: errorMessage,
 	};
@@ -39,7 +39,7 @@ export function soapMessagesRequest() {
     axios
       .get(REST_API.soapMessages)
       .then(
-      	response => dispatch(soapMessageListSuccessed(response.data)),
+      	response => dispatch(soapMessageListSucceed(response.data)),
       	error => dispatch(soapMessageListFailed(error.message))
       )
     };
@@ -50,7 +50,7 @@ export function lastRequestSoapMessagesRequest() {
     axios
       .get(REST_API.lastRequestSoapMessages)
       .then(
-      	response => dispatch(soapMessageListSuccessed(response.data)),
+      	response => dispatch(soapMessageListSucceed(response.data)),
       	error => dispatch(soapMessageListFailed(error.message))
       )
     };
@@ -61,7 +61,7 @@ export function deleteSoapMessagesRequest() {
     axios
       .delete(REST_API.soapMessages)
       .then(
-      	response => dispatch(soapMessageListSuccessed(response.data)),
+      	response => dispatch(soapMessageListSucceed(response.data)),
       	error => dispatch(soapMessageListFailed(error.message))
       )
     };

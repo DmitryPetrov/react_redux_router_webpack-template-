@@ -1,7 +1,7 @@
 export const REQUEST = {
     isFail: '(initialState)',
     isLoading: '(initialState)',
-    isSuccessed: '(initialState)',
+    isSucceed: '(initialState)',
     message: '(initialState)',
     response: '(initialState)',
 };

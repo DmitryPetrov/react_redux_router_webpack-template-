@@ -14,7 +14,7 @@ export function authorizationReducer(state = false, action) {
       {
         isFail: action.isFail,
         isLoading: action.isLoading,
-        isSuccessed: action.isSuccessed,
+        isSucceed: action.isSucceed,
         message: action.message,
         response: action.response,
       }
@@ -27,7 +27,7 @@ export function authorizationReducer(state = false, action) {
       {
         isFail: action.isFail,
         isLoading: action.isLoading,
-        isSuccessed: action.isSuccessed,
+        isSucceed: action.isSucceed,
         message: action.message,
         response: action.response,
       }
@@ -40,7 +40,7 @@ export function authorizationReducer(state = false, action) {
       {
         isFail: action.isFail,
         isLoading: action.isLoading,
-        isSuccessed: action.isSuccessed,
+        isSucceed: action.isSucceed,
         message: action.message,
         response: action.response,
       }

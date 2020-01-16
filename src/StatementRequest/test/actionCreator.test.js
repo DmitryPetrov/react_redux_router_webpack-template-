@@ -1,6 +1,6 @@
 import { updateData } from './../actionCreatorList'
 import { updateAccountData, addAccount, removeAccount } from './../actionCreatorList'
-import { statementRequestIsLoading, statementRequestSuccessed, statementRequestFailed } from './../actionCreatorList'
+import { statementRequestIsLoading, statementRequestSucceed, statementRequestFailed } from './../actionCreatorList'
 import * as t from './../actionTypeList'
 import { ACCOUT_DATA, REQUEST } from './../initialState'
 
@@ -46,7 +46,7 @@ describe('PayRequest actionCreatorList', () => {
     	type: t.STATMENT_REQUEST_IS_LOADING,
 			isFail: false,
 			isLoading: true,
-			isSuccessed: false,
+			isSucceed: false,
 			message: 'Loading',
 			response: null,
     });
@@ -54,12 +54,12 @@ describe('PayRequest actionCreatorList', () => {
 
   it('STATMENT_REQUEST_SUCCESSED ', () => {
     const response = 'content';
-    expect(statementRequestSuccessed(response)).toEqual({
+    expect(statementRequestSucceed(response)).toEqual({
     	type: t.STATMENT_REQUEST_SUCCESSED,
       isFail: false,
 			isLoading: false,
-			isSuccessed: true,
-			message: 'Successed',
+			isSucceed: true,
+			message: 'Succeed',
 			response: response,
     });
   })
@@ -70,7 +70,7 @@ describe('PayRequest actionCreatorList', () => {
     	type: t.STATMENT_REQUEST_FAILED,
 			isFail: true,
 			isLoading: false,
-			isSuccessed: false,
+			isSucceed: false,
 			message: 'Failed',
 			response: errorMessage,
     });

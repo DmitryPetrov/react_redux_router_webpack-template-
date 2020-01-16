@@ -53,7 +53,7 @@ function AuthorizationResponse(props) {
      );
   }
 
-  if (props.request.isSuccessed === true) {
+  if (props.request.isSucceed === true) {
     return (
       <div className={globalStyle.paper}>
       	<Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={classes.paper}>

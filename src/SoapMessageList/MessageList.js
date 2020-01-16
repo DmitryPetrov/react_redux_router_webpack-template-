@@ -45,7 +45,7 @@ function MessageList(props) {
   const globalStyle = GLOBAL_STYLE();
 
   let content = null;
-  if (props.request.isSuccessed === true) {
+  if (props.request.isSucceed === true) {
     content = props.request.response.soapMessageList.map((item, index) => (
           <Paper 
             component="pre"

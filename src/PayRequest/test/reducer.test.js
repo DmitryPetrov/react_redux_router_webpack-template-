@@ -104,7 +104,7 @@ describe('PayRequest reducer', () => {
         type: t.PAY_REQUEST_IS_LOADING,
         isFail: false,
         isLoading: true,
-        isSuccessed: false,
+        isSucceed: false,
         message: 'Loading',
         response: null,
     };
@@ -112,7 +112,7 @@ describe('PayRequest reducer', () => {
       request: {
         isFail: action.isFail,
         isLoading: action.isLoading,
-        isSuccessed: action.isSuccessed,
+        isSucceed: action.isSucceed,
         message: action.message,
         response: action.response,
       }
@@ -125,15 +125,15 @@ describe('PayRequest reducer', () => {
       type: t.PAY_REQUEST_SUCCESSED,
       isFail: false,
       isLoading: false,
-      isSuccessed: true,
-      message: 'Successed',
+      isSucceed: true,
+      message: 'Succeed',
       response: "response",
     };
     expect(payRequestReducer(state, action)).toEqual({
       request: {
         isFail: action.isFail,
         isLoading: action.isLoading,
-        isSuccessed: action.isSuccessed,
+        isSucceed: action.isSucceed,
         message: action.message,
         response: action.response,
       }
@@ -146,7 +146,7 @@ describe('PayRequest reducer', () => {
       type: t.PAY_REQUEST_FAILED,
       isFail: true,
       isLoading: false,
-      isSuccessed: false,
+      isSucceed: false,
       message: 'Failed',
       response: "errorMessage",
     };
@@ -154,7 +154,7 @@ describe('PayRequest reducer', () => {
       request: {
         isFail: action.isFail,
         isLoading: action.isLoading,
-        isSuccessed: action.isSuccessed,
+        isSucceed: action.isSucceed,
         message: action.message,
         response: action.response,
       }

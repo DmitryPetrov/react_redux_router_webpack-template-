@@ -1,6 +1,6 @@
 import { updateData } from './../actionCreatorList'
 import { updatePayRequestPartData, addPayRequestPart, removePayRequestPart } from './../actionCreatorList'
-import { payRequestIsLoading, payRequestSuccessed, payRequestFailed } from './../actionCreatorList'
+import { payRequestIsLoading, payRequestSucceed, payRequestFailed } from './../actionCreatorList'
 import * as t from './../actionTypeList'
 import { PAY_REQUEST_PART_DATA, REQUEST } from './../initialState'
 
@@ -46,7 +46,7 @@ describe('PayRequest actionCreatorList', () => {
     	type: t.PAY_REQUEST_IS_LOADING,
 			isFail: false,
 			isLoading: true,
-			isSuccessed: false,
+			isSucceed: false,
 			message: 'Loading',
 			response: null,
     });
@@ -54,12 +54,12 @@ describe('PayRequest actionCreatorList', () => {
 
   it('PAY_REQUEST_SUCCESSED ', () => {
     const response = 'content';
-    expect(payRequestSuccessed(response)).toEqual({
+    expect(payRequestSucceed(response)).toEqual({
     	type: t.PAY_REQUEST_SUCCESSED,
       isFail: false,
 			isLoading: false,
-			isSuccessed: true,
-			message: 'Successed',
+			isSucceed: true,
+			message: 'Succeed',
 			response: response,
     });
   })
@@ -70,7 +70,7 @@ describe('PayRequest actionCreatorList', () => {
     	type: t.PAY_REQUEST_FAILED,
 			isFail: true,
 			isLoading: false,
-			isSuccessed: false,
+			isSucceed: false,
 			message: 'Failed',
 			response: errorMessage,
     });

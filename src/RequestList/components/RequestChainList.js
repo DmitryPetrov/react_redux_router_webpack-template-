@@ -49,7 +49,7 @@ function RequestChainList(props) {
   const globalStyle = GLOBAL_STYLE();
 
   let chainList = [];
-  if (props.requestList.isSuccessed === true) {
+  if (props.requestList.isSucceed === true) {
     chainList = props.requestList.response.requestChainList;
     for (let i = 0; i < chainList.length; i++) {
       chainList[i].status = props.requestList.response.status;
@@ -59,7 +59,7 @@ function RequestChainList(props) {
   }
 
 
-  if (props.nextStep.isSuccessed === true) {
+  if (props.nextStep.isSucceed === true) {
     for (let i = 0; i < chainList.length; i++) {
       if (props.nextStep.response.requestChain.responseId === chainList[i].responseId) {
         chainList[i] = props.nextStep.response.requestChain;
