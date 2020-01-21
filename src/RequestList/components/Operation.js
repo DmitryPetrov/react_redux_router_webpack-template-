@@ -8,11 +8,8 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { itemList } from './../../functions/itemList'
 import { withExpandButton } from './withExpandButton';
 import { REQUEST_STYLE } from './../style';
-
-import Operation from './Operation'
 
 const useStyles = makeStyles(theme => ({
   width: {
@@ -20,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Statement(props)  {
+function Operation(props)  {
   const globalStyle = REQUEST_STYLE();
   const classes = useStyles();
 
@@ -31,21 +28,22 @@ function Statement(props)  {
         </Box>;
   } else {
     content = <div className={globalStyle.content}>
-          <Typography className={globalStyle.line}>Org name: {props.item.orgName}</Typography>
-          <Typography className={globalStyle.line}>From date: {props.item.fromDate}</Typography>
-          <Typography className={globalStyle.line}>To date: {props.item.toDate}</Typography>
-          {itemList(Operation, props.item.operations)}
+          <Typography className={globalStyle.line}>Payer name: {props.item.payerName}</Typography>
+          <Typography className={globalStyle.line}>Receiver name: {props.item.receiverName}</Typography>
+          <Typography className={globalStyle.line}>Operation date: {props.item.operationDate}</Typography>
+          <Typography className={globalStyle.line}>Document sum: {props.item.documentSum}</Typography>
+          <Typography className={globalStyle.line}>Document number: {props.item.documentNumber}</Typography>
         </div>
   }
 
   return (
-    <ExpansionPanel className={globalStyle.innerExpansionPanel}>
+    <ExpansionPanel className={globalStyle.secondInnerExpansionPanel}>
       <ExpansionPanelSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography className={globalStyle.heading}>Doc type: Statement</Typography>
+        <Typography className={globalStyle.heading}>Operation - № {props.item.documentNumber}</Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
         <div className={classes.width}>
@@ -63,5 +61,5 @@ function Statement(props)  {
   );
 }
 
-export default withExpandButton(Statement);
+export default withExpandButton(Operation);
 
