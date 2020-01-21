@@ -8,19 +8,40 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 
+import { itemList } from './../../functions/itemList'
 import { withExpandButton } from './withExpandButton';
 import { REQUEST_STYLE } from './../style';
+
 import StateResponse from './StateResponse'
+import Statement from './Statement'
+
+const BUTTON_NAME = 'Show response';
 
 const useStyles = makeStyles(theme => ({
   width: {
     width: '100%',
   },
+  marginRight: {
+    marginRight: theme.spacing(2),
+  }
 }));
 
-function GetRequestStatus(props) {
+function GetRequestStatus(props)  {
   const globalStyle = REQUEST_STYLE();
   const classes = useStyles();
+
+  const [state, setState] = React.useState(false);
+
+  const buttonHandle = event => {
+    setState(!state);
+  }
+
+  let stateResponseData = null;
+  let statementData = null;
+  if (state) {
+    stateResponseData = itemList(StateResponse, props.request.stateResponseList);
+    statementData = itemList(Statement, props.request.statementList);
+  }
 
   let content;
   if (props.json === true) {
@@ -29,7 +50,8 @@ function GetRequestStatus(props) {
         </Box>;
   } else {
     content = <div className={globalStyle.content}>
-        <StateResponse item={props.request.stateResponseList[0]}/>
+        {stateResponseData}
+        {statementData}
       </div>
   }
 
@@ -49,7 +71,13 @@ function GetRequestStatus(props) {
       <ExpansionPanelDetails>
         <div className={classes.width}>
           <Button 
-            size="small"
+            variant="outlined" 
+            onClick={buttonHandle}
+            className={classes.marginRight}
+          >
+            {BUTTON_NAME}
+          </Button>
+          <Button 
             variant="outlined" 
             onClick={props.buttonHandle}
           >

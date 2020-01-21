@@ -12,7 +12,6 @@ import IncomingForm from './IncomingForm';
 import PayRequest from './PayRequest';
 import GetRequestStatus from './GetRequestStatus';
 import Incoming from './Incoming';
-import Document from './Document';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -92,7 +91,7 @@ function PayRequestChain(props) {
       {renderIfNotNull(PayRequest, props.item.payRequest)}
       {renderIfNotNull(GetRequestStatus, props.item.getRequestStatus1)}
       {renderIfNotNull(Incoming, props.item.incoming)}
-      {renderIfNotNull(Document, props.item.getRequestStatus2)}
+      {renderIfNotNull(GetRequestStatus, props.item.getRequestStatus2)}
       {renderIncomingForm(props.item.incoming, renderIncomingFormFlag, props.item.responseId)}
       {renderError(props.item.status, props.item.soapMessageList, props.item.message)}
     </div>
