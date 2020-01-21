@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function StatmentRequest(props) {
+function StatementRequest(props) {
   const globalStyle = REQUEST_STYLE();
   const classes = useStyles();
 
@@ -64,5 +64,5 @@ function StatmentRequest(props) {
     )
 }
 
-export default withExpandButton(StatmentRequest);
+export default withExpandButton(StatementRequest);
 

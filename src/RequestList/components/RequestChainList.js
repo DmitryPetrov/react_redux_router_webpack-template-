@@ -11,7 +11,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import grey from '@material-ui/core/colors/grey';
 
 import { requestListRequest } from './../actionCreatorList';
-import StatmentRequestChain from './StatmentRequestChain';
+import StatementRequestChain from './StatementRequestChain';
 import PayRequestChain from './PayRequestChain';
 
 import { GLOBAL_STYLE, CONTAINER_MAX_WIDTH } from './../../style';
@@ -104,7 +104,7 @@ function RequestChainList(props) {
 
 function getRequestChain(item, index) {
   if (item.type === "STATEMENT_REQUEST_CHAIN") {
-    return <StatmentRequestChain item={item} index={index} key={index}/>
+    return <StatementRequestChain item={item} index={index} key={index}/>
   }
   if (item.type === "PAY_REQUEST_CHAIN") {
     return <PayRequestChain item={item} index={index} key={index}/>
