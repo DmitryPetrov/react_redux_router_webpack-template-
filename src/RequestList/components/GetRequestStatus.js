@@ -38,7 +38,7 @@ function GetRequestStatus(props)  {
 
   let stateResponseData = null;
   let statementData = null;
-  if (state) {
+  if (state === true) {
     stateResponseData = itemList(StateResponse, props.request.stateResponseList);
     statementData = itemList(Statement, props.request.statementList);
   }
