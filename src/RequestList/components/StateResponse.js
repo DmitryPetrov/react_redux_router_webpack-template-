@@ -42,7 +42,7 @@ function StateResponse(props) {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography className={globalStyle.heading}>Doc type: {props.item.docType}</Typography>
+        <Typography className={globalStyle.heading}>{props.item.docType} - №{props.item.docId}</Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
         <div className={classes.width}>

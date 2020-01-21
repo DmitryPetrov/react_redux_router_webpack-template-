@@ -32,6 +32,8 @@ function Statement(props)  {
   } else {
     content = <div className={globalStyle.content}>
           <Typography className={globalStyle.line}>Org name: {props.item.orgName}</Typography>
+          <Typography className={globalStyle.line}>Account: {props.item.account}</Typography>
+          <Typography className={globalStyle.line}>Doc number: {props.item.docNumber}</Typography>
           <Typography className={globalStyle.line}>From date: {props.item.fromDate}</Typography>
           <Typography className={globalStyle.line}>To date: {props.item.toDate}</Typography>
           {itemList(Operation, props.item.operations)}
@@ -45,7 +47,7 @@ function Statement(props)  {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography className={globalStyle.heading}>Doc type: Statement</Typography>
+        <Typography className={globalStyle.heading}>Statement - № {props.item.docNumber}</Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
         <div className={classes.width}>
