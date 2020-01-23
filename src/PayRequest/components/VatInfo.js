@@ -37,7 +37,7 @@ function VatInfo(props) {
       <div className={clsx(globalStyle.gridCellContent, style.spacing)}>
         {field("vatCalculationRule", VAT_CALCULATION_RULE, "string", event => store.dispatch(updateData({vatCalculationRule: event.target.value})))}
         {field("vatRate", VAT_RATE, "number", event => store.dispatch(updateData({vatRate: event.target.value})))}
-        {field("vatSum", VAT_SUM, "number", event => store.dispatch(updateData({documentSum: event.target.value})))}
+        {field("vatSum", VAT_SUM, "number", event => store.dispatch(updateData({vatSum: event.target.value})))}
       </div>
     </Paper>
   )
