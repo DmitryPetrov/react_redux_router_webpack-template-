@@ -5,6 +5,7 @@ import Box from '@material-ui/core/Box';
 import grey from '@material-ui/core/colors/grey';
 
 import DateWithTimezoneInput from './../components/DateWithTimezoneInput';
+import DocumentId from './../components/DocumentId';
 import { DATA } from './initialState';
 import { GRID_ITEM_STYLE } from './../style';
 
@@ -55,7 +56,7 @@ function StatementRequestForm(props) {
             inputProps={{step: 1}} // 1 sec
             onChange={props.docDateHandle}
           />
-          {textField("doc Id", props.docIdHandle, DOC_ID)}
+          <DocumentId defaultValue={DOC_ID} handle={props.docIdHandle} />
           {textField("doc Number", props.docNumberHandle, DOC_NUMBER)}
           <DateWithTimezoneInput label={"fromDate"} handle={props.fromDateHandle} date={FROM_DATE}/>
           {textField("org Id", props.orgIdHandle, ORG_ID)}

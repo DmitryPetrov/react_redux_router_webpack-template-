@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import clsx from 'clsx';
 
+import DocumentId from './../../components/DocumentId';
 import DateWithTimezoneInput from './../../components/DateWithTimezoneInput';
 import { updateData } from './../actionCreatorList';
 import store from './../../store';
@@ -47,7 +48,7 @@ function DocInfo(props) {
           handle={data => store.dispatch(updateData({docDispatchDate: data}))}
           date={DOC_DISPATCH_DATE}
         />
-        {field("docId", DOC_ID, "string", event => store.dispatch(updateData({docId: event.target.value})))}
+        <DocumentId defaultValue={DOC_ID} handle={event => store.dispatch(updateData({docId: event.target.value}))} />
         {field("docNumber", DOC_NUMBER, "string", event => store.dispatch(updateData({docNumber: event.target.value})))}
         {field("documentSum", DOCUMENT_SUM, "number", event => store.dispatch(updateData({documentSum: event.target.value})))}
       </div>

@@ -1,3 +1,5 @@
+import { v1 as generateUUID } from 'uuid';
+
 import { REQUEST } from './../globalInitialState'
 
 export const DIGEST_SCHEME_INFO = {
@@ -29,7 +31,7 @@ export const BANK_MESSAGE_AUTHOR = "";
 
 export const DOC_DATE = "2019-05-24T01:00:00.000+03:00";
 export const DOC_DISPATCH_DATE = "2010-10-10T10:10:10.710+03:00";
-export const DOC_ID = "";
+export const DOC_ID = generateUUID();
 export const DOC_NUMBER = "1263";
 
 export const DOCUMENT_SUM = "10000";

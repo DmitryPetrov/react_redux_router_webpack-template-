@@ -1,9 +1,11 @@
+import { v1 as generateUUID } from 'uuid';
+
 import { REQUEST } from './../globalInitialState'
 
 const FROM_DATE_DEFAULT_VALUE = "2019-11-13T00:00:00.715+03:00"
 const TO_DATE_DEFAULT_VALUE = "2019-11-13T00:00:00.715+03:00";
 const DOC_DATE_DEFAULT_VALUE = "2019-11-15T00:00:00";
-const DOC_ID_DEFAULT_VALUE = "0b64c0df-1690-4c15-0000-000000000020";
+const DOC_ID_DEFAULT_VALUE = generateUUID();
 const DOC_NUMBER_DEFAULT_VALUE = "78";
 const ORG_ID_DEFAULT_VALUE = "0ce353c5-9a53-497d-ad02-df1fb6c37feb";
 const ORG_INN_DEFAULT_VALUE = "7842170415";
