@@ -16,7 +16,7 @@ export function getOrganisations() {
   };
 }
 
-export function postOrganisations(requestBody) {
+export function postOrganisation(requestBody) {
   return (dispatch) => {
     dispatch(requestIsLoading(types.ORGANISATION_POST_LOADING));
     axios
@@ -28,7 +28,7 @@ export function postOrganisations(requestBody) {
   };
 }
 
-export function putOrganisations(requestBody, id) {
+export function putOrganisation(requestBody, id) {
   return (dispatch) => {
     dispatch(requestIsLoading(types.ORGANISATION_PUT_LOADING));
     axios
@@ -40,7 +40,7 @@ export function putOrganisations(requestBody, id) {
   };
 }
 
-export function deleteOrganisations(id) {
+export function deleteOrganisation(id) {
   return (dispatch) => {
     dispatch(requestIsLoading(types.ORGANISATION_DELETE_LOADING));
     axios

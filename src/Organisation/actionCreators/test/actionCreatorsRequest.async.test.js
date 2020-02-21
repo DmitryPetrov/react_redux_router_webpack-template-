@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-import { getOrganisations, postOrganisations } from './../actionCreatorsRequest'
-import { putOrganisations, deleteOrganisations } from './../actionCreatorsRequest'
+import { getOrganisations, postOrganisation } from './../actionCreatorsRequest'
+import { putOrganisation, deleteOrganisation } from './../actionCreatorsRequest'
 import * as t from './../../actionTypeList'
 
 "use strict";
@@ -66,7 +66,7 @@ describe('Orgs actionCreatorList async test', () => {
     const dispatchMock = jest.fn();
 
     // when
-    await postOrganisations({})(dispatchMock);
+    await postOrganisation({})(dispatchMock);
 
     // then
     expect(dispatchMock.mock.calls.length).toBe(2);
@@ -87,7 +87,7 @@ describe('Orgs actionCreatorList async test', () => {
     const dispatchMock = jest.fn();
 
     // when
-    await postOrganisations({})(dispatchMock);
+    await postOrganisation({})(dispatchMock);
 
     // then
     expect(dispatchMock.mock.calls.length).toBe(2);
@@ -111,7 +111,7 @@ describe('Orgs actionCreatorList async test', () => {
     const dispatchMock = jest.fn();
 
     // when
-    await putOrganisations({})(dispatchMock);
+    await putOrganisation({})(dispatchMock);
 
     // then
     expect(dispatchMock.mock.calls.length).toBe(2);
@@ -132,7 +132,7 @@ describe('Orgs actionCreatorList async test', () => {
     const dispatchMock = jest.fn();
 
     // when
-    await putOrganisations({})(dispatchMock);
+    await putOrganisation({})(dispatchMock);
 
     // then
     expect(dispatchMock.mock.calls.length).toBe(2);
@@ -156,7 +156,7 @@ describe('Orgs actionCreatorList async test', () => {
     const dispatchMock = jest.fn();
 
     // when
-    await deleteOrganisations({})(dispatchMock);
+    await deleteOrganisation({})(dispatchMock);
 
     // then
     expect(dispatchMock.mock.calls.length).toBe(2);
@@ -177,7 +177,7 @@ describe('Orgs actionCreatorList async test', () => {
     const dispatchMock = jest.fn();
 
     // when
-    await deleteOrganisations({})(dispatchMock);
+    await deleteOrganisation({})(dispatchMock);
 
     // then
     expect(dispatchMock.mock.calls.length).toBe(2);

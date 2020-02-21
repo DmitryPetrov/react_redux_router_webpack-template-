@@ -5,7 +5,7 @@ import { statementRequestReducer } from "./StatementRequest/reducer";
 import { payRequestReducer } from "./PayRequest/reducer";
 import { requestListReducer, nextStepReducer, docTypeReducer } from "./RequestList/reducer";
 import { soapMessageListReducer } from "./SoapMessageList/reducer";
-import { organisationsReducer } from "./Organisation/reducer";
+import { organisationMainReducer } from "./Organisation/reducers/reducer";
 
 const rootReducer = combineReducers({
 	authorization: authorizationReducer,
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
 	nextStep: nextStepReducer,
 	incoming: docTypeReducer,
 	soapMessageList: soapMessageListReducer,
-	organisation: organisationsReducer,
+	organisation: organisationMainReducer,
 })
 
 export default rootReducer;

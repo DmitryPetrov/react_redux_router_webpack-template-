@@ -12,6 +12,14 @@ export const BANK_NAME = "ЦЕНТРАЛЬНЫЙ ФИЛИАЛ АБ \"РОССИ�
 export const BANK_BIC = "044525220";
 export const BANK_CORR_ACCOUNT = "30101810145250000220";
 
+export const EMPTY_ACC = {
+	account: "",
+	accountId: "",
+	bankName: "",
+	bankBic: "",
+	bankCorrAccount: "",
+}
+
 const ACC = {
 	account: ACCOUNT,
 	accountId: ACCOUNT_ID,
