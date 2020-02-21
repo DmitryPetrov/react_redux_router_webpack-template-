@@ -15,4 +15,5 @@ export const REST_API = {
   soapMessages: "/soapMessages",
   lastRequestSoapMessages: "/soapMessages/lastRequest",
   requestChains: "/requestChains",
+  organisations: "/organisations",
 };

@@ -35,6 +35,11 @@ const PAGE_LIST = [
     icon: <LockOutlinedIcon />
   },
   {
+    link: REST_API.organisations,
+    name: "Organisation list",
+    icon: <PanoramaFishEye />
+  },
+  {
     link: REST_API.statementRequest,
     name: "Statement request",
     icon: <PanoramaFishEye />

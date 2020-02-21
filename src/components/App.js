@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import store from './../store.js';
 import Authorization from './../Authorization/Authorization';
+import Organisations from './../Organisation/Organisations';
 import StatmentRequest from './../StatementRequest/StatementRequest';
 import PayRequest from './../PayRequest/components/PayRequest';
 import RequestChainList from './../RequestList/components/RequestChainList';
@@ -20,6 +21,7 @@ function App() {
         <SideBar/>
         <Switch>
           <Route path={REST_API.authorization} exact component={Authorization} />
+          <Route path={REST_API.organisations} component={Organisations} />
           <Route path={REST_API.statementRequest} component={StatmentRequest}/>
           <Route path={REST_API.payRequest} component={PayRequest}/>
           <Route path={REST_API.requestChains} component={RequestChainList}/>
