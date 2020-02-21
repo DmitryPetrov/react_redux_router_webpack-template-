@@ -17,7 +17,7 @@ describe('StatementRequest actionCreatorList async test', () => {
     axios.post.mockImplementation(() => Promise.resolve(response));
     const dispatchMock = jest.fn();
 
-    await statementRequestRequest("", {})(dispatchMock);
+    await statementRequestRequest({})(dispatchMock);
 
     expect(dispatchMock.mock.calls.length).toBe(2);
     expect(dispatchMock.mock.calls[1][0]).toEqual({
@@ -36,7 +36,7 @@ describe('StatementRequest actionCreatorList async test', () => {
     axios.post.mockImplementation(() => Promise.reject(error));
     const dispatchMock = jest.fn();
 
-    await statementRequestRequest("", {})(dispatchMock);
+    await statementRequestRequest({})(dispatchMock);
 
     expect(dispatchMock.mock.calls.length).toBe(2);
     expect(dispatchMock.mock.calls[1][0]).toEqual({
