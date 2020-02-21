@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { statementRequestRequest, STATEMENT_REQUEST_URL } from './../actionCreatorList'
+import { statementRequestRequest } from './../actionCreatorList'
 import * as t from './../actionTypeList'
 
 "use strict";
