@@ -1,6 +1,6 @@
 import { addOrganisationForUpdate, saveUpdatedOrganisation } from './../actionCreatorsUpdateOrg'
 import { addAccountToUpdateOrganisation, removeAccountFromUpdateOrganisation } from './../actionCreatorsUpdateOrg'
-import { updateOrganisation, updateAccountInUpdateOrganisation } from './../actionCreatorsUpdateOrg'
+import { updateExistingOrganisation, updateAccountInUpdateOrganisation } from './../actionCreatorsUpdateOrg'
 
 import * as t from './../../actionTypeList'
 
@@ -36,10 +36,10 @@ describe('Organisations actionCreatorList', () => {
     });
   })
 
-  it(t.UPDATE_ORGANISATION, () => {
+  it(t.UPDATE_EXISTING_ORGANISATION, () => {
     const data = { someField: 'content' };
-    expect(updateOrganisation(data)).toEqual({
-      type: t.UPDATE_ORGANISATION,
+    expect(updateExistingOrganisation(data)).toEqual({
+      type: t.UPDATE_EXISTING_ORGANISATION,
       data: data,
     });
   })

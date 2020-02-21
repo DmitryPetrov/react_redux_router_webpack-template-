@@ -27,9 +27,9 @@ export function removeAccountFromUpdateOrganisation(index) {
   }
 }
 
-export function updateOrganisation(data) {
+export function updateExistingOrganisation(data) {
   return {
-    type: types.UPDATE_ORGANISATION,
+    type: types.UPDATE_EXISTING_ORGANISATION,
     data: data,
   }
 }
