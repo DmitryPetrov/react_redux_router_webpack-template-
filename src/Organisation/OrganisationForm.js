@@ -11,6 +11,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import grey from '@material-ui/core/colors/grey';
 
 import Account from './Account';
+import { EMPTY_ACC } from './initialState';
 
 const useStyles = makeStyles(theme => ({
   inputField: {
@@ -41,6 +42,29 @@ const useStyles = makeStyles(theme => ({
 function OrganisationForm(props) {
   const classes = useStyles();
 
+  const [orgName, setOrgName] = React.useState(props.item.orgName);
+  const [orgId, setOrgId] = React.useState(props.item.orgId);
+  const [payerName, setPayerName] = React.useState(props.item.payerName);
+  const [payerInn, setPayerInn] = React.useState(props.item.payerInn);
+  const [payerId, setPayerId] = React.useState(props.item.payerId);
+
+  const [accounts, setAccounts] = React.useState(props.item.accounts);
+  const updateAccount = (obj, index) => accounts[index] = Object.assign({}, accounts[index], obj);
+  const addAccount = () => setAccounts(accounts.concat(Object.assign({}, EMPTY_ACC)));
+  const removeAccount = indexAcc => setAccounts(accounts.filter((item, index) => (index === indexAcc) ? false : true ));
+
+  const saveOrg = () => {
+    let updatedOrg = {
+      orgName: orgName,
+      orgId: orgId,
+      payerName: payerName,
+      payerInn: payerInn,
+      payerId: payerId,
+      accounts: accounts,
+    }
+    props.save(updatedOrg, props.index);
+  }
+
   const inputField = (text, handle, value) => 
     <TextField
       label={text}
@@ -51,40 +75,41 @@ function OrganisationForm(props) {
       defaultValue={value}
     />;
 
-  const accountList = props.item.accounts.map((item, index) => 
+  const accountList = accounts.map((item, index) => 
     <Account
       item={item}
       index={index}
-      key={item.accountId}
+      key={index}
       buttonName="Delete"
-      buttonHandler={props.removeAcc}
-      updateAcc={props.updateAcc}
-    />)
+      buttonHandler={removeAccount}
+      updateAcc={updateAccount}
+    />
+  )
 
   return (
     <Dialog open={props.open} onClose={props.close} maxWidth='lg' fullWidth>
-      <DialogTitle className={classes.title}>Update organisation</DialogTitle>
+      <DialogTitle className={classes.title}>{props.title}</DialogTitle>
       <DialogContent dividers>
         <Grid container justify="space-evenly" alignItems="flex-start">
           <Grid item className={classes.leftCollumn}>
             <Box border={1} borderRadius={4} borderColor={grey[500]} className={classes.content}>
-              {inputField("orgName", (event) => props.updateOrg({"orgName": event.target.value}), props.item.orgName)}
-              {inputField("orgId", (event) => props.updateOrg({"orgId": event.target.value}),  props.item.orgId)}
-              {inputField("payerName", (event) => props.updateOrg({"payerName": event.target.value}),  props.item.payerName)}
-              {inputField("payerInn", (event) => props.updateOrg({"payerInn": event.target.value}),  props.item.payerInn)}
-              {inputField("payerId", (event) => props.updateOrg({"payerId": event.target.value}),  props.item.payerId)}
+              {inputField("orgName", event => setOrgName(event.target.value), orgName)}
+              {inputField("orgId", event => setOrgId(event.target.value), orgId)}
+              {inputField("payerName", event => setPayerName(event.target.value), payerName)}
+              {inputField("payerInn", event => setPayerInn( event.target.value), payerInn)}
+              {inputField("payerId", event => setPayerId(event.target.value), payerId)}
             </Box>
           </Grid>
           <Grid item className={classes.rightCollumn}>
             {accountList}
             <div className={classes.content}>
-              <Button variant="outlined" onClick={props.addAcc}>Add account</Button>
+              <Button variant="outlined" onClick={addAccount}>Add account</Button>
             </div>
           </Grid>
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button onClick={props.save} color="primary">
+        <Button onClick={saveOrg} color="primary">
           Save
         </Button>
         <Button onClick={props.close} color="secondary">

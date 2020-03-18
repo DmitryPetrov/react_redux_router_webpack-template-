@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 
 import OrganisationCard from './OrganisationCard';
 import OrganisationForm from './OrganisationForm';
+import { EMPTY_ORG } from './initialState'
 
 import { GLOBAL_STYLE, CONTAINER_MAX_WIDTH } from './../style';
 
@@ -54,18 +55,11 @@ function OrganisationsView(props) {
     <OrganisationCard
       item={item}
       index={index}
-      key={item.orgId}
+      key={index}
       selected={props.selected}
       selectOrg={props.selectOrg}
       selectAcc={props.selectAcc}
-
-      addOrgForUpdate={props.addOrgForUpdate}
       saveUpdatedOrg={props.saveUpdatedOrg}
-      addAccToUpdateOrg={props.addAccToUpdateOrg}
-      removeAccFromUpdateOrg={props.removeAccFromUpdateOrg}
-      updateOrg={props.updateOrg}
-      updateAccInUpdateOrg={props.updateAccInUpdateOrg}
-
       removeOrg={props.removeOrg}
     />)
 
@@ -85,35 +79,15 @@ function OrganisationsView(props) {
         </Grid>
       </Container>
       <OrganisationForm 
-        item={item}
+        title={"ADD ORGANISATIONS"}
+        item={EMPTY_ORG}
         close={closeAddOrgLayer}
         open={addOrg}
         save={props.saveNewOrg}
-        addAcc={props.addAccToNewOrg}
-        removeAcc={props.removeAccFromNewOrg}
-        updateOrg={props.updateNewOrg}
-        updateAcc={props.updateAccInNewOrg}
       />
     </div>
     )
 }
-
-let item = {
-  orgName: "Organisation name3",
-  orgId: "Organisation id3",
-  payerName: "Payer name3",
-  payerInn: "Payer inn3",
-  payerId: "Payer id3",
-  accounts: [{
-    payerBankCity: "Payer bank city3.1",
-    payerBankSettlementType: "Payer settlement type3.1",
-    accountId: "accountId3.1",
-    account: "Account3.1",
-    bankName: "Bank name3.1",
-    bankBic: "Bank BIC3.1",
-    bankCorrAccount: "Bank corr account3.1",
-  }],
-};
 
 export default OrganisationsView;
 

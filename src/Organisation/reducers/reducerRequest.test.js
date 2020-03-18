@@ -1,6 +1,6 @@
-import { reducerRequest } from './../reducerRequest'
-import * as t from './../../actionTypeList'
-import { ORGANISATIONS, REQUEST } from './../../initialState'
+import { organisationReducer } from './reducer'
+import * as t from './../actionTypeList'
+import { ORGANISATIONS, REQUEST } from './../initialState'
 
 function getLoadingAction(type) {
   return {
@@ -53,25 +53,25 @@ describe('Organisations reducer', () => {
     const state = { request: {} };
     const action = getLoadingAction(t.ORGANISATIONS_GET_LOADING);
     const expectedState = getExpectedState(action)
-    expect(reducerRequest(state, action)).toEqual(expectedState);    
+    expect(organisationReducer(state, action)).toEqual(expectedState);    
   })
   it (t.ORGANISATION_POST_LOADING, () => {
     const state = { request: {} };
     const action = getLoadingAction(t.ORGANISATION_POST_LOADING);
     const expectedState = getExpectedState(action)
-    expect(reducerRequest(state, action)).toEqual(expectedState);     
+    expect(organisationReducer(state, action)).toEqual(expectedState);     
   })
   it (t.ORGANISATION_PUT_LOADING, () => {
     const state = { request: {} };
     const action = getLoadingAction(t.ORGANISATION_PUT_LOADING);
     const expectedState = getExpectedState(action)
-    expect(reducerRequest(state, action)).toEqual(expectedState);     
+    expect(organisationReducer(state, action)).toEqual(expectedState);     
   })
   it (t.ORGANISATION_DELETE_LOADING, () => {
     const state = { request: {} };
     const action = getLoadingAction(t.ORGANISATION_DELETE_LOADING);
     const expectedState = getExpectedState(action)
-    expect(reducerRequest(state, action)).toEqual(expectedState);     
+    expect(organisationReducer(state, action)).toEqual(expectedState);     
   })
 
 
@@ -80,25 +80,25 @@ describe('Organisations reducer', () => {
     const state = { request: {} };
     const action = getSucceedAction(t.ORGANISATIONS_GET_SUCCEED);
     const expectedState = getExpectedState(action);
-    expect(reducerRequest(state, action)).toEqual(expectedState);    
+    expect(organisationReducer(state, action)).toEqual(expectedState);    
   })
   it (t.ORGANISATION_POST_SUCCEED, () => {
     const state = { request: {} };
     const action = getSucceedAction(t.ORGANISATION_POST_SUCCEED);
     const expectedState = getExpectedState(action);
-    expect(reducerRequest(state, action)).toEqual(expectedState);    
+    expect(organisationReducer(state, action)).toEqual(expectedState);    
   })
   it (t.ORGANISATION_PUT_SUCCEED, () => {
     const state = { request: {} };
     const action = getSucceedAction(t.ORGANISATION_PUT_SUCCEED);
     const expectedState = getExpectedState(action);
-    expect(reducerRequest(state, action)).toEqual(expectedState);    
+    expect(organisationReducer(state, action)).toEqual(expectedState);    
   })
   it (t.ORGANISATION_DELETE_SUCCEED, () => {
     const state = { request: {} };
     const action = getSucceedAction(t.ORGANISATION_DELETE_SUCCEED);
     const expectedState = getExpectedState(action);
-    expect(reducerRequest(state, action)).toEqual(expectedState);    
+    expect(organisationReducer(state, action)).toEqual(expectedState);    
   })
 
   
@@ -107,25 +107,25 @@ describe('Organisations reducer', () => {
     const state = { request: {} };
     const action = getFailedAction(t.ORGANISATIONS_GET_FAILED);
     const expectedState = getExpectedState(action);
-    expect(reducerRequest(state, action)).toEqual(expectedState);  
+    expect(organisationReducer(state, action)).toEqual(expectedState);  
   })
   it (t.ORGANISATION_POST_FAILED, () => {
     const state = { request: {} };
     const action = getFailedAction(t.ORGANISATION_POST_FAILED);
     const expectedState = getExpectedState(action);
-    expect(reducerRequest(state, action)).toEqual(expectedState);  
+    expect(organisationReducer(state, action)).toEqual(expectedState);  
   })
   it (t.ORGANISATION_PUT_FAILED, () => {
     const state = { request: {} };
     const action = getFailedAction(t.ORGANISATION_PUT_FAILED);
     const expectedState = getExpectedState(action);
-    expect(reducerRequest(state, action)).toEqual(expectedState);  
+    expect(organisationReducer(state, action)).toEqual(expectedState);  
   })
   it (t.ORGANISATION_DELETE_FAILED, () => {
     const state = { request: {} };
     const action = getFailedAction(t.ORGANISATION_DELETE_FAILED);
     const expectedState = getExpectedState(action);
-    expect(reducerRequest(state, action)).toEqual(expectedState);  
+    expect(organisationReducer(state, action)).toEqual(expectedState);  
   })
 
 })

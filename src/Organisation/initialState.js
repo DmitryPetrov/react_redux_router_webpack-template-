@@ -16,11 +16,11 @@ export const EMPTY_ACC = {
 	account: "",
 	accountId: "",
 	bankName: "",
-	bankBic: "",
+	bankBIC: "",
 	bankCorrAccount: "",
 }
 
-const EMPTY_ORG = {
+export const EMPTY_ORG = {
 	orgName: "",
 	orgId: "",
 	payerName: "",
@@ -33,7 +33,7 @@ const ACC = {
 	account: ACCOUNT,
 	accountId: ACCOUNT_ID,
 	bankName: BANK_NAME,
-	bankBic: BANK_BIC,
+	bankBIC: BANK_BIC,
 	bankCorrAccount: BANK_CORR_ACCOUNT,
 }
 
@@ -60,7 +60,7 @@ const orgs = [
     accountId: "accountId1.1",
     account: "Account1.1",
     bankName: "Bank name1.1",
-    bankBic: "Bank BIC1.1",
+    bankBIC: "Bank BIC1.1",
     bankCorrAccount: "Bank corr account1.1",
   },
   {
@@ -69,7 +69,7 @@ const orgs = [
     accountId: "accountId1.2",
     account: "Account1.2",
     bankName: "Bank name1.2",
-    bankBic: "Bank BIC1.2",
+    bankBIC: "Bank BIC1.2",
     bankCorrAccount: "Bank corr account1.2",
   },
   {
@@ -78,7 +78,7 @@ const orgs = [
     accountId: "accountId1.3",
     account: "Account1.3",
     bankName: "Bank name1.3",
-    bankBic: "Bank BIC1.3",
+    bankBIC: "Bank BIC1.3",
     bankCorrAccount: "Bank corr account1.3",
   }]
 },
@@ -94,7 +94,7 @@ const orgs = [
     accountId: "accountId2.1",
     account: "Account2.1",
     bankName: "Bank name2.1",
-    bankBic: "Bank BIC2.1",
+    bankBIC: "Bank BIC2.1",
     bankCorrAccount: "Bank corr account2.1",
   },
   {
@@ -103,7 +103,7 @@ const orgs = [
     accountId: "accountId2.2",
     account: "Account2.2",
     bankName: "Bank name2.2",
-    bankBic: "Bank BIC2.2",
+    bankBIC: "Bank BIC2.2",
     bankCorrAccount: "Bank corr account2.2",
   },
   {
@@ -112,7 +112,7 @@ const orgs = [
     accountId: "accountId2.3",
     account: "Account2.3",
     bankName: "Bank name2.3",
-    bankBic: "Bank BIC2.3",
+    bankBIC: "Bank BIC2.3",
     bankCorrAccount: "Bank corr account2.3",
   }]
 },
@@ -128,7 +128,7 @@ const orgs = [
     accountId: "accountId3.1",
     account: "Account3.1",
     bankName: "Bank name3.1",
-    bankBic: "Bank BIC3.1",
+    bankBIC: "Bank BIC3.1",
     bankCorrAccount: "Bank corr account3.1",
   },
   {
@@ -137,7 +137,7 @@ const orgs = [
     accountId: "accountId3.2",
     account: "Account3.2",
     bankName: "Bank name3.2",
-    bankBic: "Bank BIC3.2",
+    bankBIC: "Bank BIC3.2",
     bankCorrAccount: "Bank corr account3.2",
   },
   {
@@ -146,7 +146,7 @@ const orgs = [
     accountId: "accountId3.3",
     account: "Account3.3",
     bankName: "Bank name3.3",
-    bankBic: "Bank BIC3.3",
+    bankBIC: "Bank BIC3.3",
     bankCorrAccount: "Bank corr account3.3",
   }]
 },
@@ -162,7 +162,7 @@ const orgs = [
     accountId: "accountId4.1",
     account: "Account4.1",
     bankName: "Bank name4.1",
-    bankBic: "Bank BIC4.1",
+    bankBIC: "Bank BIC4.1",
     bankCorrAccount: "Bank corr account4.1",
   },
   {
@@ -171,7 +171,7 @@ const orgs = [
     accountId: "accountId4.2",
     account: "Account4.2",
     bankName: "Bank name4.2",
-    bankBic: "Bank BIC4.2",
+    bankBIC: "Bank BIC4.2",
     bankCorrAccount: "Bank corr account4.2",
   },
   {
@@ -180,7 +180,7 @@ const orgs = [
     accountId: "accountId4.3",
     account: "Account4.3",
     bankName: "Bank name4.3",
-    bankBic: "Bank BIC4.3",
+    bankBIC: "Bank BIC4.3",
     bankCorrAccount: "Bank corr account4.3",
   }]
 },
@@ -196,7 +196,7 @@ const orgs = [
     accountId: "accountId5.1",
     account: "Account5.1",
     bankName: "Bank name5.1",
-    bankBic: "Bank BIC5.1",
+    bankBIC: "Bank BIC5.1",
     bankCorrAccount: "Bank corr account5.1",
   },
   {
@@ -205,7 +205,7 @@ const orgs = [
     accountId: "accountId5.2",
     account: "Account5.2",
     bankName: "Bank name5.2",
-    bankBic: "Bank BIC5.2",
+    bankBIC: "Bank BIC5.2",
     bankCorrAccount: "Bank corr account5.2",
   },
   {
@@ -214,7 +214,7 @@ const orgs = [
     accountId: "accountId5.3",
     account: "Account5.3",
     bankName: "Bank name5.3",
-    bankBic: "Bank BIC5.3",
+    bankBIC: "Bank BIC5.3",
     bankCorrAccount: "Bank corr account5.3",
   }]
 },

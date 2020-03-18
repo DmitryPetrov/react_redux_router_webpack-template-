@@ -1,7 +1,7 @@
-import { reducerSelectOrg } from './../reducerSelectOrg'
-import * as t from './../../actionTypeList'
+import { organisationReducer } from './reducer'
+import * as t from './../actionTypeList'
 
-describe('Organisations reducerSelectOrg', () => {
+describe('Organisations organisationReducer', () => {
 
   it(t.SELECT_ORGANISATION, () => {
     const state = {
@@ -15,7 +15,7 @@ describe('Organisations reducerSelectOrg', () => {
       type: t.SELECT_ORGANISATION,
       index: 1,
     };
-    expect(reducerSelectOrg(state, action)).toEqual({
+    expect(organisationReducer(state, action)).toEqual({
       organisations: state.organisations,
       selectedOrg: { 
         org: state.organisations[action.index],
@@ -39,7 +39,7 @@ describe('Organisations reducerSelectOrg', () => {
       type: t.SELECT_ACCOUNT,
       index: 0,
     };
-    expect(reducerSelectOrg(state, action)).toEqual({
+    expect(organisationReducer(state, action)).toEqual({
       selectedOrg: { 
         org: state.selectedOrg.org,
         acc: state.selectedOrg.org.accounts[action.index]

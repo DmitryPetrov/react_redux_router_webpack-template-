@@ -49,15 +49,12 @@ function OrganisationCard(props) {
   const classes = useStyles();
 
   const [selected, setSelected] = React.useState(false);
-  React.useEffect(() => {    
-    (props.selected.org.orgId === props.item.orgId) ? setSelected(true) : setSelected(false)
-  }, [props.selected.org]);
+  // React.useEffect(() => {
+  //   (props.selected.org.orgId === props.item.orgId) ? setSelected(true) : setSelected(false)
+  // }, [props.selected.org]);
 
   const [update, setUpdate] = React.useState(false);
-  const openUpdateLayer = () => {
-    setUpdate(true);
-    props.addOrgForUpdate(props.index);
-  }
+  const openUpdateLayer = () => setUpdate(true);
   const closeUpdateLayer = () => setUpdate(false);
 
   const [select, setSelect] = React.useState(false);
@@ -92,14 +89,12 @@ function OrganisationCard(props) {
         </ButtonGroup>
       </Box>
       <OrganisationForm
+        title={"UPDATE ORGANISATIONS"}
         item={props.item}
+        index={props.index}
         close={closeUpdateLayer}
         open={update}
         save={props.saveUpdatedOrg}
-        updateOrg={props.updateOrg}
-        addAcc={props.addAccToUpdateOrg}
-        removeAcc={props.removeAccFromUpdateOrg}
-        updateAcc={props.updateAccInUpdateOrg}
       />
       <AccountListForSelect
         item={props.item}

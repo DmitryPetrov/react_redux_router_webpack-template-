@@ -34,21 +34,22 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(2),
   },
   mark: {
-    background: 'linear-gradient(45deg, rgba(255,205,210,1) 50%, rgba(255,205,179,1) 99%)',
+    //background: 'linear-gradient(45deg, rgba(255,205,210,1) 50%, rgba(255,205,179,1) 99%)',
   }
 }));
 
 function Account(props) {
   const classes = useStyles();
 
-  const textField = (text, handle, value) => <TextField
-                    label={text}
-                    className={classes.textField}
-                    margin="dense"
-                    variant="outlined"
-                    onChange={handle}
-                    defaultValue={value}
-                  />;
+  const textField = (text, handle, value) => 
+    <TextField
+      label={text}
+      className={classes.textField}
+      margin="dense"
+      variant="outlined"
+      onChange={handle}
+      defaultValue={value}
+    />;
 
   return (
     <Box 
@@ -58,16 +59,16 @@ function Account(props) {
       className={clsx(classes.component, { [classes.mark]: props.selected === true, })}
     >
       <div className={classes.collumn}>
-        {textField("account", (event) => props.updateAcc({"account": event.target.value}, props.index), props.item.account)}
-        {textField("accountId", (event) => props.updateAcc({"accountId": event.target.value}, props.index),  props.item.accountId)}
-        {textField("payerBankSettlementType", (event) => props.updateAcc({"payerBankSettlementType": event.target.value}, props.index),  props.item.payerBankSettlementType)}
-        {textField("payerBankCity", (event) => props.updateAcc({"payerBankCity": event.target.value}, props.index),  props.item.payerBankCity)}
+        {textField("account", event => props.updateAcc({"account": event.target.value}, props.index), props.item.account)}
+        {textField("accountId", event => props.updateAcc({"accountId": event.target.value}, props.index),  props.item.accountId)}
+        {textField("payerBankSettlementType", event => props.updateAcc({"payerBankSettlementType": event.target.value}, props.index),  props.item.payerBankSettlementType)}
+        {textField("payerBankCity", event => props.updateAcc({"payerBankCity": event.target.value}, props.index),  props.item.payerBankCity)}
       </div>
       <div className={classes.collumn}>
-        {textField("bankName", (event) => props.updateAcc({"bankName": event.target.value}, props.index), props.item.bankName)}
-        {textField("bankBIC", (event) => props.updateAcc({"bankBIC": event.target.value}, props.index), props.item.bankBic)}
-        {textField("bankCorrAccount", (event) => props.updateAcc({"bankCorrAccount": event.target.value}, props.index), props.item.bankCorrAccount)}
-        <Button variant="outlined" className={classes.button} onClick={ () => props.buttonHandler(props.index)} >
+        {textField("bankName", event => props.updateAcc({"bankName": event.target.value}, props.index), props.item.bankName)}
+        {textField("bankBIC", event => props.updateAcc({"bankBIC": event.target.value}, props.index), props.item.bankBIC)}
+        {textField("bankCorrAccount", event => props.updateAcc({"bankCorrAccount": event.target.value}, props.index), props.item.bankCorrAccount)}
+        <Button variant="outlined" className={classes.button} onClick={() => props.buttonHandler(props.index)} >
           {props.buttonName}
         </Button>
       </div>
