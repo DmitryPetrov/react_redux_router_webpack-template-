@@ -14,7 +14,6 @@ const initialState = {
   statementRequest: STATEMENT_REQUEST,
   payRequest: PAY_REQUEST,
   requestList: REQUEST,
-  getRequestStatus: REQUEST,
   incoming:  INCOMING,
   soapMessageList: REQUEST,
   organisation: ORGANISATION,
