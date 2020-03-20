@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import shortid from 'shortid';
 
 import OrganisationCard from './OrganisationCard';
 import OrganisationForm from './OrganisationForm';
@@ -55,7 +56,7 @@ function OrganisationsView(props) {
     <OrganisationCard
       item={item}
       index={index}
-      key={index}
+      key={shortid.generate()}
       selected={props.selected}
       selectOrg={props.selectOrg}
       selectAcc={props.selectAcc}

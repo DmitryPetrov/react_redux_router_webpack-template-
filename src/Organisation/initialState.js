@@ -26,7 +26,7 @@ export const EMPTY_ORG = {
 	payerName: "",
 	payerInn: "",
 	payerId: "",
-	accounts: [],
+	accounts: [EMPTY_ACC],
 };
 
 const ACC = {

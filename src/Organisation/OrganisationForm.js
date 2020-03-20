@@ -9,6 +9,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import grey from '@material-ui/core/colors/grey';
+import shortid from 'shortid';
 
 import Account from './Account';
 import { EMPTY_ACC } from './initialState';
@@ -51,7 +52,12 @@ function OrganisationForm(props) {
   const [accounts, setAccounts] = React.useState(props.item.accounts);
   const updateAccount = (obj, index) => accounts[index] = Object.assign({}, accounts[index], obj);
   const addAccount = () => setAccounts(accounts.concat(Object.assign({}, EMPTY_ACC)));
-  const removeAccount = indexAcc => setAccounts(accounts.filter((item, index) => (index === indexAcc) ? false : true ));
+  const removeAccount = indexAcc => {
+    if (accounts.length === 1) {
+      return;
+    }
+    setAccounts(accounts.filter((item, index) => (index === indexAcc) ? false : true ));
+  }
 
   const saveOrg = () => {
     let updatedOrg = {
@@ -79,7 +85,7 @@ function OrganisationForm(props) {
     <Account
       item={item}
       index={index}
-      key={index}
+      key={shortid.generate()}
       buttonName="Delete"
       buttonHandler={removeAccount}
       updateAcc={updateAccount}
