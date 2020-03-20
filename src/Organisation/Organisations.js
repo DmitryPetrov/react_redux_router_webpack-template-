@@ -18,10 +18,9 @@ function Organisations(props) {
 
   const selectOrg = index => {
     store.dispatch(selectOrganisation(index));
-    console.log("select org " + index);
     selectAcc(0);
   };
-  const selectAcc = index => {store.dispatch(selectAccount(index)); console.log(index)};
+  const selectAcc = index => store.dispatch(selectAccount(index));
 
   const saveUpdatedOrg = (data, index) => {
     orgs[index] = Object.assign({}, orgs[index], data);
@@ -54,7 +53,6 @@ function Organisations(props) {
 }
 
 function mapStateToProps(store) {
-  console.log(store.organisation.selectedOrg)
   return {
     selectedOrg: store.organisation.selectedOrg,
     request: store.organisation.request,
