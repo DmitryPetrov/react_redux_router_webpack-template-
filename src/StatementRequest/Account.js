@@ -7,12 +7,7 @@ import grey from '@material-ui/core/colors/grey';
 
 import store from './../store';
 import { updateAccountData, removeAccount} from './actionCreatorList'
-import { ACCOUT_DATA } from './initialState';
 import { GRID_ITEM_STYLE } from './../style';
-
-const ACCOUNT = ACCOUT_DATA.account;
-const BANK_BIC = ACCOUT_DATA.bankBic;
-const BANK_NAME = ACCOUT_DATA.bankName;
 
 const useStyles = makeStyles(theme => ({
   textField: {
@@ -30,14 +25,15 @@ function Account(props) {
   const classes = useStyles();
   const gridCell = GRID_ITEM_STYLE();
 
-  const textField = (text, handle, value) => <TextField
-                    label={text}
-                    className={classes.textField}
-                    margin="dense"
-                    variant="outlined"
-                    onChange={handle}
-                    defaultValue={value}
-                  />;
+  const textField = (text, handle, value) => 
+    <TextField
+      label={text}
+      className={classes.textField}
+      margin="dense"
+      variant="outlined"
+      onChange={handle}
+      defaultValue={value}
+    />;
 
   return (
     <div className={gridCell.component}>
@@ -48,9 +44,9 @@ function Account(props) {
         className={gridCell.componentBorder}
       >
         <div className={gridCell.content}>
-          {textField("account", (event) => store.dispatch(updateAccountData({account: event.target.value}, props.index)), ACCOUNT)}
-          {textField("bank Name", (event) => store.dispatch(updateAccountData({bankName: event.target.value}, props.index)), BANK_NAME)}
-          {textField("bank Bic", (event) => store.dispatch(updateAccountData({bankBic: event.target.value}, props.index)), BANK_BIC)}
+          {textField("account", (event) => store.dispatch(updateAccountData({account: event.target.value}, props.index)), props.defaulValue.account)}
+          {textField("bank Bic", (event) => store.dispatch(updateAccountData({bankBic: event.target.value}, props.index)), props.defaulValue.bankBic)}
+          {textField("bank Name", (event) => store.dispatch(updateAccountData({bankName: event.target.value}, props.index)), props.defaulValue.bankName)}
           <Button 
             variant="outlined" 
             className={classes.button} 

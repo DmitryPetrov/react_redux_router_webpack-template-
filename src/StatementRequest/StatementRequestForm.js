@@ -14,9 +14,6 @@ const DOC_ID = DATA.docId;
 const DOC_NUMBER = DATA.docNumber;
 const FROM_DATE = DATA.fromDate;
 const TO_DATE = DATA.toDate;
-const ORG_ID = DATA.orgId;
-const ORG_INN = DATA.orgInn;
-const ORG_NAME = DATA.orgName;
 
 const useStyles = makeStyles(theme => ({
   textField: {
@@ -59,9 +56,9 @@ function StatementRequestForm(props) {
           <DocumentId defaultValue={DOC_ID} handle={props.docIdHandle} />
           {textField("doc Number", props.docNumberHandle, DOC_NUMBER)}
           <DateWithTimezoneInput label={"fromDate"} handle={props.fromDateHandle} date={FROM_DATE}/>
-          {textField("org Id", props.orgIdHandle, ORG_ID)}
-          {textField("org Inn", props.orgInnHandle, ORG_INN)}
-          {textField("org Name", props.orgNameHandle, ORG_NAME)}
+          {textField("org Id", props.orgIdHandle, props.defailtValue.orgId)}
+          {textField("org Inn", props.orgInnHandle, props.defailtValue.orgInn)}
+          {textField("org Name", props.orgNameHandle, props.defailtValue.orgName)}
           <DateWithTimezoneInput label={"toDate"} handle={props.toDateHandle} date={TO_DATE}/>
         </form>
       </Box>

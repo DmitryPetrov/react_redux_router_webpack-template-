@@ -54,6 +54,7 @@ function StatementRequestView(props) {
       item={item}
       index={index}
       key={shortid.generate()}
+      defaulValue={props.selectedOrg.acc}
     />
   );
 
@@ -82,6 +83,7 @@ function StatementRequestView(props) {
               orgNameHandle={props.orgNameHandle}
               toDateHandle={props.toDateHandle}
               submitHandle={props.submitHandle}
+              defailtValue={props.selectedOrg.org}
             />
           </Grid>
           <Grid item xs={4} className={classes.gridItem}>

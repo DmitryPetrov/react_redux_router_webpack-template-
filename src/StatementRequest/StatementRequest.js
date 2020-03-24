@@ -91,6 +91,7 @@ class StatementRequest extends React.Component {
           submitHandle={this.submit}
           signCollectionHandle={this.signCollectionHandle}
           dataForSign={this.props.dataForSign}
+          selectedOrg={this.props.selectedOrg}
         />
         <MessageFromServer request={this.props.request} />
       </div>
@@ -106,6 +107,7 @@ function mapStateToProps(store) {
   	data : Object.assign({}, store.statementRequest.data),
     dataForSign : Object.assign({}, store.statementRequest.data, {signCollection: null}),
     request: Object.assign({}, store.statementRequest.request),
+    selectedOrg: store.organisation.selectedOrg,
   }
 }
 
