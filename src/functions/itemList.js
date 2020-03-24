@@ -1,4 +1,5 @@
 import React from 'react';
+import shortid from 'shortid';
 
 export function itemList(Component, itemList) {
 	if (itemList === null) {
@@ -6,7 +7,7 @@ export function itemList(Component, itemList) {
 	}
 
   let list = itemList.map((item, index) => {
-    return <Component item={item} index={index} key={index}/>
+    return <Component item={item} index={index} key={shortid.generate()}/>
   });
 
   return list;
