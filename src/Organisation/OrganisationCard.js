@@ -79,9 +79,7 @@ function OrganisationCard(props) {
       <Box border={1} borderRadius={4} borderColor={grey[500]} className={clsx(classes.content, { [classes.mark]: selected === true, })}>
         {inputField("orgName", props.item.orgName)}
         {inputField("orgId", props.item.orgId)}
-        {inputField("payerName", props.item.payerName)}
-        {inputField("payerInn", props.item.payerInn)}
-        {inputField("payerId", props.item.payerId)}
+        {inputField("orgInn", props.item.orgInn)}
         <ButtonGroup className={classes.buttonsBlock}>
           <Button onClick={openSelectLayer} className={classes.selectButton}>Select</Button>
           <Button onClick={openUpdateLayer}>Update</Button>

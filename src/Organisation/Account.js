@@ -66,7 +66,7 @@ function Account(props) {
       </div>
       <div className={classes.collumn}>
         {textField("bankName", event => props.updateAcc({"bankName": event.target.value}, props.index), props.item.bankName)}
-        {textField("bankBIC", event => props.updateAcc({"bankBIC": event.target.value}, props.index), props.item.bankBIC)}
+        {textField("bankBic", event => props.updateAcc({"bankBic": event.target.value}, props.index), props.item.bankBic)}
         {textField("bankCorrAccount", event => props.updateAcc({"bankCorrAccount": event.target.value}, props.index), props.item.bankCorrAccount)}
         <Button variant="outlined" className={classes.button} onClick={() => props.buttonHandler(props.index)} >
           {props.buttonName}

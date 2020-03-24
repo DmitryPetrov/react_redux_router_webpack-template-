@@ -45,9 +45,7 @@ function OrganisationForm(props) {
 
   const [orgName, setOrgName] = React.useState(props.item.orgName);
   const [orgId, setOrgId] = React.useState(props.item.orgId);
-  const [payerName, setPayerName] = React.useState(props.item.payerName);
-  const [payerInn, setPayerInn] = React.useState(props.item.payerInn);
-  const [payerId, setPayerId] = React.useState(props.item.payerId);
+  const [orgInn, setOrgInn] = React.useState(props.item.orgInn);
 
   const [accounts, setAccounts] = React.useState(props.item.accounts);
   const updateAccount = (obj, index) => accounts[index] = Object.assign({}, accounts[index], obj);
@@ -63,9 +61,7 @@ function OrganisationForm(props) {
     let updatedOrg = {
       orgName: orgName,
       orgId: orgId,
-      payerName: payerName,
-      payerInn: payerInn,
-      payerId: payerId,
+      orgInn: orgInn,
       accounts: accounts,
     }
     props.save(updatedOrg, props.index);
@@ -101,9 +97,7 @@ function OrganisationForm(props) {
             <Box border={1} borderRadius={4} borderColor={grey[500]} className={classes.content}>
               {inputField("orgName", event => setOrgName(event.target.value), orgName)}
               {inputField("orgId", event => setOrgId(event.target.value), orgId)}
-              {inputField("payerName", event => setPayerName(event.target.value), payerName)}
-              {inputField("payerInn", event => setPayerInn( event.target.value), payerInn)}
-              {inputField("payerId", event => setPayerId(event.target.value), payerId)}
+              {inputField("orgInn", event => setOrgInn(event.target.value), orgInn)}
             </Box>
           </Grid>
           <Grid item className={classes.rightCollumn}>
