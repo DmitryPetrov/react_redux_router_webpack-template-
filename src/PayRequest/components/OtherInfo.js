@@ -12,7 +12,7 @@ import store from './../../store';
 import { STYLE } from './../style';
 import { LAST_MODIFY_DATE, QUEUE_DATE, RECIEVE_D_PAYER_BANK } from './../initialState';
 import { TEMPLATE, MESSAGE_ONLY_FOR_BANK, NEW_STATE } from './../initialState';
-import { RESERV_23, UIP, ACCEPT_TERM, ACCOUNT_ID } from './../initialState';
+import { RESERV_23, UIP, ACCEPT_TERM } from './../initialState';
 
 const useStyles = makeStyles(theme => ({
   textField: {
@@ -57,7 +57,6 @@ function OtherInfo(props) {
         {field("reserv23", RESERV_23, "string", event => store.dispatch(updateData({reserv23: event.target.value})))}
         {field("uip", UIP, "string", event => store.dispatch(updateData({uip: event.target.value})))}
         {field("acceptTerm", ACCEPT_TERM, "number", event => store.dispatch(updateData({acceptTerm: event.target.value})))}
-        {field("accountId", ACCOUNT_ID, "string", event => store.dispatch(updateData({accountId: event.target.value})))}
         <FormControlLabel
           control={<Checkbox defaultValue={TEMPLATE} onChange={event => store.dispatch(updateData({template: event.target.checked}))} />}
           label="template"

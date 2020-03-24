@@ -27,6 +27,7 @@ const PayRequest = (props) => {
         submit={submit}
         signCollectionHandle={signCollection => store.dispatch(updateData(signCollection))}
         dataForSign={props.dataForSign}
+        selectedOrg={props.selectedOrg}
       />
       <MessageFromServer request={props.request} />
     </div>
@@ -41,6 +42,7 @@ function mapStateToProps(store) {
   	data : Object.assign({}, store.payRequest.data),
     dataForSign : Object.assign({}, store.payRequest.data, {signCollection: null}),
     request: Object.assign({}, store.payRequest.request),
+    selectedOrg: store.organisation.selectedOrg,
   }
 }
 

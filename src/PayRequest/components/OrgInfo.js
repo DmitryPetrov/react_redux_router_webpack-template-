@@ -7,7 +7,6 @@ import clsx from 'clsx';
 import { updateData } from './../actionCreatorList';
 import store from './../../store';
 import { STYLE } from './../style';
-import { ORG_ID, ORG_NAME } from './../initialState';
 
 const useStyles = makeStyles(theme => ({
   textField: {
@@ -32,12 +31,17 @@ function OrgInfo(props) {
       onChange={handle}
       defaultValue={value}
     />;
-    
+  
+  const ORG_ID = props.defaultValue.org.orgId;
+  const ORG_NAME = props.defaultValue.org.orgName;
+  const ACCOUNT_ID = props.defaultValue.acc.accountId;
+
   return (
     <Paper component="div" className={clsx(globalStyle.backgroundLight, globalStyle.gridCell)}>
       <div className={clsx(globalStyle.gridCellContent, style.spacing)}>
         {field("orgId", ORG_ID, event => store.dispatch(updateData({orgId: event.target.value})))}
         {field("orgName", ORG_NAME, event => store.dispatch(updateData({orgName: event.target.value})))}
+        {field("accountId", ACCOUNT_ID, "string", event => store.dispatch(updateData({accountId: event.target.value})))}
       </div>
     </Paper>
   )

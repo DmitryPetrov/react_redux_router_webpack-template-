@@ -7,8 +7,6 @@ import clsx from 'clsx';
 import { updateData } from './../actionCreatorList';
 import store from './../../store';
 import { STYLE } from './../style';
-import { RECEIVER_ACCOUNT, RECEIVER_BANK_BIC, RECEIVER_BANK_CORR_ACCOUNT } from './../initialState';
-import { RECEIVER_BANK_NAME, RECEIVER_INN, RECEIVER_NAME } from './../initialState';
 
 const useStyles = makeStyles(theme => ({
   textField: {
@@ -23,6 +21,13 @@ const useStyles = makeStyles(theme => ({
 function ReceiverInfo(props) {
   const style = useStyles();
   const globalStyle = STYLE();
+
+  const RECEIVER_NAME = props.defaultValue.org.orgName;
+  const RECEIVER_ACCOUNT = props.defaultValue.acc.account;
+  const RECEIVER_INN = props.defaultValue.org.orgInn;
+  const RECEIVER_BANK_NAME = props.defaultValue.acc.bankName;
+  const RECEIVER_BANK_BIC = props.defaultValue.acc.bankBic;
+  const RECEIVER_BANK_CORR_ACCOUNT = props.defaultValue.acc.bankCorrAccount;
 
   const field = (text, value, handle) => <TextField
                     label={text}

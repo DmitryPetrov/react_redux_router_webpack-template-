@@ -79,7 +79,7 @@ function PayRequestView(props) {
           </Grid>
 
           <Grid item xs={4} className={classes.gridItem}>
-            <ReceiverInfo />
+            <ReceiverInfo defaultValue={props.selectedOrg}/>
           </Grid>
 
           <Grid item xs={4} className={classes.gridItem}>
@@ -88,7 +88,7 @@ function PayRequestView(props) {
 
           <Grid item xs={4} className={classes.gridItem}>
             <div className={classes.spacing}>
-              <OrgInfo />
+              <OrgInfo  defaultValue={props.selectedOrg}/>
             </div>
             <div className={classes.spacing}>
               <OperationInfo />
