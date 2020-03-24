@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import shortid from 'shortid';
 
 import { itemList } from './../functions/itemList';
 import { createDigest } from './createDigest';
@@ -48,6 +49,14 @@ function StatementRequestView(props) {
   const classes = useStyles();
   const globalStyle = GLOBAL_STYLE();
 
+  const accounts = props.accounts.map((item, index) => 
+    <Account
+      item={item}
+      index={index}
+      key={shortid.generate()}
+    />
+  );
+
   return (
     <div className={globalStyle.paper}>
       <Container component="main" maxWidth={CONTAINER_MAX_WIDTH} className={classes.paper}>
@@ -76,7 +85,7 @@ function StatementRequestView(props) {
             />
           </Grid>
           <Grid item xs={4} className={classes.gridItem}>
-            {itemList(Account, props.accounts)}
+            {accounts}
             <Button 
               variant="outlined"
               onClick={props.addAccountHandle}
