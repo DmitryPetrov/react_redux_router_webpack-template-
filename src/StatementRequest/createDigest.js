@@ -29,7 +29,7 @@ export function createDigest(nonFilteredData) {
   for (let i = 0; i < data.accounts.length; i++) {
     digest += "[Счет #" + i + "]" + lineSeparator;
     digest += "Счет=" + data.accounts[i].account + lineSeparator;
-    digest += "БИК банка, в котором обслуживается счет=" + data.accounts[i].bankBIC + lineSeparator;
+    digest += "БИК банка, в котором обслуживается счет=" + data.accounts[i].bankBic + lineSeparator;
     digest += "Наименование банка, в котором обслуживается счет=" + data.accounts[i].bankName + lineSeparator;    
   }
 

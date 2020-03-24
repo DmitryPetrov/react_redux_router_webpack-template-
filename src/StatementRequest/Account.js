@@ -11,7 +11,7 @@ import { ACCOUT_DATA } from './initialState';
 import { GRID_ITEM_STYLE } from './../style';
 
 const ACCOUNT = ACCOUT_DATA.account;
-const BANK_BIC = ACCOUT_DATA.bankBIC;
+const BANK_BIC = ACCOUT_DATA.bankBic;
 const BANK_NAME = ACCOUT_DATA.bankName;
 
 const useStyles = makeStyles(theme => ({
@@ -49,8 +49,8 @@ function Account(props) {
       >
         <div className={gridCell.content}>
           {textField("account", (event) => store.dispatch(updateAccountData({account: event.target.value}, props.index)), ACCOUNT)}
-          {textField("bank BIC", (event) => store.dispatch(updateAccountData({bankBIC: event.target.value}, props.index)), BANK_BIC)}
           {textField("bank Name", (event) => store.dispatch(updateAccountData({bankName: event.target.value}, props.index)), BANK_NAME)}
+          {textField("bank Bic", (event) => store.dispatch(updateAccountData({bankBic: event.target.value}, props.index)), BANK_BIC)}
           <Button 
             variant="outlined" 
             className={classes.button} 
