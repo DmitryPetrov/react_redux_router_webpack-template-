@@ -4,6 +4,10 @@
   to   "21.10.2010"
 */
 export function transformDate(date) {
+  if (date.length === 0) {
+    return "";
+  }
+
   let year = date.substring(0, 4);
   let month = date.substring(5, 7);
   let day = date.substring(8, 10);
