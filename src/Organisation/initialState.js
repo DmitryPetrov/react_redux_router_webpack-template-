@@ -16,8 +16,8 @@ export const EMPTY_ACC = {
 	bankName: "",
 	bankBic: "",
 	bankCorrAccount: "",
-  payerBankCity: "",
-  payerBankSettlementType: "",
+  bankCity: "",
+  bankSettlementType: "",
 }
 
 export const EMPTY_ORG = {
@@ -33,8 +33,8 @@ const ACC = {
 	bankName: BANK_NAME,
 	bankBic: BANK_BIC,
 	bankCorrAccount: BANK_CORR_ACCOUNT,
-  payerBankCity: "",
-  payerBankSettlementType: "",
+  bankCity: "",
+  bankSettlementType: "",
 }
 
 const ORG = {
@@ -47,67 +47,31 @@ const ORG = {
 
 const orgs = [
 {
-  orgName: "Organisation name1",
-  orgId: "Organisation id1",
-  orgInn: "Organisation inn1",
+  orgName: "ООО \"Лагуна\"",
+  orgId: "2fb49185-712d-4be9-9242-a03e35a7e003",
+  orgInn: "5035017318",
   accounts: [{
-    payerBankCity: "Payer bank city1.1",
-    payerBankSettlementType: "Payer settlement type1.1",
-    accountId: "accountId1.1",
-    account: "Account1.1",
-    bankName: "Bank name1.1",
-    bankBic: "Bank Bic1.1",
-    bankCorrAccount: "Bank corr account1.1",
-  },
-  {
-    payerBankCity: "Payer bank city1.2",
-    payerBankSettlementType: "Payer settlement type1.2",
-    accountId: "accountId1.2",
-    account: "Account1.2",
-    bankName: "Bank name1.2",
-    bankBic: "Bank Bic1.2",
-    bankCorrAccount: "Bank corr account1.2",
-  },
-  {
-    payerBankCity: "Payer bank city1.3",
-    payerBankSettlementType: "Payer settlement type1.3",
-    accountId: "accountId1.3",
-    account: "Account1.3",
-    bankName: "Bank name1.3",
-    bankBic: "Bank Bic1.3",
-    bankCorrAccount: "Bank corr account1.3",
+    bankCity: "Москва",
+    bankSettlementType: "city",
+    accountId: "40702810042010000403",
+    account: "40702810042010000403",
+    bankName: "ЦЕНТРАЛЬНЫЙ ФИЛИАЛ АБ \"РОССИЯ\" г. Москва",
+    bankBic: "044525220",
+    bankCorrAccount: "30101810145250000220",
   }]
 },
 {
-  orgName: "Organisation name2",
-  orgId: "Organisation id2",
-  orgInn: "Organisation inn2",
+  orgName: "АО \"РЗК\"",
+  orgId: "0ce353c5-9a53-497d-ad02-df1fb6c37feb",
+  orgInn: "7842170415",
   accounts: [{
-    payerBankCity: "Payer bank city2.1",
-    payerBankSettlementType: "Payer settlement type2.1",
-    accountId: "accountId2.1",
-    account: "Account2.1",
-    bankName: "Bank name2.1",
-    bankBic: "Bank Bic2.1",
-    bankCorrAccount: "Bank corr account2.1",
-  },
-  {
-    payerBankCity: "Payer bank city2.2",
-    payerBankSettlementType: "Payer settlement type2.2",
-    accountId: "accountId2.2",
-    account: "Account2.2",
-    bankName: "Bank name2.2",
-    bankBic: "Bank Bic2.2",
-    bankCorrAccount: "Bank corr account2.2",
-  },
-  {
-    payerBankCity: "Payer bank city2.3",
-    payerBankSettlementType: "Payer settlement type2.3",
-    accountId: "accountId2.3",
-    account: "Account2.3",
-    bankName: "Bank name2.3",
-    bankBic: "Bank Bic2.3",
-    bankCorrAccount: "Bank corr account2.3",
+    bankCity: "Санкт-Петербург",
+    bankSettlementType: "city",
+    accountId: "e0e91a9c-f448-4779-8267-921c350617b0",
+    account: "40702810800000005897",
+    bankName: "АО \"АБ \"РОССИЯ\"",
+    bankBic: "044030861",
+    bankCorrAccount: "30101810800000000861",
   }]
 },
 {
@@ -115,8 +79,8 @@ const orgs = [
   orgId: "Organisation id3",
   orgInn: "Organisation inn3",
   accounts: [{
-    payerBankCity: "Payer bank city3.1",
-    payerBankSettlementType: "Payer settlement type3.1",
+    bankCity: "Payer bank city3.1",
+    bankSettlementType: "Payer settlement type3.1",
     accountId: "accountId3.1",
     account: "Account3.1",
     bankName: "Bank name3.1",
@@ -124,8 +88,8 @@ const orgs = [
     bankCorrAccount: "Bank corr account3.1",
   },
   {
-    payerBankCity: "Payer bank city3.2",
-    payerBankSettlementType: "Payer settlement type3.2",
+    bankCity: "Payer bank city3.2",
+    bankSettlementType: "Payer settlement type3.2",
     accountId: "accountId3.2",
     account: "Account3.2",
     bankName: "Bank name3.2",
@@ -133,8 +97,8 @@ const orgs = [
     bankCorrAccount: "Bank corr account3.2",
   },
   {
-    payerBankCity: "Payer bank city3.3",
-    payerBankSettlementType: "Payer settlement type3.3",
+    bankCity: "Payer bank city3.3",
+    bankSettlementType: "Payer settlement type3.3",
     accountId: "accountId3.3",
     account: "Account3.3",
     bankName: "Bank name3.3",
@@ -147,8 +111,8 @@ const orgs = [
   orgId: "Organisation id4",
   orgInn: "Organisation inn4",
   accounts: [{
-    payerBankCity: "Payer bank city4.1",
-    payerBankSettlementType: "Payer settlement type4.1",
+    bankCity: "Payer bank city4.1",
+    bankSettlementType: "Payer settlement type4.1",
     accountId: "accountId4.1",
     account: "Account4.1",
     bankName: "Bank name4.1",
@@ -156,8 +120,8 @@ const orgs = [
     bankCorrAccount: "Bank corr account4.1",
   },
   {
-    payerBankCity: "Payer bank city4.2",
-    payerBankSettlementType: "Payer settlement type4.2",
+    bankCity: "Payer bank city4.2",
+    bankSettlementType: "Payer settlement type4.2",
     accountId: "accountId4.2",
     account: "Account4.2",
     bankName: "Bank name4.2",
@@ -165,8 +129,8 @@ const orgs = [
     bankCorrAccount: "Bank corr account4.2",
   },
   {
-    payerBankCity: "Payer bank city4.3",
-    payerBankSettlementType: "Payer settlement type4.3",
+    bankCity: "Payer bank city4.3",
+    bankSettlementType: "Payer settlement type4.3",
     accountId: "accountId4.3",
     account: "Account4.3",
     bankName: "Bank name4.3",
@@ -179,8 +143,8 @@ const orgs = [
   orgId: "Organisation id5",
   orgInn: "Organisation inn5",
   accounts: [{
-    payerBankCity: "Payer bank city5.1",
-    payerBankSettlementType: "Payer settlement type5.1",
+    bankCity: "Payer bank city5.1",
+    bankSettlementType: "Payer settlement type5.1",
     accountId: "accountId5.1",
     account: "Account5.1",
     bankName: "Bank name5.1",
@@ -188,8 +152,8 @@ const orgs = [
     bankCorrAccount: "Bank corr account5.1",
   },
   {
-    payerBankCity: "Payer bank city5.2",
-    payerBankSettlementType: "Payer settlement type5.2",
+    bankCity: "Payer bank city5.2",
+    bankSettlementType: "Payer settlement type5.2",
     accountId: "accountId5.2",
     account: "Account5.2",
     bankName: "Bank name5.2",
@@ -197,8 +161,8 @@ const orgs = [
     bankCorrAccount: "Bank corr account5.2",
   },
   {
-    payerBankCity: "Payer bank city5.3",
-    payerBankSettlementType: "Payer settlement type5.3",
+    bankCity: "Payer bank city5.3",
+    bankSettlementType: "Payer settlement type5.3",
     accountId: "accountId5.3",
     account: "Account5.3",
     bankName: "Bank name5.3",
@@ -215,6 +179,6 @@ export const ORGANISATION = {
   	acc: ACC,
   },
   request: REQUEST,
-  organisations: orgs,
+  organisations: [],
 }
 

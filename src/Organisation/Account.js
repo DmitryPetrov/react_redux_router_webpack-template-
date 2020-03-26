@@ -61,8 +61,8 @@ function Account(props) {
       <div className={classes.collumn}>
         {textField("account", event => props.updateAcc({"account": event.target.value}, props.index), props.item.account)}
         {textField("accountId", event => props.updateAcc({"accountId": event.target.value}, props.index),  props.item.accountId)}
-        {textField("payerBankSettlementType", event => props.updateAcc({"payerBankSettlementType": event.target.value}, props.index),  props.item.payerBankSettlementType)}
-        {textField("payerBankCity", event => props.updateAcc({"payerBankCity": event.target.value}, props.index),  props.item.payerBankCity)}
+        {textField("bankSettlementType", event => props.updateAcc({"bankSettlementType": event.target.value}, props.index),  props.item.bankSettlementType)}
+        {textField("bankCity", event => props.updateAcc({"bankCity": event.target.value}, props.index),  props.item.bankCity)}
       </div>
       <div className={classes.collumn}>
         {textField("bankName", event => props.updateAcc({"bankName": event.target.value}, props.index), props.item.bankName)}
