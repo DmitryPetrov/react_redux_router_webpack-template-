@@ -108,7 +108,6 @@ const SignGenerator = (props) => {
 
     setSign(Object.assign(sign, 
       {
-        certificateGuid: certificate,
         dtCreate: new Date().toISOString(),
       }));
 
