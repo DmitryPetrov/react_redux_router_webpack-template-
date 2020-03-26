@@ -3,9 +3,9 @@ import { v1 as generateUUID } from 'uuid';
 import { REQUEST } from './../globalInitialState'
 
 export const DIGEST_SCHEME_INFO = {
-    digestScheme: "",
+    digestScheme: "com.bssys.sbns.dbo.rur.paymentrequest.OutPayReqSignDigest",
     digestSchemeFormat: "",
-    digestSchemeVersion: "",
+    digestSchemeVersion: "8",
 };
 
 export const ORDER_DATE = "2010-10-10T10:10:10.710+03:00";
@@ -25,12 +25,12 @@ export const PAY_REQUEST_PART_DATA = {
 export const ACCEPT_TERM = "5";
 export const ACCOUNT_ID = "27809083-1892-4467-b6a6-035a95b6230e";
 
-export const BANK_ACCEPT_DATE = "2010-10-10T10:10:10.710+03:00";
+export const BANK_ACCEPT_DATE = "";//"2010-10-10T10:10:10.710+03:00";
 export const BANK_MESSAGE = "";
 export const BANK_MESSAGE_AUTHOR = "";
 
 export const DOC_DATE = "2019-05-24T01:00:00.000+03:00";
-export const DOC_DISPATCH_DATE = "2010-10-10T10:10:10.710+03:00";
+export const DOC_DISPATCH_DATE = "";//"2010-10-10T10:10:10.710+03:00";
 export const DOC_ID = generateUUID();
 export const DOC_NUMBER = "1263";
 
@@ -43,7 +43,7 @@ export const LAST_MODIFY_DATE = "2010-10-10T10:10:10.710+03:00";
 export const MESSAGE_ONLY_FOR_BANK = "";
 export const NEW_STATE = "";
 
-export const OPERATION_DATE = "2010-10-10T10:10:10.710+03:00";
+export const OPERATION_DATE = "";//"2010-10-10T10:10:10.710+03:00";
 export const OPERATION_TYPE = "02";
 
 export const ORG_ID = "2fb49185-712d-4be9-9242-a03e35a7e003";
@@ -57,7 +57,7 @@ export const PAYER_ID = "";
 export const PAYER_INN = "5035017318";
 export const PAYER_NAME = "ООО \"Лагуна\"";
 
-export const PAYMENT_CONDITION = "2";
+export const PAYMENT_CONDITION = "1";
 export const PAYMENT_CONDITION_CODE = "1";
 export const PAYMENT_KIND = "";
 export const PAYMENT_KIND_CODE = "";
@@ -73,7 +73,7 @@ export const RECEIVER_BANK_NAME = "ЦЕНТРАЛЬНЫЙ ФИЛИАЛ АБ \"Р
 export const RECEIVER_INN = "5035019481";
 export const RECEIVER_NAME = "МУП \"Энергетик\"";
 
-export const RECIEVE_D_PAYER_BANK = "2010-10-10T10:10:10.710+03:00";
+export const RECIEVE_D_PAYER_BANK = "";//"2010-10-10T10:10:10.710+03:00";
 
 export const RESERV_23 = "";
 
