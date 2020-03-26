@@ -10,8 +10,6 @@ import OrganisationsView from './OrganisationsView';
 
 function Organisations(props) {
 
-  React.useEffect(() => selectOrg(0));
-
   const [orgs, setOrgs] = React.useState(props.organisations);
 
   const getOrgs = () => store.dispatch(getOrganisations());
@@ -42,6 +40,7 @@ function Organisations(props) {
       <OrganisationsView
         selectOrg={selectOrg}
         selectAcc={selectAcc}
+        getOrgs={getOrgs}
         saveUpdatedOrg={saveUpdatedOrg}
         saveNewOrg={saveNewOrg}
         removeOrg={removeOrg}

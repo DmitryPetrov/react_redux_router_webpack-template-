@@ -41,6 +41,10 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(3),
     height: theme.spacing(5),
     color: theme.palette.primary.main,
+  },
+  refreshButton: {
+    marginTop: theme.spacing(3),
+    width:  theme.spacing(18),
   }
 }));
 
@@ -70,6 +74,13 @@ function OrganisationsView(props) {
         <Typography component="h1" variant="h5" className={classes.title}>
           Organisations
         </Typography>
+        <Button
+          variant="outlined"
+          onClick={props.getOrgs}
+          className={classes.refreshButton}
+        >
+          Refresh
+        </Button>
         <Grid container justify="space-evenly" alignItems="flex-start">
           {orgList}
           <Grid item>
