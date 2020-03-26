@@ -41,7 +41,7 @@ function OrgInfo(props) {
       <div className={clsx(globalStyle.gridCellContent, style.spacing)}>
         {field("orgId", ORG_ID, event => store.dispatch(updateData({orgId: event.target.value})))}
         {field("orgName", ORG_NAME, event => store.dispatch(updateData({orgName: event.target.value})))}
-        {field("accountId", ACCOUNT_ID, "string", event => store.dispatch(updateData({accountId: event.target.value})))}
+        {field("accountId", ACCOUNT_ID, event => store.dispatch(updateData({accountId: event.target.value})))}
       </div>
     </Paper>
   )
