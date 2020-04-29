@@ -31,6 +31,7 @@ export function organisationReducer(state = false, action) {
         message: action.message,
         response: action.response,
       }
+    newState.organisations = action.response.organisations;
     return newState;
   }
 

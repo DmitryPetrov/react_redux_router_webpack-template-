@@ -12,6 +12,13 @@ function Organisations(props) {
 
   const [orgs, setOrgs] = React.useState(props.organisations);
 
+  React.useEffect(() => {
+    console.log(props.organisations)
+    if (props.organisations !== undefined){
+      setOrgs(props.organisations)
+    }
+  }, [props.organisations]);
+
   const getOrgs = () => store.dispatch(getOrganisations());
 
   const selectOrg = index => {
