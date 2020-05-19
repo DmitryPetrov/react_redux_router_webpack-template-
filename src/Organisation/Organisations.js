@@ -29,7 +29,7 @@ function Organisations(props) {
 
   const saveUpdatedOrg = (data, index) => {
     orgs[index] = Object.assign({}, orgs[index], data);
-    store.dispatch(putOrganisation(data, index));
+    store.dispatch(putOrganisation(data, data.id));
   }
 
   const saveNewOrg = data => {
@@ -38,8 +38,8 @@ function Organisations(props) {
   }
 
   const removeOrg = indexOrg => {
+    store.dispatch(deleteOrganisation(orgs[indexOrg].id));
     setOrgs(orgs.filter((item, index) => (index === indexOrg) ? false : true ));
-    store.dispatch(deleteOrganisation(indexOrg));
   }
 
   return (

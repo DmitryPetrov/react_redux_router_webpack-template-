@@ -11,6 +11,7 @@ export const BANK_BIC = "044525220";
 export const BANK_CORR_ACCOUNT = "30101810145250000220";
 
 export const EMPTY_ACC = {
+  id: "",
 	account: "",
 	accountId: "",
 	bankName: "",
@@ -21,6 +22,7 @@ export const EMPTY_ACC = {
 }
 
 export const EMPTY_ORG = {
+  id: "",
 	orgName: "",
 	orgId: "",
 	orgInn: "",

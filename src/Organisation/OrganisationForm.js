@@ -59,6 +59,7 @@ function OrganisationForm(props) {
 
   const saveOrg = () => {
     let updatedOrg = {
+      id: props.item.id,
       orgName: orgName,
       orgId: orgId,
       orgInn: orgInn,
